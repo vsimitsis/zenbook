@@ -12,7 +12,7 @@
             @include('layouts.partials._top-bar')
 
             <div class="k-content	k-grid__item k-grid__item--fluid k-grid k-grid--hor" id="k_content">
-                @include('layouts.partials.breadcrumps')
+                @include('layouts.partials._breadcrumbs')
 
                 @yield('content')
             </div>

@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Auth::routes(['verify' => true]);
+
+Route::get('/', 'HomeController@index')->name('home');
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 });

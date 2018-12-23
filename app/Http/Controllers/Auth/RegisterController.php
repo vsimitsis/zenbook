@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Company;
+use App\CompanyRole;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -51,6 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'company' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
@@ -58,15 +61,28 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \App\User
+     * @param array $data
+     * @return mixed
+     * @throws \Exception
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        //Create the company
+        $company = Company::create([
+            'name' => $data['company'],
+            'subdomain' => strtolower(str_replace(" ", "-", $data['company']))
         ]);
+
+        if ($company) {
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'company_id' => $company->id,
+                'company_role_id' => CompanyRole::ADMINISTRATOR,
+                'password' => Hash::make($data['password']),
+            ]);
+        }
+
+        throw new \Exception('Shit');
     }
 }

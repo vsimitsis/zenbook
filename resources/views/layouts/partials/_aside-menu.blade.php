@@ -1,17 +1,11 @@
 <div class="k-aside-menu-wrapper	k-grid__item k-grid__item--fluid" id="k_aside_menu_wrapper">
     <div id="k_aside_menu" class="k-aside-menu " data-kmenu-vertical="1" data-kmenu-scroll="1" data-kmenu-dropdown-timeout="500">
         <ul class="k-menu__nav ">
-            <li class="k-menu__item  k-menu__item--submenu k-menu__item--open k-menu__item--here" aria-haspopup="true" data-kmenu-submenu-toggle="hover"><a href="javascript:;" class="k-menu__link k-menu__toggle"><i class="k-menu__link-icon flaticon2-graphic"></i><span class="k-menu__link-text">Dashboards</span><i class="k-menu__ver-arrow la la-angle-right"></i></a>
-                <div class="k-menu__submenu "><span class="k-menu__arrow"></span>
-                    <ul class="k-menu__subnav">
-                        <li class="k-menu__item  k-menu__item--parent" aria-haspopup="true"><span class="k-menu__link"><span class="k-menu__link-text">Dashboards</span></span></li>
-                        <li class="k-menu__item  k-menu__item--active" aria-haspopup="true"><a href="index.html" class="k-menu__link "><i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i><span class="k-menu__link-text">Navy Aside</span></a></li>
-                        <li class="k-menu__item " aria-haspopup="true"><a href="dashboards/brand-aside.html" class="k-menu__link "><i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i><span class="k-menu__link-text">Brand Aside</span></a></li>
-                        <li class="k-menu__item " aria-haspopup="true"><a href="dashboards/navy-header.html" class="k-menu__link "><i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i><span class="k-menu__link-text">Navy Header</span></a></li>
-                        <li class="k-menu__item " aria-haspopup="true"><a href="dashboards/light-aside.html" class="k-menu__link "><i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i><span class="k-menu__link-text">Light Aside</span></a></li>
-                        <li class="k-menu__item " aria-haspopup="true"><a href="dashboards/brand-header.html" class="k-menu__link "><i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i><span class="k-menu__link-text">Brand Header</span></a></li>
-                    </ul>
-                </div>
+            <li class="k-menu__item">
+                <a href="{{ route('dashboard.index') }}" class="k-menu__link k-menu__toggle">
+                    <i class="k-menu__link-icon flaticon2-graphic"></i>
+                    <span class="k-menu__link-text">Dashboard</span>
+                </a>
             </li>
             <li class="k-menu__item " aria-haspopup="true"><a target="_blank" href="https://keenthemes.com/keen/preview/default/builder.html" class="k-menu__link "><i class="k-menu__link-icon flaticon2-gear"></i><span class="k-menu__link-text">Layout Builder</span></a></li>
             <li class="k-menu__section ">
