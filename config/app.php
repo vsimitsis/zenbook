@@ -53,7 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-
+    'domain' => env('MAIN_DOMAIN', 'zenbook.test'),
     'asset_url' => env('ASSET_URL', null),
 
     /*

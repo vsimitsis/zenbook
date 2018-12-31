@@ -18,7 +18,7 @@
                 </div>
                 <div class="k-search__item">
                     <div class="k-search__item-img k-search__item-img--file">
-                        <img src="assets/media/files/doc.svg" alt="" />
+                        <img src="{{ asset('assets/media/files/doc.svg') }}" alt="" />
                     </div>
                     <div class="k-search__item-wrapper">
                         <a href="#" class="k-search__item-title">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="k-search__item">
                     <div class="k-search__item-img k-search__item-img--file">
-                        <img src="assets/media/files/pdf.svg" alt="" />
+                        <img src="{{ asset('assets/media/files/pdf.svg') }}" alt="" />
                     </div>
                     <div class="k-search__item-wrapper">
                         <a href="#" class="k-search__item-title">
@@ -44,7 +44,7 @@
                 </div>
                 <div class="k-search__item">
                     <div class="k-search__item-img k-search__item-img--file">
-                        <img src="assets/media/files/zip.svg" alt="" />
+                        <img src="{{ asset('assets/media/files/zip.svg') }}" alt="" />
                     </div>
                     <div class="k-search__item-wrapper">
                         <a href="#" class="k-search__item-title">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="k-search__item">
                     <div class="k-search__item-img k-search__item-img--file">
-                        <img src="assets/media/files/xml.svg" alt="" />
+                        <img src="{{ asset('assets/media/files/xml.svg') }}" alt="" />
                     </div>
                     <div class="k-search__item-wrapper">
                         <a href="#" class="k-search__item-title">
@@ -73,7 +73,7 @@
                 </div>
                 <div class="k-search__item">
                     <div class="k-search__item-img">
-                        <img src="assets/media/users/300_14.jpg" alt="" />
+                        <img src="{{ asset('assets/media/users/300_14.jpg') }}" alt="" />
                     </div>
                     <div class="k-search__item-wrapper">
                         <a href="#" class="k-search__item-title">
@@ -86,7 +86,7 @@
                 </div>
                 <div class="k-search__item">
                     <div class="k-search__item-img">
-                        <img src="assets/media/users/300_20.jpg" alt="" />
+                        <img src="{{ asset('assets/media/users/300_20.jpg') }}" alt="" />
                     </div>
                     <div class="k-search__item-wrapper">
                         <a href="#" class="k-search__item-title">
@@ -99,7 +99,7 @@
                 </div>
                 <div class="k-search__item">
                     <div class="k-search__item-img">
-                        <img src="assets/media/users/300_21.jpg" alt="" />
+                        <img src="{{ asset('assets/media/users/300_21.jpg') }}" alt="" />
                     </div>
                     <div class="k-search__item-wrapper">
                         <a href="#" class="k-search__item-title">
@@ -112,7 +112,7 @@
                 </div>
                 <div class="k-search__item">
                     <div class="k-search__item-img">
-                        <img src="assets/media/users/300_2.jpg" alt="" />
+                        <img src="{{ asset('assets/media/users/300_2.jpg') }}" alt="" />
                     </div>
                     <div class="k-search__item-wrapper">
                         <a href="#" class="k-search__item-title">

@@ -1,7 +1,7 @@
 <div id="k_header_mobile" class="k-header-mobile  k-header-mobile--fixed ">
     <div class="k-header-mobile__logo">
         <a href="index.html">
-            <img alt="Logo" src="../assets/media/logos/logo-6.png" />
+            <img alt="Logo" src="{{ asset('assets/media/logos/logo-6.png') }}" />
         </a>
     </div>
     <div class="k-header-mobile__toolbar">

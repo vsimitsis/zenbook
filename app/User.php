@@ -3,10 +3,9 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use Notifiable;
 
@@ -27,4 +26,44 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Return the user's first name
+     *
+     * @return mixed
+     */
+    public function firstName()
+    {
+        return explode(" ", $this->name)[0];
+    }
+
+    /**
+     * Return the user's contact
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function contact()
+    {
+        return $this->belongs('App\UserContact');
+    }
+
+    /**
+     * Return the company this user belongs
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function company()
+    {
+        return $this->belongsTo('App\Company');
+    }
+
+    /**
+     * Return the user's company role
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function companyRole()
+    {
+        return $this->belongsTo('App\CompanyRole');
+    }
 }

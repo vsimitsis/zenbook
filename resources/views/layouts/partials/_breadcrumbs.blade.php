@@ -1,15 +1,7 @@
 <div class="k-content__head	k-grid__item">
     <div class="k-content__head-main">
         <h3 class="k-content__head-title">@yield('title')</h3>
-        <div class="k-content__head-breadcrumbs">
-            <a href="#" class="k-content__head-breadcrumb-home"><i class="flaticon2-shelter"></i></a>
-            <span class="k-content__head-breadcrumb-separator"></span>
-            <a href="" class="k-content__head-breadcrumb-link">Dashboards</a>
-            <span class="k-content__head-breadcrumb-separator"></span>
-            <a href="" class="k-content__head-breadcrumb-link">Navy Aside</a>
-
-            <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active">Active link</span>
-        </div>
+        @yield('breadcrumbs')
     </div>
     <div class="k-content__head-toolbar">
         <div class="k-content__head-wrapper">

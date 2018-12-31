@@ -2,21 +2,12 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| App home Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| Here is where you can register web routes for the home page of the app
 |
 */
 
+Route::get('/', 'HomeController@index')->name('home.home');
 
-Auth::routes(['verify' => true]);
-
-Route::get('/', 'HomeController@index')->name('home');
-
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
-});

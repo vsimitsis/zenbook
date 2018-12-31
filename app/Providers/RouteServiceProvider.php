@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -51,9 +52,25 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+        $domain = config('app.domain');
+
+        Route::middleware(['web', 'checkType', 'forgetDomain'])
+            ->domain($domain)
+            ->name('home.')
+            ->namespace($this->namespace . '\Home')
+            ->group(base_path('routes/web.php'));
+
+        Route::middleware(['web', 'checkType', 'forgetDomain'])
+            ->domain('{companySubDomain}.' . $domain)
+            ->namespace($this->namespace)
+            ->group(function () {
+                Auth::routes();
+            });
+
+        Route::middleware(['web', 'checkType', 'auth', 'authorizeAccess', 'forgetDomain'])
+            ->domain('{companySubDomain}.' . $domain)
+            ->namespace($this->namespace)
+            ->group(base_path('routes/company.php'));
     }
 
     /**
@@ -66,8 +83,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
     }
 }

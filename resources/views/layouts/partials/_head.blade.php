@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script>
@@ -17,15 +17,6 @@
         });
     </script>
 
-    <!--Page Vendors Styles -->
-    <link href="assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
-
-    <!--Global Theme Styles -->
-    <link href="assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
-    <!--Layout Skins -->
-    <link href="assets/demo/default/skins/header/base/light.css" rel="stylesheet" type="text/css" />
-    <link href="assets/demo/default/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
-    <link href="assets/demo/default/skins/brand/navy.css" rel="stylesheet" type="text/css" />
-    <link href="assets/demo/default/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/vendors/base/vendors.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
 </head>

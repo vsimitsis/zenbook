@@ -1,6 +1,4 @@
 <div id="k_header" class="k-header k-grid__item  k-header--fixed ">
-
-    <!-- begin: Header Menu -->
     <button class="k-header-menu-wrapper-close" id="k_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
     <div class="k-header-menu-wrapper" id="k_header_menu_wrapper">
         <div id="k_header_menu" class="k-header-menu k-header-menu-mobile ">
@@ -122,21 +120,13 @@
         </div>
     </div>
 
-    <!-- end: Header Menu -->
-
-    <!-- begin:: Header Topbar -->
     <div class="k-header__topbar">
-
-        <!--begin: Search -->
         <div class="k-header__topbar-item k-header__topbar-item--search dropdown">
             <div class="k-header__topbar-wrapper" id="k_offcanvas_toolbar_search_toggler_btn">
                 <span class="k-header__topbar-icon"><i class="flaticon2-search-1"></i></span>
             </div>
         </div>
 
-        <!--end: Search -->
-
-        <!--begin: Notifications -->
         <div class="k-header__topbar-item dropdown">
             <div class="k-header__topbar-wrapper" data-toggle="dropdown" data-offset="30px -2px">
                 <span class="k-header__topbar-icon"><i class="flaticon2-bell-alarm-symbol"></i></span>
@@ -308,41 +298,35 @@
             </div>
         </div>
 
-        <!--end: Notifications -->
-
-        <!--begin: Quick actions -->
         <div class="k-header__topbar-item dropdown">
             <div class="k-header__topbar-wrapper" id="k_offcanvas_toolbar_quick_actions_toggler_btn">
                 <span class="k-header__topbar-icon"><i class="flaticon2-gear"></i></span>
             </div>
         </div>
 
-        <!--end: Quick actions -->
-
-        <!--begin: Language bar -->
         <div class="k-header__topbar-item k-header__topbar-item--langs">
             <div class="k-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px -2px">
 									<span class="k-header__topbar-icon">
-										<img class="" src="assets/media/flags/020-flag.svg" alt="" />
+										<img class="" src="{{ asset('assets/media/flags/020-flag.svg') }}" alt="" />
 									</span>
             </div>
             <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
                 <ul class="k-nav k-margin-t-10 k-margin-b-10">
                     <li class="k-nav__item k-nav__item--active">
                         <a href="#" class="k-nav__link">
-                            <span class="k-nav__link-icon"><img src="assets/media/flags/020-flag.svg" alt="" /></span>
+                            <span class="k-nav__link-icon"><img src="{{ asset('assets/media/flags/020-flag.svg') }}" alt="" /></span>
                             <span class="k-nav__link-text">English</span>
                         </a>
                     </li>
                     <li class="k-nav__item">
                         <a href="#" class="k-nav__link">
-                            <span class="k-nav__link-icon"><img src="assets/media/flags/016-spain.svg" alt="" /></span>
+                            <span class="k-nav__link-icon"><img src="{{ asset('assets/media/flags/016-spain.svg') }}" alt="" /></span>
                             <span class="k-nav__link-text">Spanish</span>
                         </a>
                     </li>
                     <li class="k-nav__item">
                         <a href="#" class="k-nav__link">
-                            <span class="k-nav__link-icon"><img src="assets/media/flags/017-germany.svg" alt="" /></span>
+                            <span class="k-nav__link-icon"><img src="{{ asset('assets/media/flags/017-germany.svg') }}" alt="" /></span>
                             <span class="k-nav__link-text">German</span>
                         </a>
                     </li>
@@ -350,25 +334,23 @@
             </div>
         </div>
 
-        <!--end: Language bar -->
-
-        <!--begin: User bar -->
         <div class="k-header__topbar-item k-header__topbar-item--user">
             <div class="k-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px -2px">
                 <div class="k-header__topbar-user">
                     <span class="k-header__topbar-welcome k-hidden-mobile">Hi,</span>
-                    <span class="k-header__topbar-username k-hidden-mobile">Alex</span>
-                    <img alt="Pic" src="assets/media/users/300_25.jpg" />
-
-                    <!--use below badge element instead the user avatar to display username's first letter(remove k-hidden class to display it) -->
-                    <span class="k-badge k-badge--username k-badge--lg k-badge--brand k-hidden">A</span>
+                    <span class="k-header__topbar-username k-hidden-mobile">{{ $currentUser->firstName() }}</span>
+                    @if($currentUser->avatar)
+                        <img src="{{ Storage::url($currentUser->avatar) }}"  alt="User Avatar"/>
+                    @else
+                        <span class="k-badge k-badge--username k-badge--lg k-badge--brand">{{ $currentUser->firstName()[0] }}</span>
+                    @endif
                 </div>
             </div>
             <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-md">
                 <div class="k-user-card k-margin-b-50 k-margin-b-30-tablet-and-mobile" style="background-image: url(assets/media/misc/head_bg_sm.jpg)">
                     <div class="k-user-card__wrapper">
                         <div class="k-user-card__pic">
-                            <img alt="Pic" src="assets/media/users/300_21.jpg" />
+                            <img alt="Pic" src="{{ asset('assets/media/users/300_21.jpg') }}" />
                         </div>
                         <div class="k-user-card__details">
                             <div class="k-user-card__name">Alex Stone</div>
@@ -402,7 +384,13 @@
                         </a>
                     </li>
                     <li class="k-nav__item k-nav__item--custom k-margin-t-15">
-                        <a href="custom/user/login-v2.html" target="_blank" class="btn btn-outline-metal btn-hover-brand btn-upper btn-font-dark btn-sm btn-bold">Sign Out</a>
+                        <a href="{{ route('logout') }}" class="btn btn-outline-metal btn-hover-brand btn-upper btn-font-dark btn-sm btn-bold"
+                           onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">Sign Out
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </li>
                 </ul>
             </div>

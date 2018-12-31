@@ -2,8 +2,9 @@
 <div class="k-aside  k-aside--fixed 	k-grid__item k-grid k-grid--desktop k-grid--hor-desktop" id="k_aside">
     <div class="k-aside__brand	k-grid__item " id="k_aside_brand">
         <div class="k-aside__brand-logo">
-            <a href="index.html">
-                <img alt="Logo" src="assets/media/logos/logo-6.png" />
+            <a href="{{ route('dashboard.index') }}">
+                <img alt="Logo" src="{{ asset('assets/media/logos/logo-6.png') }}" />
+                {{ $currentCompany->name }}
             </a>
         </div>
         <div class="k-aside__brand-tools">

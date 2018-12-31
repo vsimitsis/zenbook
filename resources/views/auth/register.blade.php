@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -34,20 +34,6 @@
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="company" class="col-md-4 col-form-label text-md-right">{{ __('general.company') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="company" type="text" class="form-control{{ $errors->has('company') ? ' is-invalid' : '' }}" name="company" value="{{ old('company') }}" required>
-
-                                @if ($errors->has('company'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('company') }}</strong>
                                     </span>
                                 @endif
                             </div>

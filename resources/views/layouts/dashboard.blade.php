@@ -31,16 +31,13 @@
 @include('layouts.partials._toolbar-quick-actions')
 @include('layouts.partials._toolbar-quick-panel')
 
-<!--begin::Global Theme Bundle -->
-<script src="assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
-<script src="assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
-<!--begin::Page Vendors -->
-<script src="assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
-<!--begin::Page Scripts -->
-<script src="assets/app/scripts/custom/dashboard.js" type="text/javascript"></script>
-<!--begin::Global App Bundle -->
-<script src="assets/app/scripts/bundle/app.bundle.js" type="text/javascript"></script>
+<!--Global Theme Bundle -->
+<script src="{{ asset('assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/demo/default/base/scripts.bundle.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/app/scripts/bundle/app.bundle.js') }}" type="text/javascript"></script>
+<!-- DataTables Js -->
+<script src="{{ asset('assets/vendors/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
+<!-- Page specific Js -->
 @stack('scripts')
 </body>
-
 </html>

@@ -16,10 +16,10 @@ class Company extends Model
     /**
      * Return all the users that belong to this company
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->hasMany('App\User');
     }
 }
