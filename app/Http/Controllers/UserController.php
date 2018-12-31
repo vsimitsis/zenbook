@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Country;
+use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -37,7 +38,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
         dd($request);
     }

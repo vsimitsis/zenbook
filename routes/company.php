@@ -3,7 +3,7 @@
 /**
  * Dashboard Routes
  */
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
 /**
  * User Routes

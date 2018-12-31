@@ -48,6 +48,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Return the user's addresses
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function addresses()
+    {
+        return $this->belongsToMany('App\Address');
+    }
+
+    /**
      * Return the company this user belongs
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

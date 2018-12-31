@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-        @include('users._form')
+        @include('users.partials._form')
         </div>
     </form>
 
@@ -40,11 +40,13 @@
 
 @push('scripts')
     <script>
-        $('.k-repeater').each(function(){
-            $(this).repeater({
-                show: function () {
-                    $(this).slideDown();
-                }
+        $(document).ready(function () {
+            $('.k-repeater').each(function(){
+                $(this).repeater({
+                    show: function () {
+                        $(this).slideDown();
+                    }
+                });
             });
         });
     </script>
