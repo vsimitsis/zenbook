@@ -1,4 +1,5 @@
 <div class="k-portlet__body">
+    {{ csrf_field() }}
     <h3 class="k-heading k-heading--md k-heading--no-top-margin">1. Details:</h3>
     <div class="form-group row">
         <label class="col-sm-3 col-md-2 col-form-label">Full Name:</label>
@@ -279,17 +280,6 @@
 	        <span data-repeater-create="" class="btn btn-info btn-sm">
 	        	<i class="la la-plus"></i> Add Alternative Address
 	        </span>
-        </div>
-    </div>
-</div>
-
-<div class="k-portlet__foot">
-    <div class="k-form__actions">
-        <div class="row">
-            <div class="col-12">
-                <button type="submit" class="btn btn-success">Save</button>
-                <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancel</a>
-            </div>
         </div>
     </div>
 </div>

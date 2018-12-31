@@ -11,18 +11,31 @@
 @endsection
 
 @section('content')
-    <div class="k-portlet k-portlet--mobile">
-        <div class="k-portlet__head">
-            <div class="k-portlet__head-label">
-                <h3 class="k-portlet__head-title">Edit User: {{ $user->name }}</h3>
+    <form action="{{ route('users.update', $user) }}" class="k-form" method="POST">
+        <div class="k-portlet k-portlet--mobile">
+            <div class="k-portlet__head k-portlet__head--lg">
+                <div class="k-portlet__head-label">
+                    <h3 class="k-portlet__head-title">Edit User: {{ $user->name }}</h3>
+                </div>
+                <div class="k-portlet__head-toolbar">
+                    <a href="{{ route('users.index') }}" class="btn btn-secondary k-margin-r-10">
+                        <i class="la la-arrow-left"></i>
+                        <span class="k-hidden-mobile">Back</span>
+                    </a>
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-success">
+                            <i class="la la-check"></i>
+                            <span class="k-hidden-mobile">Save</span>
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <form action="{{ route('users.update', $user) }}" class="k-form" method="POST">
-            {{ csrf_field()  }}
-            @include('users._form')
-        </form>
-    </div>
+        @include('users._form')
+        </div>
+    </form>
+
+
 @endsection
 
 @push('scripts')
