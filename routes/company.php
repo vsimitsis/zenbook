@@ -10,3 +10,4 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
  */
 Route::get('/users', 'UserController@index')->name('users.index');
 Route::get('/users/{user}/edit', 'UserController@edit')->name('users.edit');
+Route::post('users/{user}/update', 'UserController@update')->name('users.update');

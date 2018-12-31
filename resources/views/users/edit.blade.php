@@ -18,20 +18,9 @@
             </div>
         </div>
 
-        <form action="" class="k-form" method="POST">
+        <form action="{{ route('users.update', $user) }}" class="k-form" method="POST">
             {{ csrf_field()  }}
             @include('users._form')
-
-            <div class="k-portlet__foot">
-                <div class="k-form__actions">
-                    <div class="row">
-                        <div class="col-12 text-right">
-                            <button type="reset" class="btn btn-brand">Submit</button>
-                            <button type="reset" class="btn btn-secondary">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </form>
     </div>
 @endsection

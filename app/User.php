@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'company_id', 'company_role_id'
+        'name', 'email', 'password', 'company_id', 'company_role_id', 'avatar'
     ];
 
     /**
@@ -38,13 +38,13 @@ class User extends Authenticatable
     }
 
     /**
-     * Return the user's contact
+     * Return the user's contacts
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function contact()
+    public function contacts()
     {
-        return $this->belongs('App\UserContact');
+        return $this->belongsToMany('App\Contact');
     }
 
     /**

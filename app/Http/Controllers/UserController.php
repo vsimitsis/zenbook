@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,15 @@ class UserController extends Controller
     public function edit(User $user)
     {
         return view('users.edit', [
-            'user' => $user
+            'user' => $user,
+            'contacts' => $user->contacts,
+            'addresses' => $user->addresses,
+            'countries' => Country::all()
         ]);
+    }
+
+    public function update(Request $request, User $user)
+    {
+        dd($request);
     }
 }
