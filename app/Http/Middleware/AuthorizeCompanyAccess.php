@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,7 @@ class AuthorizeCompanyAccess
     {
         $user = $request->currentUser;
 
-        if ($user && $user->can('access', $request->currentCompany)) {
+        if ($user && ($user->status !== User::SUSPENDED) && $user->can('access', $request->currentCompany)) {
             return $next($request);
         }
 

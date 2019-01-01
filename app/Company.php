@@ -22,4 +22,34 @@ class Company extends Model
     {
         return $this->hasMany('App\User');
     }
+
+    /**
+     * Return all the company administrators
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function administrators()
+    {
+        return $this->users()->where('company_role_id', CompanyRole::ADMINISTRATOR);
+    }
+
+    /**
+     * Return all the company managers
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function managers()
+    {
+        return $this->users()->where('company_role_id', CompanyRole::MANAGER);
+    }
+
+    /**
+     * Return all the company employees
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function employees()
+    {
+        return $this->users()->where('company_role_id', CompanyRole::EMPLOYEE);
+    }
 }

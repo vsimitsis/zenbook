@@ -1,5 +1,6 @@
 <div class="k-portlet__body">
     {{ csrf_field() }}
+
     <h3 class="k-heading k-heading--md k-heading--no-top-margin">1. Details:</h3>
     <div class="form-group row">
         <label class="col-sm-3 col-md-2 col-form-label">Full Name:</label>
@@ -9,23 +10,50 @@
                 <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name', $user->name) }}" placeholder="Enter full name">
                 <div class="invalid-feedback">{{ $errors->first('name') }}</div>
             </div>
+            <span class="form-text text-muted">Please enter the full name.</span>
         </div>
     </div>
 
     <div class="form-group row">
-        <label class="col-sm-3 col-md-2 col-form-label">Email:</label>
+        <label class="col-sm-3 col-md-2 col-form-label">Email Address:</label>
         <div class="col-sm-6">
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-link"></i></span></div>
                 <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('email', $user->email) }}" placeholder="Enter email">
                 <div class="invalid-feedback">{{ $errors->first('email') }}</div>
             </div>
+            <span class="form-text text-muted">This is the primary email address.</span>
         </div>
     </div>
 
 
+    @include('users.partials._user-company-role-field')
+
+    <div class="form-group row">
+        <label class="col-sm-3 col-md-2 col-form-label">Timezone:</label>
+        <div class="col-sm-6">
+            <div class="input-group">
+                <div class="input-group-prepend"><span class="input-group-text"><i class="la la-clock-o"></i></span></div>
+                <select name="timezone" class="form-control {{ $errors->has('timezone') ? 'is-invalid' : '' }}">
+                    <option value="0" selected>Select Timezone</option>
+                    @foreach($timezones as $timezone)
+                        <option value="{{ $timezone->id }}" {{ old('timezone', $user->timezone_id) == $timezone->id ? 'selected' : '' }}>
+                            {{ $timezone->name }}
+                        </option>
+                    @endforeach
+                </select>
+                <div class="invalid-feedback">{{ $errors->first('timezone') }}</div>
+            </div>
+        </div>
+    </div>
+
     <div class="k-separator k-separator--space-sm k-separator--border-dashed"></div>
     <h3 class="k-heading k-heading--md">2. Contacts:</h3>
+
+    @if($errors->has('contact-list.*'))
+        <p class="text-danger">{{ $errors->first('contact-list.*') }}</p>
+    @endif
+
     <div class="k-repeater">
         <div class="k-repeater__data-set">
             <div data-repeater-list="contact-list">
@@ -84,6 +112,11 @@
 
     <div class="k-separator k-separator--space-sm k-separator--border-dashed"></div>
     <h3 class="k-heading k-heading--md">2. Addresses:</h3>
+
+    @if($errors->has('address-list.*'))
+        <p class="text-danger">{{ $errors->first('address-list.*') }}</p>
+    @endif
+
     <div class="k-repeater">
         <div class="k-repeater__data-set">
             <div data-repeater-list="address-list">

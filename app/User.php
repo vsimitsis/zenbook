@@ -10,12 +10,34 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * Constant for User Active Status
+     */
+    const ACTIVE = 1;
+
+    /**
+     * Constant for User Pending Status
+     */
+    const PENDING = 2;
+
+    /**
+     * Constant for User Suspended Status
+     */
+    const SUSPENDED = 3;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'company_id', 'company_role_id', 'avatar'
+        'name',
+        'email',
+        'timezone_id',
+        'password',
+        'company_id',
+        'company_role_id',
+        'avatar',
+        'status'
     ];
 
     /**
