@@ -67,7 +67,7 @@ class RouteServiceProvider extends ServiceProvider
                 Auth::routes();
             });
 
-        Route::middleware(['web', 'checkType', 'auth', 'authorizeAccess', 'forgetDomain'])
+        Route::middleware(['web', 'checkType', 'auth', 'forgetDomain'])
             ->domain('{companySubDomain}.' . $domain)
             ->namespace($this->namespace)
             ->group(base_path('routes/company.php'));

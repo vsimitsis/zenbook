@@ -62,7 +62,6 @@ class Kernel extends HttpKernel
         'verified' => Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'forgetDomain' => \App\Http\Middleware\ForgetDomain::class,
         'checkType' => \App\Http\Middleware\CheckType::class,
-        'authorizeAccess' => \App\Http\Middleware\AuthorizeCompanyAccess::class,
     ];
 
     /**
