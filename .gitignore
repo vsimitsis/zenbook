@@ -2,3 +2,4 @@
 .idea
 .editorconfig
 /vendor
+.DS_Store

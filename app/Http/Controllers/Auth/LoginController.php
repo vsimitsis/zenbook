@@ -39,20 +39,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    /**
-     * Attempt to log the user into the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return bool
-     */
-    protected function attemptLogin(Request $request)
-    {
-        return $this->guard()->attempt([
-            'email' => $request->email,
-            'password' => $request->password,
-            'company_role_id' => $request->currentCompany->id,
-            'status' => User::ACTIVE
-        ], $request->filled('remember'));
-    }
 }

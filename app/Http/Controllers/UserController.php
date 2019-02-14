@@ -20,13 +20,15 @@ class UserController extends Controller
     /**
      * Return the users index page
      *
-     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index()
     {
+        $user    = Auth::user();
+        $company = $user->company;
+
         return view('users.index', [
-            'users' => $request->currentCompany->users
+            'users' => $company->users
         ]);
     }
 

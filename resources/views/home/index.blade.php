@@ -14,7 +14,10 @@
                             </div>
                         @endif
 
-                      Welcome to Zenbook!
+                        Welcome to Zenbook!
+                        <br>
+                        <a href="{{ route('login') }}">Login now</a> or
+                        <a href="{{ route('register') }}">Create a new account</a>
                     </div>
                 </div>
             </div>

@@ -63,27 +63,21 @@ class RegisterController extends Controller
      *
      * @param array $data
      * @return mixed
-     * @throws \Exception
      */
     protected function create(array $data)
     {
         //Create the company
         $company = Company::create([
             'name' => $data['company'],
-            'subdomain' => strtolower(str_replace(" ", "-", $data['company']))
         ]);
 
-        if ($company) {
-            return User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'company_id' => $company->id,
-                'company_role_id' => CompanyRole::ADMINISTRATOR,
-                'password' => Hash::make($data['password']),
-                'status' => User::ACTIVE
-            ]);
-        }
-
-        throw new \Exception('Shit');
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'company_id' => $company->id,
+            'company_role_id' => CompanyRole::ADMINISTRATOR,
+            'password' => Hash::make($data['password']),
+            'status' => User::ACTIVE
+        ]);
     }
 }

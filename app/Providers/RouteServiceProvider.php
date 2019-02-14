@@ -39,8 +39,6 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
-
-        //
     }
 
     /**
@@ -52,25 +50,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        $domain = config('app.domain');
-
-        Route::middleware(['web', 'checkType', 'forgetDomain'])
-            ->domain($domain)
-            ->name('home.')
-            ->namespace($this->namespace . '\Home')
+        Route::middleware('web')
+            ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
-
-        Route::middleware(['web', 'checkType', 'forgetDomain'])
-            ->domain('{companySubDomain}.' . $domain)
-            ->namespace($this->namespace)
-            ->group(function () {
-                Auth::routes();
-            });
-
-        Route::middleware(['web', 'checkType', 'auth', 'forgetDomain'])
-            ->domain('{companySubDomain}.' . $domain)
-            ->namespace($this->namespace)
-            ->group(base_path('routes/company.php'));
     }
 
     /**
