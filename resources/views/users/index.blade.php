@@ -15,13 +15,13 @@
                 <h3 class="k-portlet__head-title">Company Users</h3>
             </div>
             <div class="k-portlet__head-toolbar">
-                <a href="{{ route('dashboard.index') }}" class="btn btn-sm btn-secondary k-margin-r-10">
+                <a href="{{ route('dashboard.index') }}" class="btn btn-sm-no-icon btn-secondary k-margin-r-10">
                     <i class="la la-arrow-left"></i>
                     <span class="k-hidden-mobile">Back</span>
                 </a>
                 @can('create', \App\User::class)
                     <div class="btn-group">
-                        <a href="{{ route('users.create') }}" class="btn btn-sm btn-brand">
+                        <a href="{{ route('users.create') }}" class="btn btn-sm-no-icon btn-brand">
                             <i class="la la-plus"></i>
                             <span class="k-hidden-mobile">Create</span>
                         </a>

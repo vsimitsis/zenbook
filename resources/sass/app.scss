@@ -1,8 +1,14 @@
+/**
+ * Import theme framework scss
+ */
+@import "framework";
 
-//// Bootstrap
-//@import '~bootstrap/scss/bootstrap';
-//
-//// Variables
-//@import 'variables';
+/**
+ * Import all custom project scss
+ */
+@import "custom";
 
-@import "style";
+/**
+ * Include Project custom breakpoints scss
+ */
+@import "breakpoints/_sm.scss";

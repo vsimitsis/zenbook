@@ -219,7 +219,7 @@ jQuery(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/thanagor/www/zenbook/resources/js/components/user-table.js */"./resources/js/components/user-table.js");
+module.exports = __webpack_require__(/*! /Users/thanagor/www/zenbook/resources/js/components/user-table.js */"./resources/js/components/user-table.js");
 
 
 /***/ })

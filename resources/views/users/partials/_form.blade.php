@@ -104,7 +104,7 @@
             </div>
         </div>
         <div class="k-repeater__add-data">
-		    <span data-repeater-create="" class="btn btn-info btn-sm">
+		    <span data-repeater-create="" class="btn btn-outline-info btn-sm">
 		    	<i class="la la-plus"></i> Add Alternative Contact
 		    </span>
         </div>
@@ -206,7 +206,7 @@
             </div>
         </div>
         <div class="k-repeater__add-data">
-	        <span data-repeater-create="" class="btn btn-info btn-sm">
+	        <span data-repeater-create="" class="btn btn-outline-info btn-sm">
 	        	<i class="la la-plus"></i> Add Alternative Address
 	        </span>
         </div>

@@ -19,12 +19,12 @@
                     <h3 class="k-portlet__head-title">Edit User: {{ $user->name }}</h3>
                 </div>
                 <div class="k-portlet__head-toolbar">
-                    <a href="{{ route('users.index') }}" class="btn btn-sm btn-secondary k-margin-r-10">
+                    <a href="{{ route('users.index') }}" class="btn btn-sm-no-icon btn-outline-secondary k-margin-r-10">
                         <i class="la la-arrow-left"></i>
                         <span class="k-hidden-mobile">Back</span>
                     </a>
                     <div class="btn-group">
-                        <button type="submit" class="btn btn-sm btn-brand">
+                        <button type="submit" class="btn btn-sm-no-icon btn-outline-brand">
                             <i class="la la-check"></i>
                             <span class="k-hidden-mobile">Save</span>
                         </button>
@@ -72,10 +72,12 @@
 
                                 <h4 class="text-muted">Delete Account</h4>
                                 <p class="text-muted">This action cannot be undone.</p>
+
                                 <form action="{{ route('users.delete', $user) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <button type="submit" class="btn btn-sm btn-danger">Delete the account</button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger delete-alert"
+                                            data-action="delete">Delete the account</button>
                                 </form>
                             </div>
                         </div>
@@ -87,6 +89,8 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('/js/sweetalert-delete.js') }}"></script>
+
     <script>
         $(document).ready(function () {
             $('.k-repeater').each(function(){

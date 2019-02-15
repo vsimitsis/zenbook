@@ -18,12 +18,12 @@
                     <h3 class="k-portlet__head-title">Create User</h3>
                 </div>
                 <div class="k-portlet__head-toolbar">
-                    <a href="{{ route('users.index') }}" class="btn btn-sm btn-secondary k-margin-r-10">
+                    <a href="{{ route('users.index') }}" class="btn btn-sm-no-icon btn-secondary k-margin-r-10">
                         <i class="la la-arrow-left"></i>
                         <span class="k-hidden-mobile">Back</span>
                     </a>
                     <div class="btn-group">
-                        <button type="submit" class="btn btn-sm btn-brand">
+                        <button type="submit" class="btn btn-sm-no-icon btn-brand">
                             <i class="la la-check"></i>
                             <span class="k-hidden-mobile">Save</span>
                         </button>

@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+/**
+ * Import theme framework scss
+ */
+
 /*
 $k-media-breakpoints: (
     // Small screen / phone
@@ -3197,6 +3201,7 @@ fieldset:disabled a.btn {
 }
 
 .btn-sm,
+.btn-sm-no-icon,
 .btn-group-sm > .btn {
   padding: 0.35rem 1rem;
   font-size: 0.875rem;
@@ -3592,6 +3597,7 @@ input[type=button].btn-block {
 }
 
 .btn-sm + .dropdown-toggle-split,
+.btn-sm-no-icon + .dropdown-toggle-split,
 .btn-group-sm > .btn + .dropdown-toggle-split {
   padding-right: 0.75rem;
   padding-left: 0.75rem;
@@ -12612,12 +12618,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-brand.btn-elevate.btn-sm,
+.show > .btn.btn-brand.btn-elevate.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-brand.btn-elevate,
 .btn.btn-brand.btn-elevate.active.btn-sm,
+.btn.btn-brand.btn-elevate.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-brand.btn-elevate.active,
 .btn.btn-brand.btn-elevate:active.btn-sm,
+.btn.btn-brand.btn-elevate.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-brand.btn-elevate:active,
 .btn.btn-brand.btn-elevate:hover.btn-sm,
+.btn.btn-brand.btn-elevate.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-brand.btn-elevate:hover {
   box-shadow: 0px 6px 16px 0px rgba(93, 120, 255, 0.25) !important;
 }
@@ -12630,12 +12640,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-brand.btn-elevate-hover.btn-sm,
+.show > .btn.btn-brand.btn-elevate-hover.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-brand.btn-elevate-hover,
 .btn.btn-brand.btn-elevate-hover.active.btn-sm,
+.btn.btn-brand.btn-elevate-hover.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-brand.btn-elevate-hover.active,
 .btn.btn-brand.btn-elevate-hover:active.btn-sm,
+.btn.btn-brand.btn-elevate-hover.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-brand.btn-elevate-hover:active,
 .btn.btn-brand.btn-elevate-hover:hover.btn-sm,
+.btn.btn-brand.btn-elevate-hover.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-brand.btn-elevate-hover:hover {
   box-shadow: 0px 6px 16px 0px rgba(93, 120, 255, 0.25) !important;
 }
@@ -12652,12 +12666,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-metal.btn-elevate.btn-sm,
+.show > .btn.btn-metal.btn-elevate.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-metal.btn-elevate,
 .btn.btn-metal.btn-elevate.active.btn-sm,
+.btn.btn-metal.btn-elevate.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-metal.btn-elevate.active,
 .btn.btn-metal.btn-elevate:active.btn-sm,
+.btn.btn-metal.btn-elevate.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-metal.btn-elevate:active,
 .btn.btn-metal.btn-elevate:hover.btn-sm,
+.btn.btn-metal.btn-elevate.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-metal.btn-elevate:hover {
   box-shadow: 0px 6px 16px 0px rgba(211, 218, 230, 0.25) !important;
 }
@@ -12670,12 +12688,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-metal.btn-elevate-hover.btn-sm,
+.show > .btn.btn-metal.btn-elevate-hover.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-metal.btn-elevate-hover,
 .btn.btn-metal.btn-elevate-hover.active.btn-sm,
+.btn.btn-metal.btn-elevate-hover.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-metal.btn-elevate-hover.active,
 .btn.btn-metal.btn-elevate-hover:active.btn-sm,
+.btn.btn-metal.btn-elevate-hover.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-metal.btn-elevate-hover:active,
 .btn.btn-metal.btn-elevate-hover:hover.btn-sm,
+.btn.btn-metal.btn-elevate-hover.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-metal.btn-elevate-hover:hover {
   box-shadow: 0px 6px 16px 0px rgba(211, 218, 230, 0.25) !important;
 }
@@ -12694,12 +12716,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-light.btn-elevate.btn-sm,
+.show > .btn.btn-light.btn-elevate.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-light.btn-elevate,
 .btn.btn-light.btn-elevate.active.btn-sm,
+.btn.btn-light.btn-elevate.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-light.btn-elevate.active,
 .btn.btn-light.btn-elevate:active.btn-sm,
+.btn.btn-light.btn-elevate.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-light.btn-elevate:active,
 .btn.btn-light.btn-elevate:hover.btn-sm,
+.btn.btn-light.btn-elevate.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-light.btn-elevate:hover {
   box-shadow: 0px 6px 16px 0px rgba(153, 153, 153, 0.25) !important;
 }
@@ -12714,12 +12740,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-light.btn-elevate-hover.btn-sm,
+.show > .btn.btn-light.btn-elevate-hover.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-light.btn-elevate-hover,
 .btn.btn-light.btn-elevate-hover.active.btn-sm,
+.btn.btn-light.btn-elevate-hover.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-light.btn-elevate-hover.active,
 .btn.btn-light.btn-elevate-hover:active.btn-sm,
+.btn.btn-light.btn-elevate-hover.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-light.btn-elevate-hover:active,
 .btn.btn-light.btn-elevate-hover:hover.btn-sm,
+.btn.btn-light.btn-elevate-hover.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-light.btn-elevate-hover:hover {
   box-shadow: 0px 6px 16px 0px rgba(153, 153, 153, 0.25) !important;
 }
@@ -12736,12 +12766,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-dark.btn-elevate.btn-sm,
+.show > .btn.btn-dark.btn-elevate.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-dark.btn-elevate,
 .btn.btn-dark.btn-elevate.active.btn-sm,
+.btn.btn-dark.btn-elevate.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-dark.btn-elevate.active,
 .btn.btn-dark.btn-elevate:active.btn-sm,
+.btn.btn-dark.btn-elevate.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-dark.btn-elevate:active,
 .btn.btn-dark.btn-elevate:hover.btn-sm,
+.btn.btn-dark.btn-elevate.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-dark.btn-elevate:hover {
   box-shadow: 0px 6px 16px 0px rgba(100, 92, 161, 0.25) !important;
 }
@@ -12754,12 +12788,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-dark.btn-elevate-hover.btn-sm,
+.show > .btn.btn-dark.btn-elevate-hover.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-dark.btn-elevate-hover,
 .btn.btn-dark.btn-elevate-hover.active.btn-sm,
+.btn.btn-dark.btn-elevate-hover.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-dark.btn-elevate-hover.active,
 .btn.btn-dark.btn-elevate-hover:active.btn-sm,
+.btn.btn-dark.btn-elevate-hover.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-dark.btn-elevate-hover:active,
 .btn.btn-dark.btn-elevate-hover:hover.btn-sm,
+.btn.btn-dark.btn-elevate-hover.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-dark.btn-elevate-hover:hover {
   box-shadow: 0px 6px 16px 0px rgba(100, 92, 161, 0.25) !important;
 }
@@ -12776,12 +12814,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-accent.btn-elevate.btn-sm,
+.show > .btn.btn-accent.btn-elevate.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-accent.btn-elevate,
 .btn.btn-accent.btn-elevate.active.btn-sm,
+.btn.btn-accent.btn-elevate.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-accent.btn-elevate.active,
 .btn.btn-accent.btn-elevate:active.btn-sm,
+.btn.btn-accent.btn-elevate.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-accent.btn-elevate:active,
 .btn.btn-accent.btn-elevate:hover.btn-sm,
+.btn.btn-accent.btn-elevate.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-accent.btn-elevate:hover {
   box-shadow: 0px 6px 16px 0px rgba(0, 197, 220, 0.25) !important;
 }
@@ -12794,12 +12836,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-accent.btn-elevate-hover.btn-sm,
+.show > .btn.btn-accent.btn-elevate-hover.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-accent.btn-elevate-hover,
 .btn.btn-accent.btn-elevate-hover.active.btn-sm,
+.btn.btn-accent.btn-elevate-hover.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-accent.btn-elevate-hover.active,
 .btn.btn-accent.btn-elevate-hover:active.btn-sm,
+.btn.btn-accent.btn-elevate-hover.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-accent.btn-elevate-hover:active,
 .btn.btn-accent.btn-elevate-hover:hover.btn-sm,
+.btn.btn-accent.btn-elevate-hover.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-accent.btn-elevate-hover:hover {
   box-shadow: 0px 6px 16px 0px rgba(0, 197, 220, 0.25) !important;
 }
@@ -12816,12 +12862,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-focus.btn-elevate.btn-sm,
+.show > .btn.btn-focus.btn-elevate.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-focus.btn-elevate,
 .btn.btn-focus.btn-elevate.active.btn-sm,
+.btn.btn-focus.btn-elevate.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-focus.btn-elevate.active,
 .btn.btn-focus.btn-elevate:active.btn-sm,
+.btn.btn-focus.btn-elevate.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-focus.btn-elevate:active,
 .btn.btn-focus.btn-elevate:hover.btn-sm,
+.btn.btn-focus.btn-elevate.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-focus.btn-elevate:hover {
   box-shadow: 0px 6px 16px 0px rgba(152, 22, 244, 0.25) !important;
 }
@@ -12834,12 +12884,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-focus.btn-elevate-hover.btn-sm,
+.show > .btn.btn-focus.btn-elevate-hover.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-focus.btn-elevate-hover,
 .btn.btn-focus.btn-elevate-hover.active.btn-sm,
+.btn.btn-focus.btn-elevate-hover.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-focus.btn-elevate-hover.active,
 .btn.btn-focus.btn-elevate-hover:active.btn-sm,
+.btn.btn-focus.btn-elevate-hover.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-focus.btn-elevate-hover:active,
 .btn.btn-focus.btn-elevate-hover:hover.btn-sm,
+.btn.btn-focus.btn-elevate-hover.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-focus.btn-elevate-hover:hover {
   box-shadow: 0px 6px 16px 0px rgba(152, 22, 244, 0.25) !important;
 }
@@ -12856,12 +12910,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-primary.btn-elevate.btn-sm,
+.show > .btn.btn-primary.btn-elevate.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-primary.btn-elevate,
 .btn.btn-primary.btn-elevate.active.btn-sm,
+.btn.btn-primary.btn-elevate.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-primary.btn-elevate.active,
 .btn.btn-primary.btn-elevate:active.btn-sm,
+.btn.btn-primary.btn-elevate.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-primary.btn-elevate:active,
 .btn.btn-primary.btn-elevate:hover.btn-sm,
+.btn.btn-primary.btn-elevate.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-primary.btn-elevate:hover {
   box-shadow: 0px 6px 16px 0px rgba(88, 103, 221, 0.25) !important;
 }
@@ -12874,12 +12932,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-primary.btn-elevate-hover.btn-sm,
+.show > .btn.btn-primary.btn-elevate-hover.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-primary.btn-elevate-hover,
 .btn.btn-primary.btn-elevate-hover.active.btn-sm,
+.btn.btn-primary.btn-elevate-hover.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-primary.btn-elevate-hover.active,
 .btn.btn-primary.btn-elevate-hover:active.btn-sm,
+.btn.btn-primary.btn-elevate-hover.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-primary.btn-elevate-hover:active,
 .btn.btn-primary.btn-elevate-hover:hover.btn-sm,
+.btn.btn-primary.btn-elevate-hover.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-primary.btn-elevate-hover:hover {
   box-shadow: 0px 6px 16px 0px rgba(88, 103, 221, 0.25) !important;
 }
@@ -12896,12 +12958,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-success.btn-elevate.btn-sm,
+.show > .btn.btn-success.btn-elevate.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-success.btn-elevate,
 .btn.btn-success.btn-elevate.active.btn-sm,
+.btn.btn-success.btn-elevate.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-success.btn-elevate.active,
 .btn.btn-success.btn-elevate:active.btn-sm,
+.btn.btn-success.btn-elevate.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-success.btn-elevate:active,
 .btn.btn-success.btn-elevate:hover.btn-sm,
+.btn.btn-success.btn-elevate.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-success.btn-elevate:hover {
   box-shadow: 0px 6px 16px 0px rgba(29, 201, 183, 0.25) !important;
 }
@@ -12914,12 +12980,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-success.btn-elevate-hover.btn-sm,
+.show > .btn.btn-success.btn-elevate-hover.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-success.btn-elevate-hover,
 .btn.btn-success.btn-elevate-hover.active.btn-sm,
+.btn.btn-success.btn-elevate-hover.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-success.btn-elevate-hover.active,
 .btn.btn-success.btn-elevate-hover:active.btn-sm,
+.btn.btn-success.btn-elevate-hover.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-success.btn-elevate-hover:active,
 .btn.btn-success.btn-elevate-hover:hover.btn-sm,
+.btn.btn-success.btn-elevate-hover.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-success.btn-elevate-hover:hover {
   box-shadow: 0px 6px 16px 0px rgba(29, 201, 183, 0.25) !important;
 }
@@ -12936,12 +13006,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-info.btn-elevate.btn-sm,
+.show > .btn.btn-info.btn-elevate.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-info.btn-elevate,
 .btn.btn-info.btn-elevate.active.btn-sm,
+.btn.btn-info.btn-elevate.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-info.btn-elevate.active,
 .btn.btn-info.btn-elevate:active.btn-sm,
+.btn.btn-info.btn-elevate.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-info.btn-elevate:active,
 .btn.btn-info.btn-elevate:hover.btn-sm,
+.btn.btn-info.btn-elevate.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-info.btn-elevate:hover {
   box-shadow: 0px 6px 16px 0px rgba(85, 120, 235, 0.25) !important;
 }
@@ -12954,12 +13028,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-info.btn-elevate-hover.btn-sm,
+.show > .btn.btn-info.btn-elevate-hover.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-info.btn-elevate-hover,
 .btn.btn-info.btn-elevate-hover.active.btn-sm,
+.btn.btn-info.btn-elevate-hover.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-info.btn-elevate-hover.active,
 .btn.btn-info.btn-elevate-hover:active.btn-sm,
+.btn.btn-info.btn-elevate-hover.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-info.btn-elevate-hover:active,
 .btn.btn-info.btn-elevate-hover:hover.btn-sm,
+.btn.btn-info.btn-elevate-hover.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-info.btn-elevate-hover:hover {
   box-shadow: 0px 6px 16px 0px rgba(85, 120, 235, 0.25) !important;
 }
@@ -12976,12 +13054,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-warning.btn-elevate.btn-sm,
+.show > .btn.btn-warning.btn-elevate.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-warning.btn-elevate,
 .btn.btn-warning.btn-elevate.active.btn-sm,
+.btn.btn-warning.btn-elevate.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-warning.btn-elevate.active,
 .btn.btn-warning.btn-elevate:active.btn-sm,
+.btn.btn-warning.btn-elevate.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-warning.btn-elevate:active,
 .btn.btn-warning.btn-elevate:hover.btn-sm,
+.btn.btn-warning.btn-elevate.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-warning.btn-elevate:hover {
   box-shadow: 0px 6px 16px 0px rgba(255, 184, 34, 0.25) !important;
 }
@@ -12994,12 +13076,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-warning.btn-elevate-hover.btn-sm,
+.show > .btn.btn-warning.btn-elevate-hover.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-warning.btn-elevate-hover,
 .btn.btn-warning.btn-elevate-hover.active.btn-sm,
+.btn.btn-warning.btn-elevate-hover.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-warning.btn-elevate-hover.active,
 .btn.btn-warning.btn-elevate-hover:active.btn-sm,
+.btn.btn-warning.btn-elevate-hover.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-warning.btn-elevate-hover:active,
 .btn.btn-warning.btn-elevate-hover:hover.btn-sm,
+.btn.btn-warning.btn-elevate-hover.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-warning.btn-elevate-hover:hover {
   box-shadow: 0px 6px 16px 0px rgba(255, 184, 34, 0.25) !important;
 }
@@ -13016,12 +13102,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-danger.btn-elevate.btn-sm,
+.show > .btn.btn-danger.btn-elevate.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-danger.btn-elevate,
 .btn.btn-danger.btn-elevate.active.btn-sm,
+.btn.btn-danger.btn-elevate.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-danger.btn-elevate.active,
 .btn.btn-danger.btn-elevate:active.btn-sm,
+.btn.btn-danger.btn-elevate.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-danger.btn-elevate:active,
 .btn.btn-danger.btn-elevate:hover.btn-sm,
+.btn.btn-danger.btn-elevate.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-danger.btn-elevate:hover {
   box-shadow: 0px 6px 16px 0px rgba(253, 57, 122, 0.25) !important;
 }
@@ -13034,12 +13124,16 @@ input:-webkit-autofill:active {
 }
 
 .show > .btn.btn-danger.btn-elevate-hover.btn-sm,
+.show > .btn.btn-danger.btn-elevate-hover.btn-sm-no-icon,
 .btn-group-sm.show > .btn.btn-danger.btn-elevate-hover,
 .btn.btn-danger.btn-elevate-hover.active.btn-sm,
+.btn.btn-danger.btn-elevate-hover.active.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-danger.btn-elevate-hover.active,
 .btn.btn-danger.btn-elevate-hover:active.btn-sm,
+.btn.btn-danger.btn-elevate-hover.btn-sm-no-icon:active,
 .btn-group-sm > .btn.btn-danger.btn-elevate-hover:active,
 .btn.btn-danger.btn-elevate-hover:hover.btn-sm,
+.btn.btn-danger.btn-elevate-hover.btn-sm-no-icon:hover,
 .btn-group-sm > .btn.btn-danger.btn-elevate-hover:hover {
   box-shadow: 0px 6px 16px 0px rgba(253, 57, 122, 0.25) !important;
 }
@@ -13146,31 +13240,40 @@ input:-webkit-autofill:active {
 }
 
 .btn.btn-sm > [class^=la-],
+.btn.btn-sm-no-icon > [class^=la-],
 .btn-group-sm > .btn > [class^=la-],
 .btn.btn-sm > [class*=" la-"],
+.btn.btn-sm-no-icon > [class*=" la-"],
 .btn-group-sm > .btn > [class*=" la-"] {
   font-size: 1.3rem;
 }
 
 .btn.btn-sm > [class^=fa-],
+.btn.btn-sm-no-icon > [class^=fa-],
 .btn-group-sm > .btn > [class^=fa-],
 .btn.btn-sm > [class*=" fa-"],
+.btn.btn-sm-no-icon > [class*=" fa-"],
 .btn-group-sm > .btn > [class*=" fa-"] {
   font-size: 1rem;
 }
 
 .btn.btn-sm > [class^=flaticon-],
+.btn.btn-sm-no-icon > [class^=flaticon-],
 .btn-group-sm > .btn > [class^=flaticon-],
 .btn.btn-sm > [class*=" flaticon-"],
+.btn.btn-sm-no-icon > [class*=" flaticon-"],
 .btn-group-sm > .btn > [class*=" flaticon-"],
 .btn.btn-sm > [class^=flaticon2-],
+.btn.btn-sm-no-icon > [class^=flaticon2-],
 .btn-group-sm > .btn > [class^=flaticon2-],
 .btn.btn-sm > [class*=" flaticon2-"],
+.btn.btn-sm-no-icon > [class*=" flaticon2-"],
 .btn-group-sm > .btn > [class*=" flaticon2-"] {
   font-size: 1rem;
 }
 
 .btn.btn-sm i,
+.btn.btn-sm-no-icon i,
 .btn-group-sm > .btn i {
   padding-right: 0.35rem;
 }
@@ -13528,6 +13631,7 @@ input.btn.btn-label-danger.active {
 }
 
 .btn.btn-icon.btn-sm,
+.btn.btn-icon.btn-sm-no-icon,
 .btn-group-sm > .btn.btn-icon {
   height: 2.25rem;
   width: 2.25rem;
@@ -42108,6 +42212,26 @@ $k-media-breakpoints: (
   .k-footer .k-footer__menu .k-footer__menu-link:first-child {
     padding-left: 0;
     margin-left: 0;
+  }
+}
+
+/**
+ * Import all custom project scss
+ */
+
+/**
+ * Project custom scss
+ */
+
+/**
+ * Include Project custom breakpoints scss
+ */
+
+@media (max-width: 767.98px) {
+  .btn-sm-no-icon {
+    padding: 0.65rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
   }
 }
 

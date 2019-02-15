@@ -1,0 +1,7 @@
+@include media-breakpoint-down(sm) {
+  .btn-sm-no-icon {
+    padding: 0.65rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}

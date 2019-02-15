@@ -1,0 +1,54 @@
+//
+// Default Stylesheets
+//
+
+////////////////////////////////////////////////////////////////
+///////////// DO NOT MODIFY BELOW INCLUDE ORDER ////////////////
+////////////////////////////////////////////////////////////////
+// 1: Demo Config
+@import "config";  // demo level framework config override
+
+// 2: Keen Framework Config
+@import "theme/framework/config";
+
+// 3: Bootstrap Include
+@import "theme/framework/core/bootstrap/bootstrap.scss";
+
+// 4: Framework Include
+@import "theme/framework/include";
+////////////////////////////////////////////////////////////////
+///////////// DO NOT MODIFY ABOVE INCLUDE ORDER ////////////////
+////////////////////////////////////////////////////////////////
+
+// 5: Demo Configs
+@import "theme/header/config";
+
+@import "theme/brand/config";
+
+@import "theme/aside/config";
+
+@import "theme/aside-secondary/config";
+
+@import "theme/footer/config";
+
+
+//App specific layout
+@import "theme/framework/page/base";
+
+@import "theme/header/base";
+@import "theme/header/base-mobile";
+@import "theme/header/menu";
+@import "theme/header/topbar";
+@import "theme/header/skins/menu/light";
+@import "theme/header/skins/base/light";
+
+
+@import "theme/brand/base";
+@import "theme/brand/skins/navy";
+@import "theme/aside/base";
+@import "theme/aside/skins/navy";
+@import "theme/aside-secondary/base";
+
+@import "theme/content/base";
+
+@import "theme/footer/base";

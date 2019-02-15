@@ -6,7 +6,7 @@
 Route::group(array('domain' => 'console.' . config('app.domain')), function() {
     Auth::routes();
 
-    Route::group(['middleware' => ['auth', 'passViewData']], function () {
+    Route::group(['middleware' => ['auth', 'checkUserStatus', 'passViewData']], function () {
         Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
         /**
