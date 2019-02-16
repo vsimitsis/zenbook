@@ -141,7 +141,7 @@ class UserController extends Controller
 
     /**
      * Delete the specific user
-     * 
+     *
      * @param User $user
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception

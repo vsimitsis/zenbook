@@ -4,9 +4,9 @@
  * Console routes
  */
 Route::group(array('domain' => 'console.' . config('app.domain')), function() {
-    Auth::routes();
+    Auth::routes(['verify' => true]);
 
-    Route::group(['middleware' => ['auth', 'checkUserStatus', 'passViewData']], function () {
+    Route::group(['middleware' => ['auth', 'verified', 'checkUserStatus', 'passViewData']], function () {
         Route::get('/', 'DashboardController@index')->name('dashboard.index');
 
         /**
@@ -26,4 +26,4 @@ Route::group(array('domain' => 'console.' . config('app.domain')), function() {
 /**
  * Land page routes
  */
-Route::get('/', 'HomeController@index')->name('home.home');
+Route::get('/', 'HomeController@index')->name('home');
