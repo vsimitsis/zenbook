@@ -15,4 +15,5 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/components/user-table.js', 'public/js')
     .js('resources/js/components/sweetalert-delete.js', 'public/js')
     .js('resources/js/components/filter-submit.js', 'public/js')
+    .js('resources/js/components/toastr-config.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');

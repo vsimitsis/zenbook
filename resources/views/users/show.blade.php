@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.console')
 @section('title', $user->name)
 @section('breadcrumbs')
     <div class="k-content__head-breadcrumbs">

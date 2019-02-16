@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.console')
 @section('title', 'Edit User')
 @section('breadcrumbs')
     <div class="k-content__head-breadcrumbs">
@@ -59,13 +59,13 @@
                                         <form action="{{ route('users.status', $user) }}" method="POST">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="status" value="{{ \App\User::SUSPENDED }}">
-                                            <button type="submit" class="btn btn-sm btn-danger">Suspend the account</button>
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">Suspend the account</button>
                                         </form>
                                     @elseif($user->status === \App\User::SUSPENDED)
                                         <form action="{{ route('users.status', $user) }}" method="POST">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="status" value="{{ \App\User::ACTIVE }}">
-                                            <button type="submit" class="btn btn-sm btn-success">Activate the account</button>
+                                            <button type="submit" class="btn btn-sm btn-outline-success">Activate the account</button>
                                         </form>
                                     @endif
                                 @endif
@@ -87,19 +87,3 @@
         </div>
     @endcan
 @endsection
-
-@push('scripts')
-    <script src="{{ asset('/js/sweetalert-delete.js') }}"></script>
-
-    <script>
-        $(document).ready(function () {
-            $('.k-repeater').each(function(){
-                $(this).repeater({
-                    show: function () {
-                        $(this).slideDown();
-                    }
-                });
-            });
-        });
-    </script>
-@endpush

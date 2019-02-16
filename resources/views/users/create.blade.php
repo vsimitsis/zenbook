@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.console')
 @section('title', 'Create User')
 @section('breadcrumbs')
     <div class="k-content__head-breadcrumbs">
@@ -34,20 +34,4 @@
             @include('users.partials._form')
         </div>
     </form>
-
-
 @endsection
-
-@push('scripts')
-    <script>
-        $(document).ready(function () {
-            $('.k-repeater').each(function(){
-                $(this).repeater({
-                    show: function () {
-                        $(this).slideDown();
-                    }
-                });
-            });
-        });
-    </script>
-@endpush

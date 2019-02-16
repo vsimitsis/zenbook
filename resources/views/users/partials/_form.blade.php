@@ -212,3 +212,19 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script src="{{ asset('/js/sweetalert-delete.js') }}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.k-repeater').each(function(){
+                $(this).repeater({
+                    show: function () {
+                        $(this).slideDown();
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

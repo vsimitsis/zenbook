@@ -60,6 +60,22 @@
 <script src="{{ asset('assets/app/scripts/bundle/app.bundle.js') }}" type="text/javascript"></script>
 <!-- DataTables Js -->
 <script src="{{ asset('assets/vendors/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
+<!-- Toastr Config -->
+<script src="{{ asset('js/toastr-config.js') }}"></script>
+
+<script>
+    $(document).ready(function () {
+        @if(session('success'))
+            let success = "{{ session('success') }}";
+            toastr.success(success);
+        @endif
+
+        @if(session('error'))
+            let error = "{{ session('error') }}";
+            toastr.danger(error);
+        @endif
+    });
+</script>
 <!-- Page specific Js -->
 @stack('scripts')
 </body>
