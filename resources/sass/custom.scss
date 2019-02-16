@@ -1,6 +1,10 @@
 /**
  * Project custom scss
  */
+.table {
+  font-size: inherit;
+}
+
 .btn-sm-no-icon {
   @extend .btn-sm;
 }

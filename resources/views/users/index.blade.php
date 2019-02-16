@@ -15,13 +15,13 @@
                 <h3 class="k-portlet__head-title">Company Users</h3>
             </div>
             <div class="k-portlet__head-toolbar">
-                <a href="{{ route('dashboard.index') }}" class="btn btn-sm-no-icon btn-secondary k-margin-r-10">
+                <a href="{{ route('dashboard.index') }}" class="btn btn-sm-no-icon btn-outline-secondary k-margin-r-10">
                     <i class="la la-arrow-left"></i>
                     <span class="k-hidden-mobile">Back</span>
                 </a>
                 @can('create', \App\User::class)
                     <div class="btn-group">
-                        <a href="{{ route('users.create') }}" class="btn btn-sm-no-icon btn-brand">
+                        <a href="{{ route('users.create') }}" class="btn btn-sm-no-icon btn-outline-brand">
                             <i class="la la-plus"></i>
                             <span class="k-hidden-mobile">Create</span>
                         </a>
@@ -31,11 +31,41 @@
         </div>
         <div class="k-portlet__body">
             <div id="k_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                <div id="k_table_1_filter" class="dataTables_filter">
-                    <label>Search:
-                        <input type="search" class="form-control form-control-sm">
-                    </label>
+                <div class="row align-items-center">
+                    <div class="col-xl-8 order-2 order-xl-1">
+                        <form action="{{ route('users.index') }}" method="GET">
+                            <div class="row align-items-center">
+                                <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
+                                    <div class="k-input-icon k-input-icon--left">
+                                        <input type="text" name="search" class="form-control" value="{{ $search }}" placeholder="Search...">
+                                        <span class="k-input-icon__icon k-input-icon__icon--left">
+                                        <span><i class="la la-search"></i></span>
+                                    </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
+                                    <select name="status" class="form-control filter-select">
+                                        <option value="all" {{ ($status == 'all' || $status == null) ? 'selected' : ''}}>All</option>
+                                        <option value="active" {{ $status == 'active' ? 'selected' : '' }}>Active</option>
+                                        <option value="pending" {{ $status == 'pending' ? 'selected' : '' }}>Pending</option>
+                                        <option value="suspended" {{ $status == 'suspended' ? 'selected' : '' }}>Suspended</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
+                                    <select name="role" class="form-control filter-select">
+                                        <option value="all" {{ ($role == 'all' || $role == null) ? 'selected' : ''}}>All</option>
+                                        <option value="administrator" {{ $role == 'administrator' ? 'selected' : ''}}>Administrator</option>
+                                        <option value="manager" {{ $role == 'manager' ? 'selected' : ''}}>Manager</option>
+                                        <option value="employee" {{ $role == 'employee' ? 'selected' : ''}}>Employee</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
 
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered table-striped dataTable">
@@ -101,3 +131,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/filter-submit.js') }}"></script>
+@endpush

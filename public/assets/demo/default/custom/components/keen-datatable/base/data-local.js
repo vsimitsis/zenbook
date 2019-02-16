@@ -125,15 +125,7 @@ var DatatableDataLocalDemo = function() {
 				}],
 		});
 
-		$('#k_form_status').on('change', function() {
-			datatable.search($(this).val().toLowerCase(), 'status');
-		});
 
-		$('#k_form_type').on('change', function() {
-			datatable.search($(this).val().toLowerCase(), 'type');
-		});
-
-		$('#k_form_status,#k_form_type').selectpicker();
 
 	};
 

@@ -20,15 +20,16 @@ class UserController extends Controller
     /**
      * Return the users index page
      *
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $user    = Auth::user();
-        $company = $user->company;
-
         return view('users.index', [
-            'users' => $company->users
+            'users'  => $this->fetchUsers($request),
+            'search' => $request->search,
+            'status' => $request->status,
+            'role'   => $request->role,
         ]);
     }
 
@@ -138,9 +139,22 @@ class UserController extends Controller
             ->with('error', 'There was a problem updating the user\'s account');
     }
 
+    /**
+     * Delete the specific user
+     * 
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
     public function delete(User $user)
     {
-        //
+        if ($user->delete()) {
+            return redirect(route('users.index'))
+                ->with('success', $user->name . ' has been deleted successfully.');
+        }
+
+        return redirect(route('users.edit', $user))
+            ->with('error', 'There was a problem deleting this user. Please try again later.');
     }
 
     /**
@@ -259,7 +273,7 @@ class UserController extends Controller
      * @param array $data
      * @return bool
      */
-    private function arrayIsNull(array $data)
+    protected function arrayIsNull(array $data)
     {
         $emptyArray = true;
 
@@ -271,5 +285,50 @@ class UserController extends Controller
         }
 
         return $emptyArray;
+    }
+
+    /**
+     * Fetch company's users and filter them
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    protected function fetchUsers(Request $request)
+    {
+        $company = Auth::user()->company;
+        $userQuery   = $company->users();
+
+        if ($request->search) {
+            $userQuery = $userQuery->where(function ($query) use ($request) {
+                $query->where('name', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('email', 'LIKE', '%' . $request->search . '%');
+            });
+        }
+
+        switch ($request->status) {
+            case 'active':
+                $userQuery = $userQuery->where('status', User::ACTIVE);
+                break;
+            case 'pending':
+                $userQuery = $userQuery->where('status', User::PENDING);
+                break;
+            case 'suspended':
+                $userQuery = $userQuery->where('status', User::SUSPENDED);
+                break;
+        }
+
+        switch ($request->role) {
+            case 'administrator':
+                $userQuery = $userQuery->where('company_role_id', CompanyRole::ADMINISTRATOR);
+                break;
+            case 'manager':
+                $userQuery = $userQuery->where('company_role_id', CompanyRole::MANAGER);
+                break;
+            case 'employee':
+                $userQuery = $userQuery->where('company_role_id', CompanyRole::EMPLOYEE);
+                break;
+        }
+
+        return $userQuery->get();
     }
 }
