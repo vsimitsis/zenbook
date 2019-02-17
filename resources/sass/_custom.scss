@@ -9,6 +9,13 @@
   @extend .btn-sm;
 }
 
+.zero-results {
+  margin-top: 35px;
+  font-size: 14px;
+  color: $grey;
+  font-style:italic;
+}
+
 .brand-bg {
   background-image: url(../media/misc/head_bg_sm.jpg)
 }

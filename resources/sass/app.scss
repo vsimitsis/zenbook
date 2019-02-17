@@ -6,7 +6,8 @@
 /**
  * Import all custom project scss
  */
-@import "custom";
+@import "_variables";
+@import "_custom";
 
 /**
  * Include Project custom breakpoints scss

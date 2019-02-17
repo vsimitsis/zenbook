@@ -127,9 +127,8 @@
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
+
             <div class="dataTables_paginate paging_simple_numbers" id="k_table_1_paginate">
                 {{ $users->appends(['search' => $search, 'role' => $role, 'status' => $status])->links() }}
             </div>
