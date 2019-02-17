@@ -76,6 +76,7 @@
         @endif
     });
 </script>
+
 <!-- Page specific Js -->
 @stack('scripts')
 </body>

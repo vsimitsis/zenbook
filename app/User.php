@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -58,6 +59,20 @@ class User extends Authenticatable implements MustVerifyEmail
     public function firstName()
     {
         return explode(" ", $this->name)[0];
+    }
+
+    /**
+     * Return the html for the user's avatar render
+     *
+     * @return string
+     */
+    public function avatar()
+    {
+        if ($this->avatar) {
+            return '<img src="' . Storage::url($this->avatar) . '"  alt="User Avatar"/>';
+        }
+
+        return '<span class="k-badge k-badge--username k-badge--lg k-badge--brand">' . $this->firstName()[0] . '</span>';
     }
 
     /**

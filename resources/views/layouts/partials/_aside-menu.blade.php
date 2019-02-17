@@ -21,7 +21,7 @@
             </li>
 
             <li class="k-menu__item {{ Request::is('users*') ? 'k-menu__item--active' : '' }}">
-                <a href="{{ route('users.index') }}" class="k-menu__link">
+                <a href="{{ route('user.index') }}" class="k-menu__link">
                     <i class="k-menu__link-icon flaticon-users"></i>
                     <span class="k-menu__link-text">Users</span>
                 </a>

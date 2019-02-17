@@ -4,14 +4,14 @@
     <div class="k-content__head-breadcrumbs">
         <a href="{{ route('dashboard.index') }}" class="k-content__head-breadcrumb-home"><i class="flaticon2-shelter"></i></a>
         <span class="k-content__head-breadcrumb-separator"></span>
-        <a href="{{ route('users.index') }}" class="k-content__head-breadcrumb-link">Users</a>
+        <a href="{{ route('user.index') }}" class="k-content__head-breadcrumb-link">Users</a>
         <span class="k-content__head-breadcrumb-separator"></span>
         <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active">Edit User</span>
     </div>
 @endsection
 
 @section('content')
-    <form action="{{ route('users.update', $user) }}" class="k-form" method="POST">
+    <form action="{{ route('user.update', $user) }}" class="k-form" method="POST">
         {{ method_field('PUT') }}
         <div class="k-portlet k-portlet--mobile">
             <div class="k-portlet__head k-portlet__head--lg">
@@ -19,7 +19,7 @@
                     <h3 class="k-portlet__head-title">Edit User: {{ $user->name }}</h3>
                 </div>
                 <div class="k-portlet__head-toolbar">
-                    <a href="{{ route('users.index') }}" class="btn btn-sm-no-icon btn-outline-secondary k-margin-r-10">
+                    <a href="{{ route('user.index') }}" class="btn btn-sm-no-icon btn-outline-secondary k-margin-r-10">
                         <i class="la la-arrow-left"></i>
                         <span class="k-hidden-mobile">Back</span>
                     </a>
@@ -56,13 +56,13 @@
                                         No data are lost and you can re-activate the account at anytime.
                                     </p>
                                     @if($user->status === \App\User::ACTIVE)
-                                        <form action="{{ route('users.status', $user) }}" method="POST">
+                                        <form action="{{ route('user.status', $user) }}" method="POST">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="status" value="{{ \App\User::SUSPENDED }}">
                                             <button type="submit" class="btn btn-sm btn-outline-danger">Suspend the account</button>
                                         </form>
                                     @elseif($user->status === \App\User::SUSPENDED)
-                                        <form action="{{ route('users.status', $user) }}" method="POST">
+                                        <form action="{{ route('user.status', $user) }}" method="POST">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="status" value="{{ \App\User::ACTIVE }}">
                                             <button type="submit" class="btn btn-sm btn-outline-success">Activate the account</button>
@@ -73,7 +73,7 @@
                                 <h4 class="text-muted">Delete Account</h4>
                                 <p class="text-muted">This action cannot be undone.</p>
 
-                                <form action="{{ route('users.delete', $user) }}" method="POST">
+                                <form action="{{ route('user.delete', $user) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <button type="button" class="btn btn-sm btn-outline-danger delete-alert"

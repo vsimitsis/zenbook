@@ -25,7 +25,11 @@ class PassViewData
             $settings = null;
         }
 
-        View::share(['currentUser' => $user, 'currentCompany' => $company]);
+        View::share([
+            'currentUser' => $user,
+            'currentCompany' => $company,
+            'userNotifications' => $user->unreadNotifications
+        ]);
 
         return $next($request);
     }

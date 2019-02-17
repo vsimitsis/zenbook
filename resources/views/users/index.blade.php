@@ -21,7 +21,7 @@
                 </a>
                 @can('create', \App\User::class)
                     <div class="btn-group">
-                        <a href="{{ route('users.create') }}" class="btn btn-sm-no-icon btn-outline-brand">
+                        <a href="{{ route('user.create') }}" class="btn btn-sm-no-icon btn-outline-brand">
                             <i class="la la-plus"></i>
                             <span class="k-hidden-mobile">Create</span>
                         </a>
@@ -33,7 +33,7 @@
             <div id="k_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <div class="row align-items-center">
                     <div class="col-xl-8 order-2 order-xl-1">
-                        <form action="{{ route('users.index') }}" method="GET">
+                        <form action="{{ route('user.index') }}" method="GET">
                             <div class="row align-items-center">
                                 <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
                                     <div class="k-input-icon k-input-icon--left">
@@ -45,20 +45,20 @@
                                 </div>
 
                                 <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
-                                    <select name="status" class="form-control filter-select">
-                                        <option value="all" {{ ($status == 'all' || $status == null) ? 'selected' : ''}}>All</option>
-                                        <option value="active" {{ $status == 'active' ? 'selected' : '' }}>Active</option>
-                                        <option value="pending" {{ $status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                        <option value="suspended" {{ $status == 'suspended' ? 'selected' : '' }}>Suspended</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
                                     <select name="role" class="form-control filter-select">
                                         <option value="all" {{ ($role == 'all' || $role == null) ? 'selected' : ''}}>All</option>
                                         <option value="administrator" {{ $role == 'administrator' ? 'selected' : ''}}>Administrator</option>
                                         <option value="manager" {{ $role == 'manager' ? 'selected' : ''}}>Manager</option>
                                         <option value="employee" {{ $role == 'employee' ? 'selected' : ''}}>Employee</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
+                                    <select name="status" class="form-control filter-select">
+                                        <option value="all" {{ ($status == 'all' || $status == null) ? 'selected' : ''}}>All</option>
+                                        <option value="active" {{ $status == 'active' ? 'selected' : '' }}>Active</option>
+                                        <option value="pending" {{ $status == 'pending' ? 'selected' : '' }}>Pending</option>
+                                        <option value="suspended" {{ $status == 'suspended' ? 'selected' : '' }}>Suspended</option>
                                     </select>
                                 </div>
                             </div>
@@ -112,13 +112,13 @@
                                     </a>
                                     <span class="dropdown-menu dropdown-menu-right">
                                         @can('edit', $user)
-                                            <a class="dropdown-item" href="{{ route('users.edit', $user) }}"><i class="la la-edit"></i> Edit Details</a>
+                                            <a class="dropdown-item" href="{{ route('user.edit', $user) }}"><i class="la la-edit"></i> Edit Details</a>
                                         @endcan
                                         <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>
                                         <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>
                                     </span>
                                 </span>
-                                    <a href="{{ route('users.show', $user) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                                    <a href="{{ route('user.show', $user) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
                                         <i class="la la-eye"></i>
                                     </a>
                                 </td>
@@ -127,6 +127,11 @@
                         </tbody>
                     </table>
                 </div>
+
+
+            </div>
+            <div class="dataTables_paginate paging_simple_numbers" id="k_table_1_paginate">
+                {{ $users->appends(['search' => $search, 'role' => $role, 'status' => $status])->links() }}
             </div>
         </div>
     </div>

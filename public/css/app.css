@@ -42227,6 +42227,10 @@ $k-media-breakpoints: (
   font-size: inherit;
 }
 
+.brand-bg {
+  background-image: url(/images/head_bg_sm.jpg?66cadb6d43cfd231fc863b7e775886a1);
+}
+
 /**
  * Include Project custom breakpoints scss
  */

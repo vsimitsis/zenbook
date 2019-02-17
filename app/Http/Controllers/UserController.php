@@ -85,7 +85,7 @@ class UserController extends Controller
 
             Mail::to($user->email)->send(new UserInvitation($currentUser, $user, $token));
 
-            return redirect(route('users.index'))
+            return redirect(route('user.index'))
                 ->with('success', 'The user has been created successfully and an invitation was sent.');
         }
 
@@ -131,11 +131,11 @@ class UserController extends Controller
             $this->insertContacts($request, $user, true);
             $this->insertAddresses($request, $user, true);
 
-            return redirect(route('users.index'))
+            return redirect(route('user.index'))
                 ->with('success', 'User\'s account has been updated successfully.');
         }
 
-        return redirect(route('users.index'))
+        return redirect(route('user.index'))
             ->with('error', 'There was a problem updating the user\'s account');
     }
 
@@ -149,11 +149,11 @@ class UserController extends Controller
     public function delete(User $user)
     {
         if ($user->delete()) {
-            return redirect(route('users.index'))
+            return redirect(route('user.index'))
                 ->with('success', $user->name . ' has been deleted successfully.');
         }
 
-        return redirect(route('users.edit', $user))
+        return redirect(route('user.edit', $user))
             ->with('error', 'There was a problem deleting this user. Please try again later.');
     }
 
@@ -172,18 +172,18 @@ class UserController extends Controller
         $this->authorize('manage', $currentUser->company);
 
         if ($currentUser->is($user)) {
-            return redirect(route('users.edit', $user))
+            return redirect(route('user.edit', $user))
                 ->with('error', 'You can\'t update the status of your own account.');
         }
 
         $user->status = $request->status;
 
         if ($user->save()) {
-            return redirect(route('users.index'))
+            return redirect(route('user.index'))
                 ->with('success', 'The account status has been updated successfully.');
         }
 
-        return redirect(route('users.edit', $user))
+        return redirect(route('user.edit', $user))
             ->with('error', 'There was a problem updating the status. Please try again later.');
     }
 
@@ -329,6 +329,6 @@ class UserController extends Controller
                 break;
         }
 
-        return $userQuery->get();
+        return $userQuery->paginate(10);
     }
 }

@@ -1,6 +1,5 @@
 <div class="k-content__head	k-grid__item">
     <div class="k-content__head-main">
-        <h3 class="k-content__head-title">@yield('title')</h3>
         @yield('breadcrumbs')
     </div>
     <div class="k-content__head-toolbar">

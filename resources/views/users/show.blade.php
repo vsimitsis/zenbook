@@ -4,7 +4,7 @@
     <div class="k-content__head-breadcrumbs">
         <a href="{{ route('dashboard.index') }}" class="k-content__head-breadcrumb-home"><i class="flaticon2-shelter"></i></a>
         <span class="k-content__head-breadcrumb-separator"></span>
-        <a href="{{ route('users.index') }}" class="k-content__head-breadcrumb-link">Users</a>
+        <a href="{{ route('user.index') }}" class="k-content__head-breadcrumb-link">Users</a>
         <span class="k-content__head-breadcrumb-separator"></span>
         <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active">{{ $user->name }}</span>
     </div>
@@ -17,7 +17,7 @@
                 <div class="k-user-card k-margin-b-50 k-margin-b-30-tablet-and-mobile" style="background-image: url(../assets/media/misc/head_bg.jpg)">
                     <div class="k-user-card__wrapper">
                         <div class="k-user-card__pic">
-                            <img alt="User Avatar" src="../assets/media/users/100_1.jpg">
+                            {!! $currentUser->avatar() !!}
                         </div>
                         <div class="k-user-card__details">
                             <div class="k-user-card__name">{{ $user->name }}</div>
