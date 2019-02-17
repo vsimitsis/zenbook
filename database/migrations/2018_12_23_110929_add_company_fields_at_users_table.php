@@ -25,7 +25,7 @@ class AddCompanyFieldsAtUsersTable extends Migration
                 ->references('id')
                 ->on('company_roles')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('restrict');
         });
     }
 

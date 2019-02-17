@@ -52,4 +52,14 @@ class Company extends Model
     {
         return $this->users()->where('company_role_id', CompanyRole::EMPLOYEE);
     }
+
+    /**
+     * Return all the company customers
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function customers()
+    {
+        return $this->hasMany('App\Customer');
+    }
 }

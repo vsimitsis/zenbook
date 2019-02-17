@@ -12,13 +12,11 @@ class CompanyTableSeeder extends Seeder
     public function run()
     {
         \App\Company::create([
-            'name' => 'VSimitsis',
-            'subdomain' => 'vsimitsis',
+            'name' => 'VS Solutions',
         ]);
 
         \App\Company::create([
             'name' => 'Hexabit',
-            'subdomain' => 'hexabit',
         ]);
     }
 }

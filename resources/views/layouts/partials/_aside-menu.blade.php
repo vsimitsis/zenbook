@@ -27,6 +27,13 @@
                 </a>
             </li>
 
+            <li class="k-menu__item {{ Request::is('customers*') ? 'k-menu__item--active' : '' }}">
+                <a href="{{ route('customer.index') }}" class="k-menu__link">
+                    <i class="k-menu__link-icon flaticon-customer"></i>
+                    <span class="k-menu__link-text">Customers</span>
+                </a>
+            </li>
+
             <li class="k-menu__item  k-menu__item--submenu" aria-haspopup="true" data-kmenu-submenu-toggle="hover">
                 <a href="javascript:;" class="k-menu__link k-menu__toggle">
                     <i class="k-menu__link-icon flaticon2-layers-1"></i>

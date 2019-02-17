@@ -22,7 +22,14 @@ Route::group(array('domain' => 'console.' . config('app.domain')), function() {
         Route::delete('users/{user}/delete', 'UserController@delete')->name('user.delete');
 
         /**
-         * Notification Routes
+         * Customer routes
+         */
+        Route::get('customers', 'CustomerController@index')->name('customer.index');
+        Route::get('customer/create', 'CustomerController@create')->name('customer.create');
+        Route::get('customer/store', 'CustomerController@store')->name('customer.store');
+
+        /**
+         * Notification routes
          */
         Route::get('/notifications', 'NotificationController@index')->name('notification.index');
     });

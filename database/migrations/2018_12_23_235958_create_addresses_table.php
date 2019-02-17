@@ -25,7 +25,7 @@ class CreateAddressesTable extends Migration
                 ->references('id')
                 ->on('countries')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('set null');
             $table->timestamps();
         });
     }

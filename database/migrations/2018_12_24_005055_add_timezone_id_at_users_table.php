@@ -19,7 +19,7 @@ class AddTimezoneIdAtUsersTable extends Migration
                 ->references('id')
                 ->on('timezones')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('restrict');
         });
     }
 
