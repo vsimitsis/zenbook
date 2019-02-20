@@ -25,8 +25,12 @@ Route::group(array('domain' => 'console.' . config('app.domain')), function() {
          * Customer routes
          */
         Route::get('customers', 'CustomerController@index')->name('customer.index');
-        Route::get('customer/create', 'CustomerController@create')->name('customer.create');
-        Route::get('customer/store', 'CustomerController@store')->name('customer.store');
+        Route::get('customers/create', 'CustomerController@create')->name('customer.create');
+        Route::post('customers/store', 'CustomerController@store')->name('customer.store');
+        Route::get('customers/{customer}', 'CustomerController@show')->name('customer.show');
+        Route::get('customers/{customer}/edit', 'CustomerController@edit')->name('customer.edit');
+        Route::put('customers/{customer}/update', 'CustomerController@update')->name('customer.update');
+        Route::delete('customers/{customer}/delete', 'CustomerController@delete')->name('customer.delete');
 
         /**
          * Notification routes

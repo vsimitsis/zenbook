@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Timezone;
+use App\Country;
 
 class CustomerController extends Controller
 {
@@ -34,8 +36,14 @@ class CustomerController extends Controller
      */
     public function create()
     {
+        $customer = new Customer();
+
         return view('customers.create', [
-            'customer' => new Customer(),
+            'customer' => $customer,
+            'timezones' => Timezone::all(),
+            'contacts' => $customer->contacts,
+            'addresses' => $customer->addresses,
+            'countries' => Country::all(),
         ]);
     }
 
@@ -46,7 +54,14 @@ class CustomerController extends Controller
 
     public function edit(Customer $customer)
     {
-        //
+        return view('customers.edit', [
+            'customer' => $customer,
+            'company' => $customer->company,
+            'contacts' => $customer->contacts,
+            'addresses' => $customer->addresses,
+            'countries' => Country::all(),
+            'timezones' => Timezone::all()
+        ]);
     }
 
     public function update(Request $request, Customer $customer)

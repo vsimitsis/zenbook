@@ -23,6 +23,12 @@ class CreateCustomersTable extends Migration
                 ->onDelete('cascade');
             $table->string('forename');
             $table->string('surname');
+            $table->integer('timezone_id')->unsigned()->nullable();
+            $table->foreign('timezone_id')
+            ->references('id')
+            ->on('timezones')
+            ->onUpdate('cascade')
+            ->onDelete('set null');
             $table->timestamps();
         });
     }
