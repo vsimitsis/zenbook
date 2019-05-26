@@ -1,18 +1,36 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | General Greek Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
-
-    'email_address' => 'Διεύθυνση Ηλ.Ταχυδρομείου',
-    'no_results'    => 'No results found.',
+    'english'          => 'Αγγλικά',
+    'greek'            => 'Ελληνικά',
+    'action'           => 'Ενέργεια',
+    'actions'          => 'Ενέργειες',
+    'add'              => 'Προσθήκη',
+    'edit'             => 'Επεξεργασία',
+    'back'             => 'Πίσω',
+    'email'            => 'Ηλ.Ταχυδρομείο',
+    'email_address'    => 'Διεύθυνση Ηλ.Ταχυδρομείου',
+    'phone'            => 'Τηλέφωνο',
+    'company'          => 'Εταιρία',
+    'user'             => 'Χρήστης',
+    'users'            => 'Χρήστες',
+    'role'             => 'Ρόλος',
+    'roles'            => 'Ρόλοι',
+    'status'           => 'Κατάσταση',
+    'all'              => 'Όλα',
+    'active'           => 'Ενεργή',
+    'pending'          => 'Εκρεμμεί',
+    'suspended'        => 'Suspended',
+    'administrator'    => 'Διαχειριστής',
+    'teacher'          => 'Καθηγητής',
+    'student'          => 'Μαθητής',
+    'search'           => 'Αναζήτηση...',
+    'search_by_name'   => 'Αναζήτηση με βάση το όνομα...',
+    'dashboard'        => 'Πίνακας Διαχείρησης',
+    'settings'         => 'Ρυθμίσεις',
+    'general'          => 'Γενικά',
+    'lessons'          => 'Μαθήματα',
+    'documents'        => 'Αρχεία',
+    'hi'               => 'Γειά',
+    'no_results_found' => 'Δε βρέθηκαν αποτελέσματα.',
 ];

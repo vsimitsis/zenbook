@@ -207,149 +207,149 @@
                         @endforeach
                     @endif
 
-                    {{--<a href="#" class="k-notification__item">--}}
-                    {{--<div class="k-notification__item-icon">--}}
-                    {{--<i class="flaticon-paper-plane-1 k-font-brand"></i>--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-details">--}}
-                    {{--<div class="k-notification__item-title">--}}
-                    {{--New customer is registered--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-time">--}}
-                    {{--3 hrs ago--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--<a href="#" class="k-notification__item">--}}
-                    {{--<div class="k-notification__item-icon">--}}
-                    {{--<i class="flaticon2-chart2 k-font-danger"></i>--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-details">--}}
-                    {{--<div class="k-notification__item-title">--}}
-                    {{--Application has been approved--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-time">--}}
-                    {{--3 hrs ago--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--<a href="#" class="k-notification__item">--}}
-                    {{--<div class="k-notification__item-icon">--}}
-                    {{--<i class="flaticon2-image-file k-font-warning"></i>--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-details">--}}
-                    {{--<div class="k-notification__item-title">--}}
-                    {{--New file has been uploaded--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-time">--}}
-                    {{--5 hrs ago--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--<a href="#" class="k-notification__item">--}}
-                    {{--<div class="k-notification__item-icon">--}}
-                    {{--<i class="flaticon2-bar-chart k-font-info"></i>--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-details">--}}
-                    {{--<div class="k-notification__item-title">--}}
-                    {{--New user feedback received--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-time">--}}
-                    {{--8 hrs ago--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--<a href="#" class="k-notification__item">--}}
-                    {{--<div class="k-notification__item-icon">--}}
-                    {{--<i class="flaticon2-pie-chart-2 k-font-success"></i>--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-details">--}}
-                    {{--<div class="k-notification__item-title">--}}
-                    {{--System reboot has been successfully completed--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-time">--}}
-                    {{--12 hrs ago--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--<a href="#" class="k-notification__item">--}}
-                    {{--<div class="k-notification__item-icon">--}}
-                    {{--<i class="flaticon2-favourite k-font-focus"></i>--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-details">--}}
-                    {{--<div class="k-notification__item-title">--}}
-                    {{--New order has been placed--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-time">--}}
-                    {{--15 hrs ago--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--<a href="#" class="k-notification__item k-notification__item--read">--}}
-                    {{--<div class="k-notification__item-icon">--}}
-                    {{--<i class="flaticon2-safe k-font-primary"></i>--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-details">--}}
-                    {{--<div class="k-notification__item-title">--}}
-                    {{--Company meeting canceled--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-time">--}}
-                    {{--19 hrs ago--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--<a href="#" class="k-notification__item">--}}
-                    {{--<div class="k-notification__item-icon">--}}
-                    {{--<i class="flaticon2-psd k-font-success"></i>--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-details">--}}
-                    {{--<div class="k-notification__item-title">--}}
-                    {{--New report has been received--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-time">--}}
-                    {{--23 hrs ago--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--<a href="#" class="k-notification__item">--}}
-                    {{--<div class="k-notification__item-icon">--}}
-                    {{--<i class="flaticon-download-1 k-font-danger"></i>--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-details">--}}
-                    {{--<div class="k-notification__item-title">--}}
-                    {{--Finance report has been generated--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-time">--}}
-                    {{--25 hrs ago--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--<a href="#" class="k-notification__item">--}}
-                    {{--<div class="k-notification__item-icon">--}}
-                    {{--<i class="flaticon-security k-font-warning"></i>--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-details">--}}
-                    {{--<div class="k-notification__item-title">--}}
-                    {{--New customer comment recieved--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-time">--}}
-                    {{--2 days ago--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
-                    {{--<a href="#" class="k-notification__item">--}}
-                    {{--<div class="k-notification__item-icon">--}}
-                    {{--<i class="flaticon2-pie-chart k-font-focus"></i>--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-details">--}}
-                    {{--<div class="k-notification__item-title">--}}
-                    {{--New customer is registered--}}
-                    {{--</div>--}}
-                    {{--<div class="k-notification__item-time">--}}
-                    {{--3 days ago--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</a>--}}
+                    {{--                    <a href="#" class="k-notification__item">--}}
+                    {{--                    <div class="k-notification__item-icon">--}}
+                    {{--                    <i class="flaticon-paper-plane-1 k-font-brand"></i>--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-details">--}}
+                    {{--                    <div class="k-notification__item-title">--}}
+                    {{--                    New customer is registered--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-time">--}}
+                    {{--                    3 hrs ago--}}
+                    {{--                    </div>--}}
+                    {{--                    </div>--}}
+                    {{--                    </a>--}}
+                    {{--                    <a href="#" class="k-notification__item">--}}
+                    {{--                    <div class="k-notification__item-icon">--}}
+                    {{--                    <i class="flaticon2-chart2 k-font-danger"></i>--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-details">--}}
+                    {{--                    <div class="k-notification__item-title">--}}
+                    {{--                    Application has been approved--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-time">--}}
+                    {{--                    3 hrs ago--}}
+                    {{--                    </div>--}}
+                    {{--                    </div>--}}
+                    {{--                    </a>--}}
+                    {{--                    <a href="#" class="k-notification__item">--}}
+                    {{--                    <div class="k-notification__item-icon">--}}
+                    {{--                    <i class="flaticon2-image-file k-font-warning"></i>--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-details">--}}
+                    {{--                    <div class="k-notification__item-title">--}}
+                    {{--                    New file has been uploaded--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-time">--}}
+                    {{--                    5 hrs ago--}}
+                    {{--                    </div>--}}
+                    {{--                    </div>--}}
+                    {{--                    </a>--}}
+                    {{--                    <a href="#" class="k-notification__item">--}}
+                    {{--                    <div class="k-notification__item-icon">--}}
+                    {{--                    <i class="flaticon2-bar-chart k-font-info"></i>--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-details">--}}
+                    {{--                    <div class="k-notification__item-title">--}}
+                    {{--                    New user feedback received--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-time">--}}
+                    {{--                    8 hrs ago--}}
+                    {{--                    </div>--}}
+                    {{--                    </div>--}}
+                    {{--                    </a>--}}
+                    {{--                    <a href="#" class="k-notification__item">--}}
+                    {{--                    <div class="k-notification__item-icon">--}}
+                    {{--                    <i class="flaticon2-pie-chart-2 k-font-success"></i>--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-details">--}}
+                    {{--                    <div class="k-notification__item-title">--}}
+                    {{--                    System reboot has been successfully completed--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-time">--}}
+                    {{--                    12 hrs ago--}}
+                    {{--                    </div>--}}
+                    {{--                    </div>--}}
+                    {{--                    </a>--}}
+                    {{--                    <a href="#" class="k-notification__item">--}}
+                    {{--                    <div class="k-notification__item-icon">--}}
+                    {{--                    <i class="flaticon2-favourite k-font-focus"></i>--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-details">--}}
+                    {{--                    <div class="k-notification__item-title">--}}
+                    {{--                    New order has been placed--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-time">--}}
+                    {{--                    15 hrs ago--}}
+                    {{--                    </div>--}}
+                    {{--                    </div>--}}
+                    {{--                    </a>--}}
+                    {{--                    <a href="#" class="k-notification__item k-notification__item--read">--}}
+                    {{--                    <div class="k-notification__item-icon">--}}
+                    {{--                    <i class="flaticon2-safe k-font-primary"></i>--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-details">--}}
+                    {{--                    <div class="k-notification__item-title">--}}
+                    {{--                    Company meeting canceled--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-time">--}}
+                    {{--                    19 hrs ago--}}
+                    {{--                    </div>--}}
+                    {{--                    </div>--}}
+                    {{--                    </a>--}}
+                    {{--                    <a href="#" class="k-notification__item">--}}
+                    {{--                    <div class="k-notification__item-icon">--}}
+                    {{--                    <i class="flaticon2-psd k-font-success"></i>--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-details">--}}
+                    {{--                    <div class="k-notification__item-title">--}}
+                    {{--                    New report has been received--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-time">--}}
+                    {{--                    23 hrs ago--}}
+                    {{--                    </div>--}}
+                    {{--                    </div>--}}
+                    {{--                    </a>--}}
+                    {{--                    <a href="#" class="k-notification__item">--}}
+                    {{--                    <div class="k-notification__item-icon">--}}
+                    {{--                    <i class="flaticon-download-1 k-font-danger"></i>--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-details">--}}
+                    {{--                    <div class="k-notification__item-title">--}}
+                    {{--                    Finance report has been generated--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-time">--}}
+                    {{--                    25 hrs ago--}}
+                    {{--                    </div>--}}
+                    {{--                    </div>--}}
+                    {{--                    </a>--}}
+                    {{--                    <a href="#" class="k-notification__item">--}}
+                    {{--                    <div class="k-notification__item-icon">--}}
+                    {{--                    <i class="flaticon-security k-font-warning"></i>--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-details">--}}
+                    {{--                    <div class="k-notification__item-title">--}}
+                    {{--                    New customer comment recieved--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-time">--}}
+                    {{--                    2 days ago--}}
+                    {{--                    </div>--}}
+                    {{--                    </div>--}}
+                    {{--                    </a>--}}
+                    {{--                    <a href="#" class="k-notification__item">--}}
+                    {{--                    <div class="k-notification__item-icon">--}}
+                    {{--                    <i class="flaticon2-pie-chart k-font-focus"></i>--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-details">--}}
+                    {{--                    <div class="k-notification__item-title">--}}
+                    {{--                    New customer is registered--}}
+                    {{--                    </div>--}}
+                    {{--                    <div class="k-notification__item-time">--}}
+                    {{--                    3 days ago--}}
+                    {{--                    </div>--}}
+                    {{--                    </div>--}}
+                    {{--                    </a>--}}
                 </div>
             </div>
         </div>
@@ -362,30 +362,24 @@
 
         <div class="k-header__topbar-item k-header__topbar-item--langs">
             <div class="k-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px -2px">
-									<span class="k-header__topbar-icon">
-										<img class="" src="{{ asset('assets/media/flags/uk.svg') }}" alt="" />
-									</span>
+                <span class="k-header__topbar-icon">
+                    <img class="" src="{{ asset($userSettings->language->icon) }}" alt="" />
+                </span>
             </div>
             <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround">
                 <ul class="k-nav k-margin-t-10 k-margin-b-10">
-                    <li class="k-nav__item k-nav__item--active">
-                        <a href="#" class="k-nav__link">
-                            <span class="k-nav__link-icon"><img src="{{ asset('assets/media/flags/uk.svg') }}" alt="" /></span>
-                            <span class="k-nav__link-text">English</span>
-                        </a>
-                    </li>
-                    <li class="k-nav__item">
-                        <a href="#" class="k-nav__link">
-                            <span class="k-nav__link-icon"><img src="{{ asset('assets/media/flags/gr.svg') }}" alt="" /></span>
-                            <span class="k-nav__link-text">Greek</span>
-                        </a>
-                    </li>
-                    <li class="k-nav__item">
-                        <a href="#" class="k-nav__link">
-                            <span class="k-nav__link-icon"><img src="{{ asset('assets/media/flags/017-germany.svg') }}" alt="" /></span>
-                            <span class="k-nav__link-text">German</span>
-                        </a>
-                    </li>
+                    @foreach(\App\Language::all() as $language)
+                        <form id="language_form_{{ $language->id }}" action="{{ route('user.settings.language.update') }}" class="language_form" method="POST">
+                            @csrf
+                            <input type="hidden" name="language" value="{{ $language->id }}"/>
+                            <li class="k-nav__item">
+                                <a href="#" class="k-nav__link" onclick="document.getElementById('language_form_{{ $language->id }}').submit();">
+                                    <span class="k-nav__link-icon"><img src="{{ asset($language->icon) }}" alt="" /></span>
+                                    <span class="k-nav__link-text">{{ __('general.' . lcfirst($language->language)) }}</span>
+                                </a>
+                            </li>
+                        </form>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -393,7 +387,7 @@
         <div class="k-header__topbar-item k-header__topbar-item--user">
             <div class="k-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px -2px">
                 <div class="k-header__topbar-user">
-                    <span class="k-header__topbar-welcome k-hidden-mobile">Hi,</span>
+                    <span class="k-header__topbar-welcome k-hidden-mobile">{{ __('general.hi') }},</span>
                     <span class="k-header__topbar-username k-hidden-mobile">{{ $currentUser->firstName() }}</span>
                     {!! $currentUser->avatar() !!}
                 </div>

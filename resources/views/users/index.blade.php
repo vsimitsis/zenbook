@@ -1,10 +1,10 @@
 @extends('layouts.console')
-@section('title', 'Users')
+@section('title', __('general.users'))
 @section('breadcrumbs')
     <div class="k-content__head-breadcrumbs">
         <a href="{{ route('dashboard.index') }}" class="k-content__head-breadcrumb-home"><i class="flaticon2-shelter"></i></a>
         <span class="k-content__head-breadcrumb-separator"></span>
-        <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active">Users</span>
+        <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active">{{ __('general.users') }}</span>
     </div>
 @endsection
 
@@ -12,18 +12,18 @@
     <div class="k-portlet k-portlet--mobile">
         <div class="k-portlet__head k-portlet__head--lg">
             <div class="k-portlet__head-label">
-                <h3 class="k-portlet__head-title">Company Users</h3>
+                <h3 class="k-portlet__head-title">{{ __('general.users') }}</h3>
             </div>
             <div class="k-portlet__head-toolbar">
                 <a href="{{ route('dashboard.index') }}" class="btn btn-sm-no-icon btn-outline-secondary k-margin-r-10">
                     <i class="la la-arrow-left"></i>
-                    <span class="k-hidden-mobile">Back</span>
+                    <span class="k-hidden-mobile">{{ __('general.back') }}</span>
                 </a>
                 @can('create', \App\User::class)
                     <div class="btn-group">
                         <a href="{{ route('user.create') }}" class="btn btn-sm-no-icon btn-outline-brand">
                             <i class="la la-plus"></i>
-                            <span class="k-hidden-mobile">Add</span>
+                            <span class="k-hidden-mobile">{{ __('general.add') }}</span>
                         </a>
                     </div>
                 @endcan
@@ -37,7 +37,7 @@
                             <div class="row align-items-center">
                                 <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
                                     <div class="k-input-icon k-input-icon--left">
-                                        <input type="text" name="search" class="form-control" value="{{ $search }}" placeholder="Search...">
+                                        <input type="text" name="search" class="form-control" value="{{ $search }}" placeholder="{{ __('general.search_by_name') }}">
                                         <span class="k-input-icon__icon k-input-icon__icon--left">
                                         <span><i class="la la-search"></i></span>
                                     </span>
@@ -46,19 +46,19 @@
 
                                 <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
                                     <select name="role" class="form-control filter-select">
-                                        <option value="all" {{ ($role == 'all' || $role == null) ? 'selected' : ''}}>All</option>
-                                        <option value="administrator" {{ $role == 'administrator' ? 'selected' : ''}}>Administrator</option>
-                                        <option value="teacher" {{ $role == 'teacher' ? 'selected' : ''}}>Teacher</option>
-                                        <option value="student" {{ $role == 'student' ? 'selected' : ''}}>Student</option>
+                                        <option value="all" {{ ($role == 'all' || $role == null) ? 'selected' : ''}}>{{ __('general.all') }}</option>
+                                        <option value="administrator" {{ $role == 'administrator' ? 'selected' : ''}}>{{ __('general.administrator') }}</option>
+                                        <option value="teacher" {{ $role == 'teacher' ? 'selected' : ''}}>{{ __('general.teacher') }}</option>
+                                        <option value="student" {{ $role == 'student' ? 'selected' : ''}}>{{ __('general.student') }}</option>
                                     </select>
                                 </div>
 
                                 <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
                                     <select name="status" class="form-control filter-select">
-                                        <option value="all" {{ ($status == 'all' || $status == null) ? 'selected' : ''}}>All</option>
-                                        <option value="active" {{ $status == 'active' ? 'selected' : '' }}>Active</option>
-                                        <option value="pending" {{ $status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                        <option value="suspended" {{ $status == 'suspended' ? 'selected' : '' }}>Suspended</option>
+                                        <option value="all" {{ ($status == 'all' || $status == null) ? 'selected' : ''}}>{{ __('general.all') }}</option>
+                                        <option value="active" {{ $status == 'active' ? 'selected' : '' }}>{{ __('general.active') }}</option>
+                                        <option value="pending" {{ $status == 'pending' ? 'selected' : '' }}>{{ __('general.pending') }}</option>
+                                        <option value="suspended" {{ $status == 'suspended' ? 'selected' : '' }}>{{ __('general.suspended') }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -71,12 +71,12 @@
                     <table class="table table-hover table-bordered table-striped dataTable">
                         <thead>
                         <tr>
-                            <th class="sorting_desc">User</th>
-                            <th class="sorting">Role</th>
-                            <th class="sorting">Email</th>
-                            <th class="sorting">Phone</th>
-                            <th class="sorting">Status</th>
-                            <th>Actions</th>
+                            <th class="sorting_desc">{{ __('general.user') }}</th>
+                            <th class="sorting">{{ __('general.role') }}</th>
+                            <th class="sorting">{{ __('general.email') }}</th>
+                            <th class="sorting">{{ __('general.phone') }}</th>
+                            <th class="sorting">{{ __('general.status') }}</th>
+                            <th>{{ __('general.actions') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -93,16 +93,16 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{ $user->userRole->name }}</td>
+                                <td>{{ __('general.' . lcfirst($user->userRole->name)) }}</td>
                                 <td><a href="mailto:{{ $user->email }}" class="k-user-card-v2__email k-link">{{ $user->email }}</a></td>
                                 <td>{{ $user->contacts->first() ? $user->contacts->first()->mobile : '-' }}</td>
                                 <td>
                                     @if($user->status === \App\User::ACTIVE)
-                                        <span class="k-badge k-badge--success k-badge--inline k-badge--pill">Active</span>
+                                        <span class="k-badge k-badge--success k-badge--inline k-badge--pill">{{ __('general.active') }}</span>
                                     @elseif($user->status === \App\User::PENDING)
-                                        <span class="k-badge k-badge--warning k-badge--inline k-badge--pill">Pending</span>
+                                        <span class="k-badge k-badge--warning k-badge--inline k-badge--pill">{{ __('general.pending') }}</span>
                                     @elseif($user->status === \App\User::SUSPENDED)
-                                        <span class="k-badge k-badge--danger k-badge--inline k-badge--pill">Suspended</span>
+                                        <span class="k-badge k-badge--danger k-badge--inline k-badge--pill">{{ __('general.suspended') }}</span>
                                     @endif
                                 </td>
                                 <td>
@@ -128,7 +128,7 @@
                     </table>
 
                     @if($users->isEmpty())
-                        <div class="zero-results">No results found.</div>
+                        <div class="zero-results">{{ __('general.no_results_found') }}</div>
                     @endif
                 </div>
             </div>

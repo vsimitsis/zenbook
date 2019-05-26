@@ -18,13 +18,23 @@ Route::group(array('domain' => 'console.' . config('app.domain')), function() {
         Route::get('/users/{user}', 'UserController@show')->name('user.show');
         Route::get('/users/{user}/edit', 'UserController@edit')->name('user.edit');
         Route::put('users/{user}/update', 'UserController@update')->name('user.update');
-        Route::post('users/{user}/status', 'UserController@updateStatus')->name('user.status');
-        Route::delete('users/{user}/delete', 'UserController@delete')->name('user.delete');
+        Route::post('/users/{user}/status', 'UserController@updateStatus')->name('user.status');
+        Route::delete('/users/{user}/delete', 'UserController@delete')->name('user.delete');
 
         /**
-         * Student routes
+         * User settings routes
          */
-        Route::get('students', 'LessonController@index')->name('lesson.index');
+        Route::post('/settings/language', 'UserSettingController@updateLanguage')->name('user.settings.language.update');
+
+        /**
+         * Lesson routes
+         */
+        Route::get('/lessons', 'LessonController@index')->name('lesson.index');
+
+        /**
+         * Document routes
+         */
+        Route::get('/documents', 'DocumentController@index')->name('document.index');
 
         /**
          * Notification routes

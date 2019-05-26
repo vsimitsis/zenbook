@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
@@ -18,16 +19,21 @@ class PassViewData
     public function handle($request, Closure $next)
     {
         if (Auth::user()) {
-            $user    = Auth::user();
-            $company = $user->company;
+            $user         = Auth::user();
+            $company      = $user->company;
+            $userSettings = $user->settings;
         } else {
-            $user = null;
-            $settings = null;
+            $user         = null;
+            $company      = null;
+            $userSettings = null;
         }
+
+        App::setLocale($userSettings->language->locale ?? 'en');
 
         View::share([
             'currentUser' => $user,
             'currentCompany' => $company,
+            'userSettings'   => $userSettings,
             'userNotifications' => $user->unreadNotifications
         ]);
 

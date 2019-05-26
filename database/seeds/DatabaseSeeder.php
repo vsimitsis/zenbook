@@ -15,11 +15,13 @@ class DatabaseSeeder extends Seeder
          * Fixed Seeders
          */
         $this->call(UserRoleTableSeeder::class);
+        $this->call(LanguageTableSeeder::class);
 
         /**
          * Dummy Seeders
          */
-        $this->call(CompanyTableSeeder::class);
-        $this->call(UserTableSeeder::class);
+        if (env('APP_ENV') == 'local') {
+            $this->call(DummyDataTableSeeder::class);
+        }
     }
 }

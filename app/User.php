@@ -62,6 +62,16 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Return the user's settings model
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function settings()
+    {
+        return $this->hasOne(UserSetting::class);
+    }
+
+    /**
      * Return the html for the user's avatar render
      *
      * @return string

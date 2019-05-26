@@ -1,18 +1,36 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | General English Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
-
-    'email_address' => 'Email Address',
-    'company'       => 'Company',
+    'english'          => 'English',
+    'greek'            => 'Greek',
+    'action'           => 'Action',
+    'actions'          => 'Actions',
+    'add'              => 'Add',
+    'edit'             => 'Edit',
+    'back'             => 'Back',
+    'email'            => 'Email',
+    'email_address'    => 'Email Address',
+    'phone'            => 'Phone',
+    'company'          => 'Company',
+    'user'             => 'User',
+    'users'            => 'Users',
+    'role'             => 'Role',
+    'roles'            => 'Roles',
+    'status'           => 'Status',
+    'all'              => 'All',
+    'active'           => 'Active',
+    'pending'          => 'Pending',
+    'suspended'        => 'Suspended',
+    'administrator'    => 'Administrator',
+    'teacher'          => 'Teacher',
+    'student'          => 'Student',
+    'search'           => 'Search...',
+    'search_by_name'   => 'Search by name...',
+    'dashboard'        => 'Dashboard',
+    'settings'         => 'Settings',
+    'general'          => 'General',
+    'lessons'          => 'Lessons',
+    'documents'        => 'Documents',
+    'hi'               => 'Hi',
+    'no_results_found' => 'No results found.',
 ];
