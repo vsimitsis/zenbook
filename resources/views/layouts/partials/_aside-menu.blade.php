@@ -22,15 +22,15 @@
 
             <li class="k-menu__item {{ Request::is('users*') ? 'k-menu__item--active' : '' }}">
                 <a href="{{ route('user.index') }}" class="k-menu__link">
-                    <i class="k-menu__link-icon flaticon-users"></i>
+                    <i class="k-menu__link-icon flaticon-profile-1"></i>
                     <span class="k-menu__link-text">Users</span>
                 </a>
             </li>
 
-            <li class="k-menu__item {{ Request::is('customers*') ? 'k-menu__item--active' : '' }}">
-                <a href="{{ route('customer.index') }}" class="k-menu__link">
-                    <i class="k-menu__link-icon flaticon-customer"></i>
-                    <span class="k-menu__link-text">Customers</span>
+            <li class="k-menu__item {{ Request::is('lessons*') ? 'k-menu__item--active' : '' }}">
+                <a href="{{ route('lesson.index') }}" class="k-menu__link">
+                    <i class="k-menu__link-icon flaticon-folder"></i>
+                    <span class="k-menu__link-text">Lessons</span>
                 </a>
             </li>
 

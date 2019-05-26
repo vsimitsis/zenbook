@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CompanyRoleTableSeeder extends Seeder
+class UserRoleTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,16 +11,16 @@ class CompanyRoleTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\CompanyRole::create([
+        \App\UserRole::create([
             'name' => 'Administrator'
         ]);
 
-        \App\CompanyRole::create([
-            'name' => 'Manager'
+        \App\UserRole::create([
+            'name' => 'Teacher'
         ]);
 
-        \App\CompanyRole::create([
-            'name' => 'Employee'
+        \App\UserRole::create([
+            'name' => 'Student'
         ]);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddTimezoneIdAtUsersTable extends Migration
+class AddUserRoleIdFieldAtUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,10 @@ class AddTimezoneIdAtUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('timezone_id')->unsigned()->after('email');
-            $table->foreign('timezone_id')
+            $table->integer('user_role_id')->unsigned()->after('company_id');
+            $table->foreign('user_role_id')
                 ->references('id')
-                ->on('timezones')
+                ->on('user_roles')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
         });
@@ -31,8 +31,8 @@ class AddTimezoneIdAtUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('users_timezone_id_foreign');
-            $table->dropColumn('timezone_id');
+            $table->dropForeign('users_user_role_id_foreign');
+            $table->dropColumn('user_role_id');
         });
     }
 }

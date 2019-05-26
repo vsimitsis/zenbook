@@ -14,5 +14,5 @@ return [
     */
 
     'email_address' => 'Διεύθυνση Ηλ.Ταχυδρομείου',
-    'company'       => 'Εταιρία',
+    'no_results'    => 'No results found.',
 ];

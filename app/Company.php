@@ -30,7 +30,7 @@ class Company extends Model
      */
     public function administrators()
     {
-        return $this->users()->where('company_role_id', CompanyRole::ADMINISTRATOR);
+        return $this->users()->where('user_role_id', userRole::ADMINISTRATOR);
     }
 
     /**
@@ -40,7 +40,7 @@ class Company extends Model
      */
     public function managers()
     {
-        return $this->users()->where('company_role_id', CompanyRole::MANAGER);
+        return $this->users()->where('user_role_id', userRole::TEACHER);
     }
 
     /**
@@ -50,7 +50,7 @@ class Company extends Model
      */
     public function employees()
     {
-        return $this->users()->where('company_role_id', CompanyRole::EMPLOYEE);
+        return $this->users()->where('user_role_id', userRole::STUDENT);
     }
 
     /**

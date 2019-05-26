@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCompanyFieldsAtUsersTable extends Migration
+class AddCompanyIdFieldAtUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,12 +20,6 @@ class AddCompanyFieldsAtUsersTable extends Migration
                 ->on('companies')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->integer('company_role_id')->unsigned()->after('company_id');
-            $table->foreign('company_role_id')
-                ->references('id')
-                ->on('company_roles')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
         });
     }
 
@@ -39,8 +33,6 @@ class AddCompanyFieldsAtUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropForeign('users_company_id_foreign');
             $table->dropColumn('company_id');
-            $table->dropForeign('users_company_role_id_foreign');
-            $table->dropColumn('company_role_id');
         });
     }
 }

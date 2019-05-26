@@ -14,9 +14,8 @@ class UserTableSeeder extends Seeder
         \App\User::create([
             'name' => 'Vagelis Simitsis',
             'email' => 'vagelis@example.com',
-            'timezone_id' => 339,
             'company_id' => 1,
-            'company_role_id' => 1,
+            'user_role_id' => 1,
             'password' => bcrypt('vagelis'),
             'status' => 1,
         ]);
@@ -24,9 +23,8 @@ class UserTableSeeder extends Seeder
         \App\User::create([
             'name' => 'Tea Sapna',
             'email' => 'tea@example.com',
-            'timezone_id' => 339,
             'company_id' => 1,
-            'company_role_id' => 2,
+            'user_role_id' => 2,
             'password' => bcrypt('tea'),
             'status' => 1,
         ]);
@@ -34,9 +32,8 @@ class UserTableSeeder extends Seeder
         \App\User::create([
             'name' => 'Mpampis Saragias',
             'email' => 'mpampis@example.com',
-            'timezone_id' => 339,
             'company_id' => 2,
-            'company_role_id' => 1,
+            'user_role_id' => 1,
             'password' => bcrypt('mpampis'),
             'status' => 1,
         ]);

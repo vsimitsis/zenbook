@@ -406,7 +406,7 @@
                         </div>
                         <div class="k-user-card__details">
                             <div class="k-user-card__name">{{ $currentUser->name }}</div>
-                            <div class="k-user-card__position">{{ $currentUser->companyRole->name }}, {{ $currentCompany->name }}</div>
+                            <div class="k-user-card__position">{{ $currentUser->userRole->name }}, {{ $currentCompany->name }}</div>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\CompanyRole;
+use App\userRole;
 use App\Timezone;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -31,7 +31,7 @@ class UserRequest extends FormRequest
             'company_role' => [
                 'required',
                 'integer',
-                Rule::in(CompanyRole::all()->pluck('id'))
+                Rule::in(userRole::all()->pluck('id'))
             ],
             'timezone' => [
                 'required',

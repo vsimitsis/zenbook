@@ -29,24 +29,6 @@
 
     @include('users.partials._user-company-role-field')
 
-    <div class="form-group row">
-        <label class="col-sm-3 col-md-2 col-form-label">Timezone:</label>
-        <div class="col-sm-6">
-            <div class="input-group">
-                <div class="input-group-prepend"><span class="input-group-text"><i class="la la-clock-o"></i></span></div>
-                <select name="timezone" class="form-control {{ $errors->has('timezone') ? 'is-invalid' : '' }}">
-                    <option value="0" selected>Select Timezone</option>
-                    @foreach($timezones as $timezone)
-                        <option value="{{ $timezone->id }}" {{ old('timezone', $user->timezone_id) == $timezone->id ? 'selected' : '' }}>
-                            {{ $timezone->name }}
-                        </option>
-                    @endforeach
-                </select>
-                <div class="invalid-feedback">{{ $errors->first('timezone') }}</div>
-            </div>
-        </div>
-    </div>
-
     <div class="k-separator k-separator--space-sm k-separator--border-dashed"></div>
     <h3 class="k-heading k-heading--md">2. Contacts:</h3>
 
@@ -182,22 +164,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-md-2 col-form-label">Country:</label>
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i class="la la-flag"></i></span></div>
-                                <select name="country" class="form-control">
-                                    <option value="0" selected>Select Country</option>
-                                    @foreach($countries as $country)
-                                        <option value="{{ $country->id }}" {{ old('address-list.0.country', $addresses->first() ? $addresses->first()->country_id : '') == $country->id ? 'selected' : '' }}>
-                                            {{ $country->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
                     <div class="k-separator k-separator--border-dashed"></div>
                     <div class="k-separator k-separator--height-sm"></div>
                 </div>

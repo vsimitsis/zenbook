@@ -21,7 +21,7 @@
                         </div>
                         <div class="k-user-card__details">
                             <div class="k-user-card__name">{{ $user->name }}</div>
-                            <div class="k-user-card__position">{{ $user->companyRole->name }}</div>
+                            <div class="k-user-card__position">{{ $user->userRole->name }}</div>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Address;
-use App\CompanyRole;
+use App\userRole;
 use App\Contact;
 use App\Country;
 use App\Http\Requests\UserRequest;
@@ -26,10 +26,11 @@ class UserController extends Controller
     public function index(Request $request)
     {
         return view('users.index', [
-            'users'  => $this->fetchUsers($request),
-            'search' => $request->search,
-            'status' => $request->status,
-            'role'   => $request->role,
+            'users'     => $this->fetchUsers($request),
+            'userRoles' => UserRole::all(),
+            'search'    => $request->search,
+            'status'    => $request->status,
+            'role'      => $request->role,
         ]);
     }
 
@@ -57,9 +58,7 @@ class UserController extends Controller
             'contacts' => $user->contacts,
             'addresses' => $user->addresses,
             'company' => Auth::user()->company,
-            'companyRoles' => CompanyRole::all(),
-            'countries' => Country::all(),
-            'timezones' => Timezone::all()
+            'userRoles' => UserRole::all(),
         ]);
     }
 
@@ -74,7 +73,7 @@ class UserController extends Controller
             'email' => $request->email,
             'timezone_id' => $request->timezone,
             'company_id' => $currentUser->company->id,
-            'company_role_id' => $request->company_role,
+            'user_role_id' => $request->company_role,
             'password' => Hash::make(str_random(8)),
             'avatar' => null,
             'status' => User::PENDING
@@ -109,9 +108,7 @@ class UserController extends Controller
             'company' => $user->company,
             'contacts' => $user->contacts,
             'addresses' => $user->addresses,
-            'companyRoles' => CompanyRole::all(),
-            'countries' => Country::all(),
-            'timezones' => Timezone::all()
+            'userRoles' => UserRole::all(),
         ]);
     }
 
@@ -199,7 +196,7 @@ class UserController extends Controller
         $user->name  = $request->name;
         $user->email = $request->email;
         $user->timezone_id = $request->timezone;
-        $user->company_role_id = $request->company_role;
+        $user->user_role_id = $request->company_role;
 
         return $user->save();
     }
@@ -319,13 +316,13 @@ class UserController extends Controller
 
         switch ($request->role) {
             case 'administrator':
-                $userQuery = $userQuery->where('company_role_id', CompanyRole::ADMINISTRATOR);
+                $userQuery = $userQuery->where('user_role_id', UserRole::ADMINISTRATOR);
                 break;
-            case 'manager':
-                $userQuery = $userQuery->where('company_role_id', CompanyRole::MANAGER);
+            case 'teacher':
+                $userQuery = $userQuery->where('user_role_id', UserRole::TEACHER);
                 break;
-            case 'employee':
-                $userQuery = $userQuery->where('company_role_id', CompanyRole::EMPLOYEE);
+            case 'student':
+                $userQuery = $userQuery->where('user_role_id', UserRole::STUDENT);
                 break;
         }
 

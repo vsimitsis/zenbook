@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Company;
-use App\CompanyRole;
+use App\userRole;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -32,7 +32,7 @@ class CompanyPolicy
      */
     public function administrate(User $user, Company $company)
     {
-        return $user->company->is($company) && $user->company_role_id === CompanyRole::ADMINISTRATOR;
+        return $user->company->is($company) && $user->user_role_id === userRole::ADMINISTRATOR;
     }
 
     /**
@@ -44,6 +44,6 @@ class CompanyPolicy
      */
     public function manage(User $user, Company $company)
     {
-        return $user->company->is($company) && $user->company_role_id <= CompanyRole::MANAGER;
+        return $user->company->is($company) && $user->user_role_id <= userRole::TEACHER;
     }
 }

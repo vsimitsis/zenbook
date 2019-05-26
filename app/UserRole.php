@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CompanyRole extends Model
+class UserRole extends Model
 {
     /**
      * The attributes that are not mass assignable
@@ -14,8 +14,8 @@ class CompanyRole extends Model
     protected $guarded = [];
 
     const ADMINISTRATOR = 1;
-    const MANAGER       = 2;
-    const EMPLOYEE      = 3;
+    const TEACHER       = 2;
+    const STUDENT       = 3;
 
     /**
      * Return the users with this role

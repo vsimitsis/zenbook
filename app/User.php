@@ -71,8 +71,17 @@ class User extends Authenticatable implements MustVerifyEmail
         if ($this->avatar) {
             return '<img src="' . Storage::url($this->avatar) . '"  alt="User Avatar"/>';
         }
-
         return '<span class="k-badge k-badge--username k-badge--lg k-badge--brand">' . $this->firstName()[0] . '</span>';
+    }
+
+    /**
+     * Returns the user role
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function userRole()
+    {
+        return $this->belongsTo(UserRole::class);
     }
 
     /**
@@ -103,15 +112,5 @@ class User extends Authenticatable implements MustVerifyEmail
     public function company()
     {
         return $this->belongsTo('App\Company');
-    }
-
-    /**
-     * Return the user's company role
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function companyRole()
-    {
-        return $this->belongsTo('App\CompanyRole');
     }
 }

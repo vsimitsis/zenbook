@@ -48,8 +48,8 @@
                                     <select name="role" class="form-control filter-select">
                                         <option value="all" {{ ($role == 'all' || $role == null) ? 'selected' : ''}}>All</option>
                                         <option value="administrator" {{ $role == 'administrator' ? 'selected' : ''}}>Administrator</option>
-                                        <option value="manager" {{ $role == 'manager' ? 'selected' : ''}}>Manager</option>
-                                        <option value="employee" {{ $role == 'employee' ? 'selected' : ''}}>Employee</option>
+                                        <option value="teacher" {{ $role == 'teacher' ? 'selected' : ''}}>Teacher</option>
+                                        <option value="student" {{ $role == 'student' ? 'selected' : ''}}>Student</option>
                                     </select>
                                 </div>
 
@@ -93,7 +93,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{ $user->companyRole->name }}</td>
+                                <td>{{ $user->userRole->name }}</td>
                                 <td><a href="mailto:{{ $user->email }}" class="k-user-card-v2__email k-link">{{ $user->email }}</a></td>
                                 <td>{{ $user->contacts->first() ? $user->contacts->first()->mobile : '-' }}</td>
                                 <td>
@@ -126,6 +126,10 @@
                         @endforeach
                         </tbody>
                     </table>
+
+                    @if($users->isEmpty())
+                        <div class="zero-results">No results found.</div>
+                    @endif
                 </div>
             </div>
 

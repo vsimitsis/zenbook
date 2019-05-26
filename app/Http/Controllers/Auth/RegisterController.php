@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Company;
-use App\CompanyRole;
+use App\userRole;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -75,7 +75,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'company_id' => $company->id,
-            'company_role_id' => CompanyRole::ADMINISTRATOR,
+            'user_role_id' => userRole::ADMINISTRATOR,
             'password' => Hash::make($data['password']),
             'status' => User::ACTIVE
         ]);
