@@ -4,7 +4,6 @@
         <div class="k-aside__brand-logo">
             <a href="{{ route('dashboard.index') }}">
                 <img alt="Logo" src="{{ asset('assets/media/logos/logo-6.png') }}" />
-                {{ $currentCompany->name }}
             </a>
         </div>
         <div class="k-aside__brand-tools">

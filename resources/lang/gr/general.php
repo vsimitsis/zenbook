@@ -20,7 +20,7 @@ return [
     'all'              => 'Όλα',
     'active'           => 'Ενεργή',
     'pending'          => 'Εκρεμμεί',
-    'suspended'        => 'Suspended',
+    'suspended'        => 'Ανενεργός',
     'administrator'    => 'Διαχειριστής',
     'teacher'          => 'Καθηγητής',
     'student'          => 'Μαθητής',
