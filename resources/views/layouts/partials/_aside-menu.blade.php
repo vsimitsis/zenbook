@@ -29,7 +29,7 @@
 
             <li class="k-menu__item {{ Request::is('lessons*') ? 'k-menu__item--active' : '' }}">
                 <a href="{{ route('lesson.index') }}" class="k-menu__link">
-                    <i class="k-menu__link-icon flaticon-folder"></i>
+                    <i class="k-menu__link-icon flaticon-presentation-1"></i>
                     <span class="k-menu__link-text">{{ __('general.lessons') }}</span>
                 </a>
             </li>
