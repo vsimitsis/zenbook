@@ -19,7 +19,7 @@ class LanguageTableSeeder extends Seeder
 
         \App\Language::create([
             'language' => 'Greek',
-            'locale'   => 'el',
+            'locale'   => 'gr',
             'icon'     => 'images/flags/gr.svg'
         ]);
     }

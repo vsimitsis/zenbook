@@ -14,7 +14,7 @@ class AddCompanyIdFieldAtUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('company_id')->unsigned()->after('email');
+            $table->unsignedBigInteger('company_id')->after('email');
             $table->foreign('company_id')
                 ->references('id')
                 ->on('companies')

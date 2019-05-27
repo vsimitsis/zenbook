@@ -14,14 +14,14 @@ class CreateUserSettingsTable extends Migration
     public function up()
     {
         Schema::create('user_settings', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('user_id')->nullable();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->unsignedInteger('language_id')->nullable();
+            $table->unsignedBigInteger('language_id')->nullable();
             $table->foreign('language_id')
                 ->references('id')
                 ->on('languages')

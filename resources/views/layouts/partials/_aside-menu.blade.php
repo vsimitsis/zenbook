@@ -22,7 +22,7 @@
 
             <li class="k-menu__item {{ Request::is('users*') ? 'k-menu__item--active' : '' }}">
                 <a href="{{ route('user.index') }}" class="k-menu__link">
-                    <i class="k-menu__link-icon flaticon-profile-1"></i>
+                    <i class="k-menu__link-icon flaticon-users"></i>
                     <span class="k-menu__link-text">{{ __('general.users') }}</span>
                 </a>
             </li>

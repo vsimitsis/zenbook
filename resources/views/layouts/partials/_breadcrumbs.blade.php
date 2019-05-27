@@ -17,8 +17,8 @@
                 </div>
             </div>
             <a href="#" class="btn btn-sm btn-elevate btn-brand" id="k_dashboard_daterangepicker" data-toggle="k-tooltip" title="Select dashboard daterange" data-placement="left">
-                <span class="k-opacity-7" id="k_dashboard_daterangepicker_title">Today</span>&nbsp;
-                <span class="k-font-bold" id="k_dashboard_daterangepicker_date">Aug 16</span>
+                <span class="k-opacity-7" id="k_dashboard_daterangepicker_title">{{ \App\DateHelper::calendarDayTranslator() }}</span>&nbsp;
+                <span class="k-font-bold" id="k_dashboard_daterangepicker_date">{{ \Carbon\Carbon::now()->format('H:i') }}</span>
                 <i class="flaticon-calendar-with-a-clock-time-tools k-padding-l-5 k-padding-r-0"></i>
             </a>
         </div>

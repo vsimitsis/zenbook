@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use App\userRole;
-use App\Timezone;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -28,15 +27,10 @@ class UserRequest extends FormRequest
     {
         $rules = [
             'name' => 'required|string|max:255',
-            'company_role' => [
+            'user_role' => [
                 'required',
                 'integer',
                 Rule::in(userRole::all()->pluck('id'))
-            ],
-            'timezone' => [
-                'required',
-                'integer',
-                Rule::in(Timezone::all()->pluck('id'))
             ],
             'contact-list' => 'nullable|array',
             'address-list' => 'nullable|array',
@@ -58,7 +52,6 @@ class UserRequest extends FormRequest
 
         if ($this->request->get('address-list')) {
             foreach ($this->request->get('address-list') as $key => $contact) {
-                $rules['address-list.'.$key.'.building_name'] = 'nullable|string|max:255';
                 $rules['address-list.'.$key.'.address1'] = 'nullable|string|max:255';
                 $rules['address-list.'.$key.'.address2'] = 'nullable|string|max:255';
                 $rules['address-list.'.$key.'.postcode'] = 'nullable|string|max:35';
@@ -81,7 +74,6 @@ class UserRequest extends FormRequest
             'contact-list.*.email.max' => 'The contact email must be max 255 characters.',
             'contact-list.*.mobile.max' => 'The contact mobile number must be max 35 characters.',
             'contact-list.*.landline.max' => 'The contact landline number be max 35 characters.',
-            'address-list.*.building_name.max' => 'The building name must be max 255 characters.',
             'address-list.*.address1.max' => 'The address 1 must be max 255 characters.',
             'address-list.*.address2.max' => 'The address 2 must be max 255 characters.',
             'address-list.*.postcode.max' => 'The postcode must be max 35 characters.',

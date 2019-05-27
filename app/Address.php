@@ -12,4 +12,14 @@ class Address extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * Return the model that owns this address
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function addressable()
+    {
+        return $this->morphTo();
+    }
 }

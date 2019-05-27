@@ -14,6 +14,16 @@ class UserSetting extends Model
     protected $guarded = [];
 
     /**
+     * Return the user's language locale or fetch the default
+     *
+     * @return \Illuminate\Config\Repository|mixed
+     */
+    public function locale()
+    {
+        return $this->language()->locale ?? config('app.locale');
+    }
+
+    /**
      * Return the user these settings belongs to
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

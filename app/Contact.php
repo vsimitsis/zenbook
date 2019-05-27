@@ -12,4 +12,14 @@ class Contact extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * Return the model that owns this contact
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function contactable()
+    {
+        return $this->morphTo();
+    }
 }

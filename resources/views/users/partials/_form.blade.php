@@ -27,7 +27,7 @@
     </div>
 
 
-    @include('users.partials._user-company-role-field')
+    @include('users.partials._user-role-field')
 
     <div class="k-separator k-separator--space-sm k-separator--border-dashed"></div>
     <h3 class="k-heading k-heading--md">2. Contacts:</h3>
@@ -110,21 +110,10 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-3 col-md-2 col-form-label">Building Name:</label>
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i class="la la-home"></i></span></div>
-                                <input type="text" name="building_name" class="form-control"
-                                       value="{{ old('address-list.0.building_name', $addresses->first() ? $addresses->first()->building_name : '') }}" placeholder="Enter building number">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
                         <label class="col-sm-3 col-md-2 col-form-label">Address 1:</label>
                         <div class="col-sm-6">
                             <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i class="la la-road"></i></span></div>
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="la la-home"></i></span></div>
                                 <input type="text" name="address1" class="form-control"
                                        value="{{ old('address-list.0.address1', $addresses->first() ? $addresses->first()->address1 : '') }}" placeholder="Enter address 1">
                             </div>
@@ -164,6 +153,22 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label for="country" class="col-sm-3 col-md-2 col-form-label">Country:</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="la la-flag"></i></span></div>
+                                <select id="country" name="country" class="form-control">
+                                    <option value="0" selected>Select Country</option>
+                                    @foreach($countries as $country)
+                                        <option value="{{ $country->id }}" {{ old('address-list.0.country', $addresses->first() ? $addresses->first()->country_id : '') == $country->id ? 'selected' : '' }}>
+                                            {{ $country->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="k-separator k-separator--border-dashed"></div>
                     <div class="k-separator k-separator--height-sm"></div>
                 </div>

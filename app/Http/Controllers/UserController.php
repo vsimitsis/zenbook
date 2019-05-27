@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Address;
+use App\Traits\AddressTrait;
+use App\Traits\ContactTrait;
 use App\userRole;
-use App\Contact;
 use App\Country;
 use App\Http\Requests\UserRequest;
 use App\Mail\UserInvitation;
-use App\Timezone;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +16,8 @@ use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
+    use AddressTrait, ContactTrait;
+
     /**
      * Return the users index page
      *
@@ -49,19 +50,31 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * Return the user create page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         $user = new User();
 
         return view('users.create', [
-            'user' => $user,
-            'contacts' => $user->contacts,
+            'user'      => $user,
+            'contacts'  => $user->contacts,
             'addresses' => $user->addresses,
-            'company' => Auth::user()->company,
+            'company'   => Auth::user()->company,
             'userRoles' => UserRole::all(),
+            'countries' => Country::all(),
         ]);
     }
 
+    /**
+     * Store a newly created user
+     *
+     * @param UserRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function store(UserRequest $request)
     {
         $this->authorize('create', User::class);
@@ -71,9 +84,8 @@ class UserController extends Controller
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
-            'timezone_id' => $request->timezone,
             'company_id' => $currentUser->company->id,
-            'user_role_id' => $request->company_role,
+            'user_role_id' => $request->user_role,
             'password' => Hash::make(str_random(8)),
             'avatar' => null,
             'status' => User::PENDING
@@ -104,11 +116,12 @@ class UserController extends Controller
         $this->authorize('edit', $user);
 
         return view('users.edit', [
-            'user' => $user,
-            'company' => $user->company,
-            'contacts' => $user->contacts,
+            'user'      => $user,
+            'company'   => $user->company,
+            'contacts'  => $user->contacts,
             'addresses' => $user->addresses,
             'userRoles' => UserRole::all(),
+            'countries' => Country::all(),
         ]);
     }
 
@@ -125,8 +138,8 @@ class UserController extends Controller
         $this->authorize('edit', $user);
 
         if ($this->updateDetails($request, $user)) {
-            $this->insertContacts($request, $user, true);
-            $this->insertAddresses($request, $user, true);
+            $this->storeContacts($request, $user, true);
+            $this->storeAddresses($request, $user, true);
 
             return redirect(route('user.index'))
                 ->with('success', 'User\'s account has been updated successfully.');
@@ -143,7 +156,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function delete(User $user)
+    public function destroy(User $user)
     {
         if ($user->delete()) {
             return redirect(route('user.index'))
@@ -195,73 +208,9 @@ class UserController extends Controller
     {
         $user->name  = $request->name;
         $user->email = $request->email;
-        $user->timezone_id = $request->timezone;
-        $user->user_role_id = $request->company_role;
+        $user->user_role_id = $request->user_role;
 
         return $user->save();
-    }
-
-    /**
-     * Remove and re attach all the new contacts
-     *
-     * @param UserRequest $request
-     * @param User $user
-     * @param boolean $update
-     */
-    private function insertContacts(UserRequest $request, User $user, $update = false)
-    {
-        if ($update) {
-            $user->contacts()->delete();
-            $user->contacts()->detach();
-        }
-
-        if ($request->get('contact-list')) {
-            foreach ($request->get('contact-list') as $newContact) {
-                if ($this->arrayIsNull($newContact)) {
-                    continue;
-                }
-
-                $contact = Contact::create([
-                    'email' => $newContact['email'],
-                    'mobile' => $newContact['mobile'],
-                    'landline' => $newContact['landline']
-                ]);
-                $user->contacts()->attach($contact->id);
-            }
-        }
-    }
-
-    /**
-     * Remove and re attach all the new addresses
-     *
-     * @param UserRequest $request
-     * @param User $user
-     * @param boolean $update
-     */
-    private function insertAddresses(UserRequest $request, User $user, $update = false)
-    {
-        if ($update) {
-            $user->addresses()->delete();
-            $user->addresses()->detach();
-        }
-
-        if ($request->get('address-list')) {
-            foreach ($request->get('address-list') as $newAddress) {
-                if ($this->arrayIsNull($newAddress)) {
-                    continue;
-                }
-
-                $address = Address::create([
-                    'building_name' => $newAddress['building_name'],
-                    'address1' => $newAddress['address1'],
-                    'address2' => $newAddress['address2'],
-                    'postcode' => $newAddress['postcode'],
-                    'city' => $newAddress['city'],
-                    'country_id' => $newAddress['country'] != 0 ? $newAddress['country'] : null,
-                ]);
-                $user->addresses()->attach($address->id);
-            }
-        }
     }
 
     /**

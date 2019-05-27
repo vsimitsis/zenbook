@@ -31,16 +31,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'timezone_id',
-        'password',
-        'company_id',
-        'company_role_id',
-        'avatar',
-        'status'
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -97,21 +88,21 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Return the user's contacts
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
      */
     public function contacts()
     {
-        return $this->belongsToMany('App\Contact');
+        return $this->morphToMany(Contact::class, 'contactable');
     }
 
     /**
      * Return the user's addresses
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
      */
     public function addresses()
     {
-        return $this->belongsToMany('App\Address');
+        return $this->morphToMany(Address::class, 'addressable');
     }
 
     /**

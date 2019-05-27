@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
          * Fixed Seeders
          */
         $this->call(UserRoleTableSeeder::class);
+        $this->call(CountryTableSeeder::class);
         $this->call(LanguageTableSeeder::class);
 
         /**

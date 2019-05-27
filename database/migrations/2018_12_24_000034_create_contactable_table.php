@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContactUserTable extends Migration
+class CreateContactableTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,15 @@ class CreateContactUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('contact_user', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->integer('contact_id')->unsigned();
+        Schema::create('contactables', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('contact_id');
             $table->foreign('contact_id')
                 ->references('id')
                 ->on('contacts')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->morphs('contactable');
             $table->boolean('default')->default(false);
         });
     }
@@ -38,6 +33,6 @@ class CreateContactUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contact_user');
+        Schema::dropIfExists('contactables');
     }
 }

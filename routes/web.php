@@ -19,7 +19,7 @@ Route::group(array('domain' => 'console.' . config('app.domain')), function() {
         Route::get('/users/{user}/edit', 'UserController@edit')->name('user.edit');
         Route::put('users/{user}/update', 'UserController@update')->name('user.update');
         Route::post('/users/{user}/status', 'UserController@updateStatus')->name('user.status');
-        Route::delete('/users/{user}/delete', 'UserController@delete')->name('user.delete');
+        Route::delete('/users/{user}/delete', 'UserController@destroy')->name('user.delete');
 
         /**
          * User settings routes
