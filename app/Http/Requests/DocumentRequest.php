@@ -59,6 +59,7 @@ class DocumentRequest extends FormRequest
             'access.integer'           => __('rules.access.integer'),
             'name.max'                 => __('rules.filename_max'),
             'user_access.required_if'  => __('rules.user_access_required'),
+            'document.required'        => __('rules.document_required'),
         ];
     }
 }

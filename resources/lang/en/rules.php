@@ -9,6 +9,7 @@ return [
     'filename_max'         => 'The filename can consist of 255 characters max.',
     'access.required'      => 'The access field is required.',
     'access.integer'       => 'The access field must be an integer.',
+    'document_required'    => 'The document is required.',
     'first_name.required'  => 'The first name is required.',
     'first_name.min'       => 'First name must be at least 3 characters.',
     'first_name.max'       => 'First name must be 55 characters maximum.',
