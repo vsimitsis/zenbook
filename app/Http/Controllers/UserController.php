@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -82,13 +83,15 @@ class UserController extends Controller
         $currentUser = Auth::user();
 
         $user = new User([
-            'name' => $request->name,
-            'email' => $request->email,
-            'company_id' => $currentUser->company->id,
+            'unique_ref'    => User::generateUniqueID(),
+            'first_name'   => $request->first_name,
+            'last_name'    => $request->last_name,
+            'email'        => $request->email,
+            'company_id'   => $currentUser->company->id,
             'user_role_id' => $request->user_role,
-            'password' => Hash::make(str_random(8)),
-            'avatar' => null,
-            'status' => User::PENDING
+            'password'     => Hash::make(Str::random(8)),
+            'avatar'       => null,
+            'status'       => User::PENDING
         ]);
 
         if ($user->save()) {

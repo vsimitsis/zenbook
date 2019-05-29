@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -27,7 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
     const SUSPENDED = 3;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that are not mass assignable.
      *
      * @var array
      */
@@ -43,13 +44,13 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * Return the user's first name
+     * Return the full name of the user
      *
-     * @return mixed
+     * @return string
      */
-    public function firstName()
+    public function fullName()
     {
-        return explode(" ", $this->name)[0];
+        return $this->first_name . ' ' . $this->last_name;
     }
 
     /**
@@ -72,7 +73,7 @@ class User extends Authenticatable implements MustVerifyEmail
         if ($this->avatar) {
             return '<img src="' . Storage::url($this->avatar) . '"  alt="User Avatar"/>';
         }
-        return '<span class="k-badge k-badge--username k-badge--lg k-badge--brand">' . $this->firstName()[0] . '</span>';
+        return '<span class="k-badge k-badge--username k-badge--lg k-badge--brand">' . mb_substr($this->first_name, 0, 1) . '</span>';
     }
 
     /**
@@ -113,5 +114,16 @@ class User extends Authenticatable implements MustVerifyEmail
     public function company()
     {
         return $this->belongsTo('App\Company');
+    }
+
+    /**
+     * Return a unique reference string for the user
+     *
+     * @param string $prefix
+     * @return string
+     */
+    public static function generateUniqueID(string $prefix = null) :string
+    {
+        return $prefix . Str::random(12);
     }
 }

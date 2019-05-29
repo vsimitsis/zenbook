@@ -12,15 +12,19 @@ class DummyDataTableSeeder extends Seeder
     public function run()
     {
         \App\Company::create([
+            'unique_ref'  => \App\Company::generateUniqueID(),
             'name' => 'VS Solutions',
         ]);
 
         \App\Company::create([
+            'unique_ref'  => \App\Company::generateUniqueID(),
             'name' => 'Hexabit',
         ]);
 
         \App\User::create([
-            'name' => 'Vagelis Simitsis',
+            'unique_ref'  => \App\User::generateUniqueID(),
+            'first_name' => 'Vagelis',
+            'last_name'  => 'Simitsis',
             'email' => 'vagelis@example.com',
             'email_verified_at' => \Carbon\Carbon::now(),
             'company_id' => 1,
@@ -30,7 +34,9 @@ class DummyDataTableSeeder extends Seeder
         ]);
 
         \App\User::create([
-            'name' => 'Tea Sapna',
+            'unique_ref'  => \App\User::generateUniqueID(),
+            'first_name' => 'Tea',
+            'last_name'  => 'Sapna',
             'email' => 'tea@example.com',
             'email_verified_at' => \Carbon\Carbon::now(),
             'company_id' => 1,
@@ -40,7 +46,9 @@ class DummyDataTableSeeder extends Seeder
         ]);
 
         \App\User::create([
-            'name' => 'Mpampis Saragias',
+            'unique_ref'  => \App\User::generateUniqueID(),
+            'first_name' => 'Mpampis',
+            'last_name'  => 'Saragias',
             'email' => 'mpampis@example.com',
             'email_verified_at' => \Carbon\Carbon::now(),
             'company_id' => 2,

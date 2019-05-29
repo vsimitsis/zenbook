@@ -1,10 +1,10 @@
 @extends('layouts.console')
-@section('title', __('general.users'))
+@section('title', __('models.users'))
 @section('breadcrumbs')
     <div class="k-content__head-breadcrumbs">
         <a href="{{ route('dashboard.index') }}" class="k-content__head-breadcrumb-home"><i class="flaticon2-shelter"></i></a>
         <span class="k-content__head-breadcrumb-separator"></span>
-        <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active">{{ __('general.users') }}</span>
+        <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active">{{ __('models.users') }}</span>
     </div>
 @endsection
 
@@ -12,18 +12,18 @@
     <div class="k-portlet k-portlet--mobile">
         <div class="k-portlet__head k-portlet__head--lg">
             <div class="k-portlet__head-label">
-                <h3 class="k-portlet__head-title">{{ __('general.users') }}</h3>
+                <h3 class="k-portlet__head-title">{{ __('models.users') }}</h3>
             </div>
             <div class="k-portlet__head-toolbar">
                 <a href="{{ route('dashboard.index') }}" class="btn btn-sm-no-icon btn-outline-secondary k-margin-r-10">
                     <i class="la la-arrow-left"></i>
-                    <span class="k-hidden-mobile">{{ __('general.back') }}</span>
+                    <span class="k-hidden-mobile">{{ __('actions.back') }}</span>
                 </a>
                 @can('create', \App\User::class)
                     <div class="btn-group">
                         <a href="{{ route('user.create') }}" class="btn btn-sm-no-icon btn-outline-brand">
                             <i class="la la-plus"></i>
-                            <span class="k-hidden-mobile">{{ __('general.add') }}</span>
+                            <span class="k-hidden-mobile">{{ __('actions.add') }}</span>
                         </a>
                     </div>
                 @endcan
@@ -48,8 +48,8 @@
                                     <select name="role" class="form-control filter-select">
                                         <option value="all" {{ ($role == 'all' || $role == null) ? 'selected' : ''}}>{{ __('general.all') }}</option>
                                         <option value="administrator" {{ $role == 'administrator' ? 'selected' : ''}}>{{ __('general.administrator') }}</option>
-                                        <option value="teacher" {{ $role == 'teacher' ? 'selected' : ''}}>{{ __('general.teacher') }}</option>
-                                        <option value="student" {{ $role == 'student' ? 'selected' : ''}}>{{ __('general.student') }}</option>
+                                        <option value="teacher" {{ $role == 'teacher' ? 'selected' : ''}}>{{ __('models.teacher') }}</option>
+                                        <option value="student" {{ $role == 'student' ? 'selected' : ''}}>{{ __('models.student') }}</option>
                                     </select>
                                 </div>
 
@@ -71,12 +71,12 @@
                     <table class="table table-hover table-bordered table-striped dataTable">
                         <thead>
                         <tr>
-                            <th class="sorting_desc">{{ __('general.user') }}</th>
-                            <th class="sorting">{{ __('general.role') }}</th>
+                            <th class="sorting_desc">{{ __('models.user') }}</th>
+                            <th class="sorting">{{ __('models.role') }}</th>
                             <th class="sorting">{{ __('general.email') }}</th>
                             <th class="sorting">{{ __('general.phone') }}</th>
                             <th class="sorting">{{ __('general.status') }}</th>
-                            <th>{{ __('general.actions') }}</th>
+                            <th>{{ __('actions.actions') }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -93,7 +93,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{ __('general.' . lcfirst($user->userRole->name)) }}</td>
+                                <td>{{ __('models.' . lcfirst($user->userRole->name)) }}</td>
                                 <td><a href="mailto:{{ $user->email }}" class="k-user-card-v2__email k-link">{{ $user->email }}</a></td>
                                 <td>{{ $user->contacts->first() ? $user->contacts->first()->mobile : '-' }}</td>
                                 <td>

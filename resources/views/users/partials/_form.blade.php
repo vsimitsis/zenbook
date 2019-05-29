@@ -3,14 +3,28 @@
 
     <h3 class="k-heading k-heading--md k-heading--no-top-margin">1. Details:</h3>
     <div class="form-group row">
-        <label class="col-sm-3 col-md-2 col-form-label">Full Name:</label>
+        <label for="first_name" class="col-sm-3 col-md-2 col-form-label">First Name:</label>
         <div class="col-sm-6">
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
-                <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name', $user->name) }}" placeholder="Enter full name">
-                <div class="invalid-feedback">{{ $errors->first('name') }}</div>
+                <input type="text" id="first_name" name="first_name"
+                       class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}" value="{{ old('first_name', $user->first_name) }}" placeholder="Enter the first name">
+                <div class="invalid-feedback">{{ $errors->first('first_name') }}</div>
             </div>
-            <span class="form-text text-muted">Please enter the full name.</span>
+            <span class="form-text text-muted">Please enter the first name.</span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="last_name" class="col-sm-3 col-md-2 col-form-label">Last Name:</label>
+        <div class="col-sm-6">
+            <div class="input-group">
+                <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
+                <input type="text" id="last_name" name="last_name"
+                       class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}" value="{{ old('last_name', $user->last_name) }}" placeholder="Enter the last name">
+                <div class="invalid-feedback">{{ $errors->first('last_name') }}</div>
+            </div>
+            <span class="form-text text-muted">Please enter the last name.</span>
         </div>
     </div>
 
@@ -25,7 +39,6 @@
             <span class="form-text text-muted">This is the primary email address.</span>
         </div>
     </div>
-
 
     @include('users.partials._user-role-field')
 

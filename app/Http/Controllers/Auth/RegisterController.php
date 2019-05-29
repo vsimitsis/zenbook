@@ -51,10 +51,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'company' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'first_name' => ['required', 'alpha', 'max:55'],
+            'last_name'  => ['required', 'alpha', 'max:55'],
+            'email'      => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'company'    => ['required', 'string', 'max:255'],
+            'password'   => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -72,12 +73,14 @@ class RegisterController extends Controller
         ]);
 
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'company_id' => $company->id,
+            'unique_ref'    => User::generateUniqueID(),
+            'first_name'   => $data['first_name'],
+            'last_name'    => $data['last_name'],
+            'email'        => $data['email'],
+            'company_id'   => $company->id,
             'user_role_id' => userRole::ADMINISTRATOR,
-            'password' => Hash::make($data['password']),
-            'status' => User::ACTIVE
+            'password'     => Hash::make($data['password']),
+            'status'       => User::ACTIVE
         ]);
     }
 }

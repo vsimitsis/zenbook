@@ -15,6 +15,7 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('unique_ref')->unique();
             $table->string('name')->unique();
             $table->string('logo')->nullable();
             $table->timestamps();

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Company extends Model
 {
@@ -20,46 +21,27 @@ class Company extends Model
      */
     public function users()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany(User::class);
     }
 
     /**
-     * Return all the company administrators
+     * Return the documents of the company
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function administrators()
+    public function documents()
     {
-        return $this->users()->where('user_role_id', userRole::ADMINISTRATOR);
+        return $this->hasMany(Document::class);
     }
 
     /**
-     * Return all the company managers
+     * Return a unique reference string for the company
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @param string $prefix
+     * @return string
      */
-    public function managers()
+    public static function generateUniqueID(string $prefix = null) :string
     {
-        return $this->users()->where('user_role_id', userRole::TEACHER);
-    }
-
-    /**
-     * Return all the company employees
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function employees()
-    {
-        return $this->users()->where('user_role_id', userRole::STUDENT);
-    }
-
-    /**
-     * Return all the company customers
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function customers()
-    {
-        return $this->hasMany('App\Customer');
+        return $prefix . Str::random(12);
     }
 }

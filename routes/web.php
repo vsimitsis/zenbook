@@ -35,6 +35,8 @@ Route::group(array('domain' => 'console.' . config('app.domain')), function() {
          * Document routes
          */
         Route::get('/documents', 'DocumentController@index')->name('document.index');
+        Route::get('/documents/create', 'DocumentController@create')->name('document.create');
+        Route::post('/documents/create', 'DocumentController@store')->name('document.store');
 
         /**
          * Notification routes

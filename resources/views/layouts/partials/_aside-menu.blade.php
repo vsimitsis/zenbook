@@ -23,21 +23,21 @@
             <li class="k-menu__item {{ Request::is('users*') ? 'k-menu__item--active' : '' }}">
                 <a href="{{ route('user.index') }}" class="k-menu__link">
                     <i class="k-menu__link-icon flaticon-users"></i>
-                    <span class="k-menu__link-text">{{ __('general.users') }}</span>
+                    <span class="k-menu__link-text">{{ __('models.users') }}</span>
                 </a>
             </li>
 
             <li class="k-menu__item {{ Request::is('lessons*') ? 'k-menu__item--active' : '' }}">
                 <a href="{{ route('lesson.index') }}" class="k-menu__link">
                     <i class="k-menu__link-icon flaticon-presentation-1"></i>
-                    <span class="k-menu__link-text">{{ __('general.lessons') }}</span>
+                    <span class="k-menu__link-text">{{ __('models.lessons') }}</span>
                 </a>
             </li>
 
             <li class="k-menu__item {{ Request::is('documents*') ? 'k-menu__item--active' : '' }}">
                 <a href="{{ route('document.index') }}" class="k-menu__link">
                     <i class="k-menu__link-icon flaticon-file-2"></i>
-                    <span class="k-menu__link-text">{{ __('general.documents') }}</span>
+                    <span class="k-menu__link-text">{{ __('models.documents') }}</span>
                 </a>
             </li>
 

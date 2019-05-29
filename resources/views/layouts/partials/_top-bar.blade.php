@@ -388,7 +388,7 @@
             <div class="k-header__topbar-wrapper" data-toggle="dropdown" data-offset="10px -2px">
                 <div class="k-header__topbar-user">
                     <span class="k-header__topbar-welcome k-hidden-mobile">{{ __('general.hi') }},</span>
-                    <span class="k-header__topbar-username k-hidden-mobile">{{ $currentUser->firstName() }}</span>
+                    <span class="k-header__topbar-username k-hidden-mobile">{{ $currentUser->first_name }}</span>
                     {!! $currentUser->avatar() !!}
                 </div>
             </div>
