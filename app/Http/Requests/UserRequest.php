@@ -26,8 +26,8 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'first_name' => 'required|string|max:55',
-            'last_name'  => 'required|alpha|max:55',
+            'first_name' => 'required|string|min:3|max:55',
+            'last_name'  => 'required|alpha|min:3|max:55',
             'user_role' => [
                 'required',
                 'integer',
@@ -72,13 +72,19 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'contact-list.*.email.max' => 'The contact email must be max 255 characters.',
-            'contact-list.*.mobile.max' => 'The contact mobile number must be max 35 characters.',
-            'contact-list.*.landline.max' => 'The contact landline number be max 35 characters.',
-            'address-list.*.address1.max' => 'The address 1 must be max 255 characters.',
-            'address-list.*.address2.max' => 'The address 2 must be max 255 characters.',
-            'address-list.*.postcode.max' => 'The postcode must be max 35 characters.',
-            'address-list.*.city.max' => 'The city must be max 255 characters.',
+            'first_name.required'         => __('rules.first_name_required'),
+            'first_name.min'              => __('rules.first_name_min'),
+            'first_name.max'              => __('rules.first_name_max'),
+            'last_name.required'          => __('rules.last_required'),
+            'last_name.min'               => __('rules.last_name_min'),
+            'last_name.max'               => __('rules.last_name_max'),
+            'contact-list.*.email.max'    => __('rules.email_max'),
+            'contact-list.*.mobile.max'   => __('rules.mobile_max'),
+            'contact-list.*.landline.max' => __('rules.landline_max'),
+            'address-list.*.address1.max' => __('rules.address1.max'),
+            'address-list.*.address2.max' => __('rules.address2.max'),
+            'address-list.*.postcode.max' => __('rules.postcode.max'),
+            'address-list.*.city.max'     => __('rules.city.max'),
         ];
     }
 }

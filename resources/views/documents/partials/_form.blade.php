@@ -18,7 +18,7 @@
         <div class="col-sm-6">
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-key"></i></span></div>
-                <select id="access" name="access" class="form-control {{ $errors->has('access_rights') ? 'is-invalid' : '' }}">
+                <select id="access" name="access" class="form-control {{ $errors->has('access') ? 'is-invalid' : '' }}">
                     <option value="3" {{ old('access') == null || old('access') == 3 ? 'selected' : '' }}>{{ __('general.private') }}</option>
                     <option value="1" {{ old('access') == '1' ? 'selected' : '' }}>{{ __('general.public') }}</option>
                     <option value="2" {{ old('access') == '2' ? 'selected' : '' }}>{{ __('general.shared') }}</option>
@@ -40,6 +40,10 @@
                         <span></span>
                     </label>
                 @endforeach
+
+                @if($errors->has('user_access'))
+                    <div class="text-danger">{{ $errors->first('user_access') }}</div>
+                @endif
             </div>
             <span class="form-text text-muted">{{ __('actions.select_user_access') }}</span>
         </div>
@@ -49,8 +53,9 @@
         <label class="col-sm-3 col-md-2 col-form-label">{{ __('models.documents') }}:</label>
         <div class="col-sm-6">
             <div class="custom-file">
-                <input type="file" name="document" class="custom-file-input">
+                <input type="file" name="document" class="custom-file-input {{ $errors->has('document') ? 'is-invalid' : '' }}">
                 <label class="custom-file-label" for="file">{{ __('actions.choose_file') }}</label>
+                <div class="invalid-feedback">{{ $errors->first('document') }}</div>
             </div>
         </div>
     </div>
@@ -58,6 +63,13 @@
 
 @push('scripts')
     <script>
+        $(document).ready(function () {
+            if ($('#access').val() === '2') {
+                $('#user_access_field').removeClass('d-none');
+            } else {
+                $('#user_access_field').addClass('d-none');
+            }
+        })
         $('#access').on('change', function () {
             if ($(this).val() === '2') {
                 $('#user_access_field').removeClass('d-none');

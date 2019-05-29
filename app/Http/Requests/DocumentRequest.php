@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Document;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class DocumentRequest extends FormRequest
@@ -26,7 +27,7 @@ class DocumentRequest extends FormRequest
     public function rules()
     {
         return [
-            'original_filename' => 'nullable|string|max:255',
+            'name'   => 'nullable|string|max:255',
             'access' => [
                 'required',
                 'integer',
@@ -36,7 +37,28 @@ class DocumentRequest extends FormRequest
                     Document::PRIVATE_ACCESS
                 ])
             ],
+            'user_access' => [
+                'required_if:access,' . Document::SHARED_ACCESS,
+                'nullable',
+                'array',
+                Rule::in(Auth::user()->company->users->pluck('id'))
+            ],
             'document' => 'required|file',
+        ];
+    }
+
+    /**
+     * Return custom validation error messages
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'access.required'          => __('rules.access.required'),
+            'access.integer'           => __('rules.access.integer'),
+            'name.max'                 => __('rules.filename_max'),
+            'user_access.required_if'  => __('rules.user_access_required'),
         ];
     }
 }
