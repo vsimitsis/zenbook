@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exam;
 use App\Http\Requests\ExamRequest;
+use App\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -58,12 +59,18 @@ class ExamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Exam  $exam
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Exam $exam
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Exam $exam)
+    public function show(Request $request, Exam $exam)
     {
-        //
+        return view('exams.show', [
+            'exam'     => $exam,
+            'sections' => $this->fetchSections($request, $exam),
+            'search'   => $request->search,
+            'status'   => $request->status,
+        ]);
     }
 
     /**
@@ -132,16 +139,45 @@ class ExamController extends Controller
 
         switch ($request->status) {
             case 'open':
-                $examQuery = $examQuery->where('status', Exam::OPEN_STATUS);
+                $examQuery = $examQuery->where('status', Exam::STATUS_OPEN);
                 break;
             case 'closed':
-                $examQuery = $examQuery->where('status', Exam::CLOSED_STATUS);
+                $examQuery = $examQuery->where('status', Exam::STATUS_CLOSED);
                 break;
             default:
                 break;
         }
 
         return $examQuery->paginate(10);
+    }
+
+    /**
+     * Fetch the exam's sections
+     *
+     * @param Request $request
+     * @param Exam $exam
+     * @return mixed
+     */
+    protected function fetchSections(Request $request, Exam $exam)
+    {
+        $sectionQuery = $exam->sections();
+
+        if ($request->search) {
+            $sectionQuery = $sectionQuery->where('name', 'LIKE', '%' . $request->search . '%');
+        }
+
+        switch ($request->status) {
+            case 'open':
+                $sectionQuery = $sectionQuery->where('status', Section::STATUS_OPEN);
+                break;
+            case 'closed':
+                $sectionQuery = $sectionQuery->where('status', Section::STATUS_CLOSED);
+                break;
+            default:
+                break;
+        }
+
+        return $sectionQuery->paginate(10);
     }
 
     /**

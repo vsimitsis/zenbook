@@ -9,12 +9,12 @@ class Exam extends Model
     /**
      * The constant for exam open status
      */
-    const OPEN_STATUS  = 1;
+    const STATUS_OPEN  = 1;
 
     /**
      * The constant for exam closed status
      */
-    const CLOSED_STATUS = 2;
+    const STATUS_CLOSED = 2;
 
     /**
      * The attributes that are not mass assignable
@@ -24,6 +24,16 @@ class Exam extends Model
     protected $guarded = [];
 
     /**
+     * Return all the sections of this exam
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function sections()
+    {
+        return $this->morphMany(Section::class, 'parent');
+    }
+
+    /**
      * Return the exam's status to html
      *
      * @return string
@@ -31,10 +41,10 @@ class Exam extends Model
     public function statusToHtml() :string
     {
         switch ($this->status) {
-            case self::OPEN_STATUS:
+            case self::STATUS_OPEN:
                 return '<span class="text-success">' . __('general.open') . '</span>';
                 break;
-            case self::CLOSED_STATUS:
+            case self::STATUS_CLOSED:
                 return '<span class="text-danger">' . __('general.closed') . '</span>';
                 break;
             default:

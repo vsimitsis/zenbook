@@ -30,7 +30,7 @@ class ExamRequest extends FormRequest
             'status' => [
                 'required',
                 'integer',
-                Rule::in([Exam::OPEN_STATUS, Exam::CLOSED_STATUS])
+                Rule::in([Exam::STATUS_OPEN, Exam::STATUS_CLOSED])
             ]
         ];
     }

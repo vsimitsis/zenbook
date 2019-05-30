@@ -55,6 +55,11 @@ Route::group(array('domain' => 'console.' . config('app.domain')), function() {
         Route::delete('exams/{exam}', 'ExamController@destroy')->name('exam.destroy');
 
         /**
+         * Section routes
+         */
+        Route::get('/sections/create', 'SectionController@create')->name('section.create');
+
+        /**
          * Notification routes
          */
         Route::get('/notifications', 'NotificationController@index')->name('notification.index');
