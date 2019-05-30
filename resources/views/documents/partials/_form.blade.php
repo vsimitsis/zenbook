@@ -6,7 +6,7 @@
         <div class="col-sm-6">
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-file"></i></span></div>
-                <input type="text" id="name" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name', $document->name) }}" placeholder="{{ __('rules.name') }}">
+                <input type="text" id="name" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name', $document->original_filename) }}" placeholder="{{ __('rules.name') }}">
                 <div class="invalid-feedback">{{ $errors->first('name') }}</div>
             </div>
             <span class="form-text text-muted">{{ __('rules.file_name_optional') }}</span>
@@ -19,9 +19,9 @@
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-key"></i></span></div>
                 <select id="access" name="access" class="form-control {{ $errors->has('access') ? 'is-invalid' : '' }}">
-                    <option value="3" {{ old('access') == null || old('access') == 3 ? 'selected' : '' }}>{{ __('general.private') }}</option>
-                    <option value="1" {{ old('access') == '1' ? 'selected' : '' }}>{{ __('general.public') }}</option>
-                    <option value="2" {{ old('access') == '2' ? 'selected' : '' }}>{{ __('general.shared') }}</option>
+                    <option value="3" {{ old('access', $document->access) == null || old('access', $document->access) == 3 ? 'selected' : '' }}>{{ __('general.private') }}</option>
+                    <option value="1" {{ old('access', $document->access) == '1' ? 'selected' : '' }}>{{ __('general.public') }}</option>
+                    <option value="2" {{ old('access', $document->access) == '2' ? 'selected' : '' }}>{{ __('general.shared') }}</option>
                 </select>
                 <div class="invalid-feedback">{{ $errors->first('access') }}</div>
             </div>
@@ -34,11 +34,14 @@
         <div class="col-sm-6">
             <div class="kt-checkbox-inline">
                 @foreach($currentCompany->users as $user)
-                    <label class="kt-checkbox mr-1">
-                        <input type="checkbox" name="user_access[]" value="{{ $user->id }}"
-                               class="mr-1" {{ old('user_access') && in_array($user->id, old('user_access')) ? 'checked' : '' }}>{{ $user->fullName() }}
-                        <span></span>
-                    </label>
+                    @if(!$user->is($currentUser))
+                        <label class="kt-checkbox mr-1">
+                            <input type="checkbox" name="user_access[]" value="{{ $user->id }}"
+                                   class="mr-1" {{ old('user_access') && in_array($user->id, old('user_access')) || in_array($user->id, $document->accessedUsers()->pluck('users.id')->toArray()) ? 'checked' : '' }}>
+                            {{ $user->fullName() }}
+                            <span></span>
+                        </label>
+                    @endif
                 @endforeach
 
                 @if($errors->has('user_access'))
@@ -49,16 +52,22 @@
         </div>
     </div>
 
-    <div class="form-group row">
-        <label class="col-sm-3 col-md-2 col-form-label">{{ __('models.documents') }}:</label>
-        <div class="col-sm-6">
-            <div class="custom-file">
-                <input type="file" name="document" class="custom-file-input {{ $errors->has('document') ? 'is-invalid' : '' }}">
-                <label class="custom-file-label" for="file">{{ __('actions.choose_file') }}</label>
-                <div class="invalid-feedback">{{ $errors->first('document') }}</div>
+    @if($edit)
+        <input type="hidden" name="action" value="edit">
+    @else
+        <input type="hidden" name="action" value="create">
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-md-2 col-form-label">{{ __('models.documents') }}:</label>
+            <div class="col-sm-6">
+                <div class="custom-file">
+                    <input type="file" name="document" class="custom-file-input {{ $errors->has('document') ? 'is-invalid' : '' }}">
+                    <label class="custom-file-label" for="file">{{ __('actions.choose_file') }}</label>
+                    <div class="invalid-feedback">{{ $errors->first('document') }}</div>
+                </div>
             </div>
         </div>
-    </div>
+    @endif
 </div>
 
 @push('scripts')

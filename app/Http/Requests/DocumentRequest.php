@@ -28,6 +28,11 @@ class DocumentRequest extends FormRequest
     {
         return [
             'name'   => 'nullable|string|max:255',
+            'action' => [
+                'required',
+                'alpha',
+                Rule::in(['create', 'edit'])
+            ],
             'access' => [
                 'required',
                 'integer',
@@ -43,7 +48,7 @@ class DocumentRequest extends FormRequest
                 'array',
                 Rule::in(Auth::user()->company->users->pluck('id'))
             ],
-            'document' => 'required|file',
+            'document' => 'required_if:action,create|file',
         ];
     }
 

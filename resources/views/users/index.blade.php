@@ -112,10 +112,8 @@
                                     </a>
                                     <span class="dropdown-menu dropdown-menu-right">
                                         @can('edit', $user)
-                                            <a class="dropdown-item" href="{{ route('user.edit', $user) }}"><i class="la la-edit"></i> Edit Details</a>
+                                            <a class="dropdown-item" href="{{ route('user.edit', $user) }}"><i class="la la-edit"></i> {{ __('actions.edit') }}</a>
                                         @endcan
-                                        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>
-                                        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>
                                     </span>
                                 </span>
                                     <a href="{{ route('user.show', $user) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
@@ -139,7 +137,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script src="{{ asset('js/filter-submit.js') }}"></script>
-@endpush

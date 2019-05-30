@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\userRole;
+use App\UserRole;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -18,7 +18,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        return $user->user_role_id < userRole::STUDENT;
+        return $user->user_role_id < UserRole::STUDENT;
     }
 
     /**
@@ -31,6 +31,6 @@ class UserPolicy
     public function edit(User $user, User $profile)
     {
         return $user->is($profile) ||
-            ($user->company->is($profile->company) && $user->userRole->id < userRole::STUDENT);
+            ($user->company->is($profile->company) && $user->userRole->id < UserRole::STUDENT);
     }
 }

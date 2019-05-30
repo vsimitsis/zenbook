@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            @include('documents.partials._form')
+            @include('documents.partials._form', ['edit' => false])
         </div>
     </form>
 @endsection

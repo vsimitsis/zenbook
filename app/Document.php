@@ -70,6 +70,16 @@ class Document extends Model
     }
 
     /**
+     * Return all the users that have access to this document
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function accessedUsers()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    /**
      * Return the document's access to html
      *
      * @return string
@@ -100,6 +110,6 @@ class Document extends Model
      */
     public static function buildS3Path(Company $company, User $user)
     {
-        return $company->unique_ref . '/' . $user->unique_ref . '/documents/';
+        return $company->unique_ref . '/' . $user->unique_ref . '/documents';
     }
 }

@@ -19,7 +19,7 @@ Route::group(array('domain' => 'console.' . config('app.domain')), function() {
         Route::get('/users/{user}/edit', 'UserController@edit')->name('user.edit');
         Route::put('users/{user}/update', 'UserController@update')->name('user.update');
         Route::post('/users/{user}/status', 'UserController@updateStatus')->name('user.status');
-        Route::delete('/users/{user}/delete', 'UserController@destroy')->name('user.delete');
+        Route::delete('/users/{user}/delete', 'UserController@destroy')->name('user.destroy');
 
         /**
          * User settings routes
@@ -37,6 +37,11 @@ Route::group(array('domain' => 'console.' . config('app.domain')), function() {
         Route::get('/documents', 'DocumentController@index')->name('document.index');
         Route::get('/documents/create', 'DocumentController@create')->name('document.create');
         Route::post('/documents/create', 'DocumentController@store')->name('document.store');
+        Route::get('/document/{document}/download', 'DocumentController@download')->name('document.download');
+        Route::get('/document/{document}', 'DocumentController@show')->name('document.show');
+        Route::get('/documents/{document}/edit', 'DocumentController@edit')->name('document.edit');
+        Route::put('/documents/{document}', 'DocumentController@update')->name('document.update');
+        Route::delete('documents/{document}', 'DocumentController@destroy')->name('document.destroy');
 
         /**
          * Notification routes

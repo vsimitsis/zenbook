@@ -73,7 +73,7 @@
                                 <h4 class="text-muted">Delete Account</h4>
                                 <p class="text-muted">This action cannot be undone.</p>
 
-                                <form action="{{ route('user.delete', $user) }}" method="POST">
+                                <form action="{{ route('user.destroy', $user) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                     <button type="button" class="btn btn-sm btn-outline-danger delete-alert"

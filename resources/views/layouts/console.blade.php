@@ -63,6 +63,10 @@
 <!-- Toastr Config -->
 <script src="{{ asset('js/toastr-config.js') }}"></script>
 
+<!-- Custom components -->
+<script src="{{ asset('js/sweetalert-delete.js') }}"></script>
+<script src="{{ asset('js/filter-submit.js') }}"></script>
+
 <script>
     $(document).ready(function () {
         @if(session('success'))
@@ -72,7 +76,7 @@
 
         @if(session('error'))
             let error = "{{ session('error') }}";
-            toastr.danger(error);
+            toastr.error(error);
         @endif
     });
 </script>

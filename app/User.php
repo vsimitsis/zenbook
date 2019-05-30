@@ -117,6 +117,16 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Return all the documents this user has access to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function accessedDocuments()
+    {
+        return $this->belongsToMany(Document::class);
+    }
+
+    /**
      * Return a unique reference string for the user
      *
      * @param string $prefix

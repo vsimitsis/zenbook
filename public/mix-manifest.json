@@ -1,8 +1,1 @@
-{
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/filter-submit.js": "/js/filter-submit.js",
-    "/js/sweetalert-delete.js": "/js/sweetalert-delete.js",
-    "/js/toastr-config.js": "/js/toastr-config.js",
-    "/js/user-table.js": "/js/user-table.js"
-}
+{}

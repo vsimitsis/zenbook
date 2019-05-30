@@ -45,20 +45,11 @@
                                 </div>
 
                                 <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
-                                    <select name="role" class="form-control filter-select">
-                                        <option value="all" {{ ($role == 'all' || $role == null) ? 'selected' : ''}}>{{ __('general.all') }}</option>
-                                        <option value="public" {{ $role == 'public' ? 'selected' : ''}}>{{ __('general.public') }}</option>
-                                        <option value="private" {{ $role == 'private' ? 'selected' : ''}}>{{ __('general.private') }}</option>
-                                        <option value="shared" {{ $role == 'shared' ? 'selected' : ''}}>{{ __('general.shared') }}</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
-                                    <select name="status" class="form-control filter-select">
-                                        <option value="all" {{ ($status == 'all' || $status == null) ? 'selected' : ''}}>{{ __('general.all') }}</option>
-                                        <option value="active" {{ $status == 'active' ? 'selected' : '' }}>{{ __('general.active') }}</option>
-                                        <option value="pending" {{ $status == 'pending' ? 'selected' : '' }}>{{ __('general.pending') }}</option>
-                                        <option value="suspended" {{ $status == 'suspended' ? 'selected' : '' }}>{{ __('general.suspended') }}</option>
+                                    <select name="access" class="form-control filter-select">
+                                        <option value="all" {{ ($access == 'all' || $access == null) ? 'selected' : ''}}>{{ __('general.all') }}</option>
+                                        <option value="public" {{ $access == 'public' ? 'selected' : ''}}>{{ __('general.public') }}</option>
+                                        <option value="private" {{ $access == 'private' ? 'selected' : ''}}>{{ __('general.private') }}</option>
+                                        <option value="shared" {{ $access == 'shared' ? 'selected' : ''}}>{{ __('general.shared') }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -80,13 +71,33 @@
                         <tbody>
                         @foreach($documents as $document)
                             <tr>
-                                <td><a href="#">{{ $document->original_filename }}</a></td>
+                                <td><a href="{{ route('document.show', $document) }}" target="_blank">{{ $document->original_filename }}</a></td>
                                 <td>{!! $document->accessToHtml() !!}</td>
                                 <td>{{ $document->mime_type }}</td>
                                 <td>
-                                    <form action="#" method="POST">
-                                        <button type="submit" class="btn-link text-danger"><i class="flaticon2-trash"></i></button>
-                                    </form>
+                                    @can('edit', $document)
+                                        <form action="{{ route('document.destroy', $document) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <span class="dropdown">
+                                                <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
+                                                    <i class="la la-ellipsis-h"></i>
+                                                </a>
+
+                                                <span class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="{{ route('document.edit', $document) }}"><i class="la la-edit"></i> {{ __('actions.edit') }}</a>
+                                                    <a href="#" class="dropdown-item delete-alert" data-action="delete"><i class="la la-trash"></i> {{ __('actions.delete') }}</a>
+                                                </span>
+                                            </span>
+                                            <a href="{{ route('document.download', $document) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('actions.download') }}">
+                                                <i class="la la-download"></i>
+                                            </a>
+                                        </form>
+                                    @else
+                                        <a href="{{ route('document.download', $document) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('actions.download') }}">
+                                            <i class="la la-download"></i>
+                                        </a>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach
@@ -100,7 +111,7 @@
             </div>
 
             <div class="dataTables_paginate paging_simple_numbers" id="k_table_1_paginate">
-                {{ $documents->appends(['search' => $search, 'role' => $role, 'status' => $status])->links() }}
+                {{ $documents->appends(['search' => $search, 'access' => $access])->links() }}
             </div>
         </div>
     </div>
