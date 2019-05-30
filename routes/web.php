@@ -44,6 +44,17 @@ Route::group(array('domain' => 'console.' . config('app.domain')), function() {
         Route::delete('documents/{document}', 'DocumentController@destroy')->name('document.destroy');
 
         /**
+         * Exam routes
+         */
+        Route::get('/exams', 'ExamController@index')->name('exam.index');
+        Route::get('/exams/create', 'ExamController@create')->name('exam.create');
+        Route::post('/exams/create', 'ExamController@store')->name('exam.store');
+        Route::get('/exams/{exam}', 'ExamController@show')->name('exam.show');
+        Route::get('/exams/{exam}/edit', 'ExamController@edit')->name('exam.edit');
+        Route::put('/exams/{exam}', 'ExamController@update')->name('exam.update');
+        Route::delete('exams/{exam}', 'ExamController@destroy')->name('exam.destroy');
+
+        /**
          * Notification routes
          */
         Route::get('/notifications', 'NotificationController@index')->name('notification.index');

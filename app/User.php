@@ -87,6 +87,46 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Return true if the user is a administrator
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->userRole === UserRole::ADMINISTRATOR;
+    }
+
+    /**
+     * Return true if the user is a teacher
+     *
+     * @return bool
+     */
+    public function isTeacher()
+    {
+        return $this->userRole === UserRole::TEACHER;
+    }
+
+    /**
+     * Return true if the user is a student
+     *
+     * @return bool
+     */
+    public function isStudent()
+    {
+        return $this->userRole === UserRole::STUDENT;
+    }
+
+    /**
+     * Return the user's authored exams
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function exams()
+    {
+        return $this->hasMany(Exam::class);
+    }
+
+    /**
      * Return the user's contacts
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphToMany

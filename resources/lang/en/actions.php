@@ -14,6 +14,7 @@ return [
     'edit_user'            => 'Edit User',
     'delete_user'          => 'Delete User',
     'add_document'         => 'Add Document',
+    'create_exam'          => 'Create Exam',
     'edit_document'        => 'Edit Document',
     'delete_document'      => 'Delete Document',
     'choose_file'          => 'Choose File',

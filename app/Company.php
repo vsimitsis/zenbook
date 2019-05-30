@@ -25,6 +25,16 @@ class Company extends Model
     }
 
     /**
+     * Return all the company's exams
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function exams()
+    {
+        return $this->hasMany(Exam::class);
+    }
+
+    /**
      * Return the documents of the company
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

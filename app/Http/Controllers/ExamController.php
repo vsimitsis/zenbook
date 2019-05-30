@@ -1,0 +1,171 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Exam;
+use App\Http\Requests\ExamRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class ExamController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index(Request $request)
+    {
+        return view('exams.index', [
+            'exams'  => $this->fetchExams($request),
+            'search' => $request->search,
+            'status' => $request->status,
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('exams.create', [
+            'exam' => new Exam(),
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(ExamRequest $request)
+    {
+        Exam::create([
+            'company_id' => Auth::user()->company_id,
+            'user_id'    => Auth::user()->id,
+            'name'       => $this->renameIfExists($request),
+            'status'     => $request->status
+        ]);
+
+        return redirect(route('exam.index'))
+            ->with('success', __('messages.exam_created'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Exam  $exam
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Exam $exam)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Exam  $exam
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Exam $exam)
+    {
+        return view('exams.edit', [
+            'exam' => $exam
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Exam  $exam
+     * @return \Illuminate\Http\Response
+     */
+    public function update(ExamRequest $request, Exam $exam)
+    {
+        $exam->name   = $this->renameIfExists($request, $exam);
+        $exam->status = $request->status;
+        $exam->save();
+
+        return redirect(route('exam.index'))
+            ->with('success', __('messages.changes_saved'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Exam $exam
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function destroy(Exam $exam)
+    {
+        $this->authorize('destroy', $exam);
+
+        if ($exam->delete()) {
+            return redirect(route('exam.index'))
+                ->with('success', __('messages.exam_deleted'));
+        }
+
+        return redirect(route('exam.index'))
+            ->with('error', __('messages.exam_not_deleted'));
+    }
+
+    /**
+     * Fetch company's exams and filter them
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    protected function fetchExams(Request $request)
+    {
+        $examQuery = Exam::where('company_id', Auth::user()->company_id);
+
+        if ($request->search) {
+            $examQuery = $examQuery->where('name', 'LIKE', '%' . $request->search . '%');
+        }
+
+        switch ($request->status) {
+            case 'open':
+                $examQuery = $examQuery->where('status', Exam::OPEN_STATUS);
+                break;
+            case 'closed':
+                $examQuery = $examQuery->where('status', Exam::CLOSED_STATUS);
+                break;
+            default:
+                break;
+        }
+
+        return $examQuery->paginate(10);
+    }
+
+    /**
+     * Check if an exam with this name exists and rename it
+     *
+     * @param ExamRequest $request
+     * @param Exam|null $exam
+     * @return string
+     */
+    protected function renameIfExists(ExamRequest $request, Exam $exam = null) :string
+    {
+        $name       = $request->name;
+        $countQuery = Auth::user()->company->exams()->where('name', $name);
+
+        if ($exam) {
+            $countQuery = $countQuery->where('id', '!=', $exam->id);
+        }
+
+        $count = $countQuery->count();
+
+        if ($count) {
+            $name .= "-$count";
+        }
+
+        return $name;
+    }
+}

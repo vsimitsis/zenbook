@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'name'                 => 'Enter the name.',
-    'full_name'            => 'Please enter the full name.',
+    'name'                 => 'Enter the name',
+    'full_name'            => 'Please enter the full name',
     'file_name_optional'   => 'You can change the filename here. If you leave it blank, the default file name will be used.',
     'file_access_rights'   => 'If you select public, everyone in company can see this file, private only you and shared you can choose who can see it.',
     'user_access_required' => 'You need to select which users have access to the document.',
@@ -23,4 +23,7 @@ return [
     'address2.max'         => 'The address 2 must be 255 characters maximum.',
     'postcode.max'         => 'The postcode must be 45 characters maximum.',
     'city.max'             => 'The city must be 255 characters maximum.',
+    'name.max'             => 'The name must be 255 characters maximum.',
+    'name.required'        => 'The name is required',
+    'status.required'      => 'Status is required',
 ];

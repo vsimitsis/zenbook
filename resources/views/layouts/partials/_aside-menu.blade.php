@@ -34,6 +34,13 @@
                 </a>
             </li>
 
+            <li class="k-menu__item {{ Request::is('exams*') ? 'k-menu__item--active' : '' }}" aria-haspopup="true">
+                <a href="{{ route('exam.index') }}" class="k-menu__link">
+                    <i class="k-menu__link-icon flaticon-clipboard"><span></span></i>
+                    <span class="k-menu__link-text">{{ __('models.exams') }}</span>
+                </a>
+            </li>
+
             <li class="k-menu__item {{ Request::is('documents*') ? 'k-menu__item--active' : '' }}">
                 <a href="{{ route('document.index') }}" class="k-menu__link">
                     <i class="k-menu__link-icon flaticon-file-2"></i>
@@ -41,19 +48,26 @@
                 </a>
             </li>
 
-{{--            <li class="k-menu__item  k-menu__item--submenu" aria-haspopup="true" data-kmenu-submenu-toggle="hover">--}}
+{{--            <li class="k-menu__item  k-menu__item--submenu {{ Request::is('exams*') ? 'k-menu__item--open' : '' }}" aria-haspopup="true" data-kmenu-submenu-toggle="hover">--}}
 {{--                <a href="javascript:;" class="k-menu__link k-menu__toggle">--}}
-{{--                    <i class="k-menu__link-icon flaticon2-layers-1"></i>--}}
-{{--                    <span class="k-menu__link-text">Base</span>--}}
+{{--                    <i class="k-menu__link-icon flaticon-clipboard"></i>--}}
+{{--                    <span class="k-menu__link-text">{{ __('models.exams') }}</span>--}}
 {{--                    <i class="k-menu__ver-arrow la la-angle-right"></i>--}}
 {{--                </a>--}}
 
 {{--                <div class="k-menu__submenu "><span class="k-menu__arrow"></span>--}}
 {{--                    <ul class="k-menu__subnav">--}}
-{{--                        <li class="k-menu__item " aria-haspopup="true">--}}
-{{--                            <a href="#" class="k-menu__link ">--}}
+{{--                        <li class="k-menu__item {{ Request::is('exams*') ? 'k-menu__item--active' : '' }}" aria-haspopup="true">--}}
+{{--                            <a href="{{ route('exam.index') }}" class="k-menu__link">--}}
 {{--                                <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>--}}
-{{--                                <span class="k-menu__link-text">Navs</span>--}}
+{{--                                <span class="k-menu__link-text">{{ __('models.exams') }}</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+
+{{--                        <li class="k-menu__item {{ Request::is('exams*') ? 'k-menu__item--active' : '' }}" aria-haspopup="true">--}}
+{{--                            <a href="{{ route('exam.index') }}" class="k-menu__link">--}}
+{{--                                <i class="k-menu__link-bullet k-menu__link-bullet--dot"><span></span></i>--}}
+{{--                                <span class="k-menu__link-text">{{ __('models.exams') }}</span>--}}
 {{--                            </a>--}}
 {{--                        </li>--}}
 {{--                    </ul>--}}

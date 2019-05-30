@@ -59,17 +59,17 @@ class DummyDataTableSeeder extends Seeder
 
         \App\UserSetting::create([
             'user_id'     => 1,
-            'language_id' => 1
+            'language_id' => 2
         ]);
 
         \App\UserSetting::create([
             'user_id'     => 2,
-            'language_id' => 1
+            'language_id' => 2
         ]);
 
         \App\UserSetting::create([
             'user_id'     => 3,
-            'language_id' => 2
+            'language_id' => 1
         ]);
     }
 }

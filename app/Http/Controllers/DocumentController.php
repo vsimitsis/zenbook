@@ -251,7 +251,7 @@ class DocumentController extends Controller
         $count = $countQuery->count();
 
         if ($count) {
-            $fileName .= "_$count";
+            $fileName .= "-$count";
         }
 
         return $fileName;

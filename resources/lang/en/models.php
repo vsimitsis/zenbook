@@ -13,6 +13,10 @@ return [
     'students'         => 'Students',
     'lesson'           => 'Lesson',
     'lessons'          => 'Lessons',
+    'exam'             => 'Exam',
+    'exams'            => 'Exams',
     'document'         => 'Document',
     'documents'        => 'Documents',
+    'report'           => 'Report',
+    'reports'          => 'Reports',
 ];
