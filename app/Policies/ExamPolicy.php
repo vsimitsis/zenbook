@@ -31,7 +31,8 @@ class ExamPolicy
      */
     public function edit(User $user, Exam $exam)
     {
-        return !$user->isStudent();
+        return !$user->isStudent() &&
+            ($user->isAdmin() || $user->exams->contains($exam) || $exam->status === Exam::STATUS_OPEN);
     }
 
     /**

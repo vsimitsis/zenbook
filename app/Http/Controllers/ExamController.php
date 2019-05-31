@@ -19,9 +19,10 @@ class ExamController extends Controller
     public function index(Request $request)
     {
         return view('exams.index', [
-            'exams'  => $this->fetchExams($request),
-            'search' => $request->search,
-            'status' => $request->status,
+            'exams'      => $this->fetchExams($request),
+            'search'     => $request->search,
+            'status'     => $request->status,
+            'visibility' => $request->visibility,
         ]);
     }
 
@@ -49,7 +50,8 @@ class ExamController extends Controller
             'company_id' => Auth::user()->company_id,
             'user_id'    => Auth::user()->id,
             'name'       => $this->renameIfExists($request),
-            'status'     => $request->status
+            'status'     => $request->status,
+            'visibility' => $request->visibility,
         ]);
 
         return redirect(route('exam.index'))
@@ -66,10 +68,10 @@ class ExamController extends Controller
     public function show(Request $request, Exam $exam)
     {
         return view('exams.show', [
-            'exam'     => $exam,
-            'sections' => $this->fetchSections($request, $exam),
-            'search'   => $request->search,
-            'status'   => $request->status,
+            'exam'       => $exam,
+            'sections'   => $this->fetchSections($request, $exam),
+            'search'     => $request->search,
+            'visibility' => $request->visibility,
         ]);
     }
 
@@ -95,8 +97,9 @@ class ExamController extends Controller
      */
     public function update(ExamRequest $request, Exam $exam)
     {
-        $exam->name   = $this->renameIfExists($request, $exam);
-        $exam->status = $request->status;
+        $exam->name       = $this->renameIfExists($request, $exam);
+        $exam->status     = $request->status;
+        $exam->visibility = $request->visibility;
         $exam->save();
 
         return redirect(route('exam.index'))
@@ -148,6 +151,17 @@ class ExamController extends Controller
                 break;
         }
 
+        switch ($request->visibility) {
+            case 'visible':
+                $examQuery = $examQuery->where('visibility', Exam::VISIBLE);
+                break;
+            case 'hidden':
+                $examQuery = $examQuery->where('visibility', Exam::HIDDEN);
+                break;
+            default:
+                break;
+        }
+
         return $examQuery->paginate(10);
     }
 
@@ -166,12 +180,12 @@ class ExamController extends Controller
             $sectionQuery = $sectionQuery->where('name', 'LIKE', '%' . $request->search . '%');
         }
 
-        switch ($request->status) {
-            case 'open':
-                $sectionQuery = $sectionQuery->where('status', Section::STATUS_OPEN);
+        switch ($request->visibility) {
+            case 'visible':
+                $sectionQuery = $sectionQuery->where('visibility', Section::VISIBLE);
                 break;
-            case 'closed':
-                $sectionQuery = $sectionQuery->where('status', Section::STATUS_CLOSED);
+            case 'hidden':
+                $sectionQuery = $sectionQuery->where('visibility', Section::HIDDEN);
                 break;
             default:
                 break;

@@ -31,7 +31,12 @@ class ExamRequest extends FormRequest
                 'required',
                 'integer',
                 Rule::in([Exam::STATUS_OPEN, Exam::STATUS_CLOSED])
-            ]
+            ],
+            'visibility' => [
+                'required',
+                'integer',
+                Rule::in([Exam::VISIBLE, Exam::HIDDEN])
+            ],
         ];
     }
 
@@ -46,6 +51,7 @@ class ExamRequest extends FormRequest
             'name.required'   => __('rules.exam_name_required'),
             'name.max'        => __('rules.exam_name_max'),
             'status.required' => __('rules.exam_status_required'),
+            'hidden.required' => __('rules.exam_hidden_required'),
         ];
     }
 }

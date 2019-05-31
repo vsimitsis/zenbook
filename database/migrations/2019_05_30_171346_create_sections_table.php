@@ -17,8 +17,8 @@ class CreateSectionsTable extends Migration
             $table->bigIncrements('id');
             $table->morphs('parent');
             $table->string('name');
-            $table->text('description');
-            $table->tinyInteger('status');
+            $table->text('description')->nullable();
+            $table->boolean('visibility');
             $table->timestamps();
         });
     }

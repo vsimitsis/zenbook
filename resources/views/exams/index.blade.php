@@ -23,7 +23,7 @@
                     <div class="btn-group">
                         <a href="{{ route('exam.create') }}" class="btn btn-sm-no-icon btn-outline-brand">
                             <i class="la la-plus"></i>
-                            <span class="k-hidden-mobile">{{ __('actions.add') }}</span>
+                            <span class="k-hidden-mobile">{{ __('actions.create_exam') }}</span>
                         </a>
                     </div>
                 @endcan
@@ -52,6 +52,14 @@
                                         <option value="closed" {{ $status == 'closed' ? 'selected' : ''}}>{{ __('general.closed') }}</option>
                                     </select>
                                 </div>
+
+                                <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
+                                    <select name="visibility" class="form-control filter-select">
+                                        <option value="all" {{ ($visibility == 'all' || $visibility == null) ? 'selected' : ''}}>{{ __('general.all') }}</option>
+                                        <option value="visible" {{ $visibility == 'visible' ? 'selected' : ''}}>{{ __('general.visible') }}</option>
+                                        <option value="hidden" {{ $visibility == 'hidden' ? 'selected' : ''}}>{{ __('general.hidden') }}</option>
+                                    </select>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -63,6 +71,7 @@
                         <tr>
                             <th class="sorting_desc">{{ __('general.name') }}</th>
                             <th class="sorting">{{ __('general.status') }}</th>
+                            <th class="sorting">{{ __('general.visibility') }}</th>
                             <th>{{ __('actions.actions') }}</th>
                         </tr>
                         </thead>
@@ -72,6 +81,7 @@
                                 <tr>
                                     <td><a href="{{ route('exam.show', $exam) }}">{{ $exam->name }}</a></td>
                                     <td>{!! $exam->statusToHtml() !!}</td>
+                                    <td>{!! $exam->visibilityToHtml() !!}</td>
                                     <td>
                                         @can('edit', $exam)
                                             <form action="{{ route('exam.destroy', $exam) }}" method="POST">
@@ -106,7 +116,7 @@
             </div>
 
             <div class="dataTables_paginate paging_simple_numbers" id="k_table_1_paginate">
-                {{ $exams->appends(['search' => $search, 'access' => $status])->links() }}
+                {{ $exams->appends(['search' => $search, 'status' => $status, 'visibility' => $visibility])->links() }}
             </div>
         </div>
     </div>

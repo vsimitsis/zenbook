@@ -4,7 +4,7 @@
     <div class="k-content__head-breadcrumbs">
         <a href="{{ route('dashboard.index') }}" class="k-content__head-breadcrumb-home"><i class="flaticon2-shelter"></i></a>
         <span class="k-content__head-breadcrumb-separator"></span>
-        <a href="{{ route('document.index') }}" class="k-content__head-breadcrumb-link">{{ __('models.exams') }}</a>
+        <a href="{{ route('exam.index') }}" class="k-content__head-breadcrumb-link">{{ __('models.exams') }}</a>
         <span class="k-content__head-breadcrumb-separator"></span>
         <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active">{{ __('actions.edit_exam') }}</span>
     </div>

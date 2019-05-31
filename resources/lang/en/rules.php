@@ -3,6 +3,7 @@
 return [
     'name'                 => 'Enter the name',
     'full_name'            => 'Please enter the full name',
+    'description'          => 'Enter a description',
     'file_name_optional'   => 'You can change the filename here. If you leave it blank, the default file name will be used.',
     'file_access_rights'   => 'If you select public, everyone in company can see this file, private only you and shared you can choose who can see it.',
     'user_access_required' => 'You need to select which users have access to the document.',
@@ -24,6 +25,9 @@ return [
     'postcode.max'         => 'The postcode must be 45 characters maximum.',
     'city.max'             => 'The city must be 255 characters maximum.',
     'name.max'             => 'The name must be 255 characters maximum.',
-    'name.required'        => 'The name is required',
+    'description.max'      => 'The description must be 600 characters maximum',
+    'name.required'        => 'Name is required',
     'status.required'      => 'Status is required',
+    'exam_hidden_required' => 'Visibility is required',
+    'description.required' => 'Description is required',
 ];

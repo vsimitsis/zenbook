@@ -6,7 +6,7 @@
         <span class="k-content__head-breadcrumb-separator"></span>
         <a href="{{ route('exam.index') }}" class="k-content__head-breadcrumb-link">{{ __('models.exams') }}</a>
         <span class="k-content__head-breadcrumb-separator"></span>
-        <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active">{{ $exam->name }}</span>
+        <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active"> {{  $exam->name . ' - ' . __('models.sections') }}</span>
     </div>
 @endsection
 
@@ -14,18 +14,19 @@
     <div class="k-portlet k-portlet--mobile">
         <div class="k-portlet__head k-portlet__head--lg">
             <div class="k-portlet__head-label">
-                <h3 class="k-portlet__head-title">{{ $exam->name }}</h3>
+                <h3 class="k-portlet__head-title">{{  $exam->name . ' - ' . __('models.sections') }}</h3>
             </div>
             <div class="k-portlet__head-toolbar">
                 <a href="{{ route('exam.index') }}" class="btn btn-sm-no-icon btn-outline-secondary k-margin-r-10">
                     <i class="la la-arrow-left"></i>
                     <span class="k-hidden-mobile">{{ __('actions.back') }}</span>
                 </a>
-                @can('create', \App\Section::class)
+                @can('edit', $exam)
                     <div class="btn-group">
-                        <a href="{{ route('section.create') }}" class="btn btn-sm-no-icon btn-outline-brand">
+                        <a href="{{ route('section.create', ['parent' => 'exams', 'parent_id' => $exam->id]) }}"
+                           class="btn btn-sm-no-icon btn-outline-brand">
                             <i class="la la-plus"></i>
-                            <span class="k-hidden-mobile">{{ __('actions.add') }}</span>
+                            <span class="k-hidden-mobile">{{ __('actions.create_section') }}</span>
                         </a>
                     </div>
                 @endcan
@@ -48,10 +49,10 @@
                                 </div>
 
                                 <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
-                                    <select name="status" class="form-control filter-select">
-                                        <option value="all" {{ ($status == 'all' || $status == null) ? 'selected' : ''}}>{{ __('general.all') }}</option>
-                                        <option value="open" {{ $status == 'open' ? 'selected' : ''}}>{{ __('general.open') }}</option>
-                                        <option value="closed" {{ $status == 'closed' ? 'selected' : ''}}>{{ __('general.closed') }}</option>
+                                    <select name="visibility" class="form-control filter-select">
+                                        <option value="all" {{ ($visibility == 'all' || $visibility == null) ? 'selected' : ''}}>{{ __('general.all') }}</option>
+                                        <option value="visible" {{ $visibility == 'visible' ? 'selected' : ''}}>{{ __('general.visible') }}</option>
+                                        <option value="hidden" {{ $visibility == 'hidden' ? 'selected' : ''}}>{{ __('general.hidden') }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -64,14 +65,46 @@
                         <thead>
                         <tr>
                             <th class="sorting_desc">{{ __('general.name') }}</th>
-                            <th class="sorting">{{ __('general.status') }}</th>
+                            <th class="sorting">{{ __('general.description') }}</th>
+                            <th class="sorting">{{ __('general.visibility') }}</th>
                             <th>{{ __('actions.actions') }}</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($sections as $section)
                             <tr>
+                                <td><a href="#">{{ $section->name }}</a></td>
+                                <td>
+                                    @if($section->description)
+                                        {{ $section->description }}
+                                    @else
+                                        <span class="text-muted">{{ __('messages.no_description') }}</span>
+                                    @endif
+                                </td>
+                                <td>{!! $section->visibilityToHtml() !!}</td>
+                                @can('edit', $exam)
+                                    <td>
+                                        <form action="{{ route('section.destroy', $section) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <span class="dropdown">
+                                                    <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
+                                                        <i class="la la-ellipsis-h"></i>
+                                                    </a>
 
+                                                    <span class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item"
+                                                           href="{{ route('section.edit', ['parent_type' => $exam->getModelUrlName(), 'parent_id' => $exam->id, 'section' => $section]) }}"><i
+                                                                    class="la la-edit"></i> {{ __('actions.edit') }}</a>
+                                                        <a href="#" class="dropdown-item delete-alert" data-action="delete"><i class="la la-trash"></i> {{ __('actions.delete') }}</a>
+                                                    </span>
+                                                </span>
+                                            <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('models.report') }}">
+                                                <i class="fa fa-chart-bar"></i>
+                                            </a>
+                                        </form>
+                                    </td>
+                                @endcan
                             </tr>
                         @endforeach
                         </tbody>
@@ -84,7 +117,7 @@
             </div>
 
             <div class="dataTables_paginate paging_simple_numbers" id="k_table_1_paginate">
-                {{ $sections->appends(['search' => $search, 'access' => $status])->links() }}
+                {{ $sections->appends(['search' => $search, 'visibility' => $visibility])->links() }}
             </div>
         </div>
     </div>

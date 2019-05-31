@@ -29,6 +29,7 @@ class CreateExamsTable extends Migration
                 ->onDelete('cascade');
             $table->string('name');
             $table->tinyInteger('status');
+            $table->boolean('visibility');
             $table->timestamps();
 
             $table->unique(['company_id', 'name']);

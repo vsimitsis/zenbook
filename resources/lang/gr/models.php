@@ -14,6 +14,8 @@ return [
     'lessons'          => 'Μαθήματα',
     'exam'             => 'Διαγώνισμα',
     'exams'            => 'Διαγωνίσματα',
+    'section'          => 'Ενότητα',
+    'sections'         => 'Ενότητες',
     'document'         => 'Αρχείο',
     'documents'        => 'Αρχεία',
     'report'           => 'Αναφορά',

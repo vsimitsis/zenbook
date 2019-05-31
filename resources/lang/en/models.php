@@ -15,6 +15,8 @@ return [
     'lessons'          => 'Lessons',
     'exam'             => 'Exam',
     'exams'            => 'Exams',
+    'section'          => 'Section',
+    'sections'         => 'Sections',
     'document'         => 'Document',
     'documents'        => 'Documents',
     'report'           => 'Report',

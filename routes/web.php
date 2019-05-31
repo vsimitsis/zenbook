@@ -3,7 +3,7 @@
 /**
  * Console routes
  */
-Route::group(array('domain' => 'console.' . config('app.domain')), function() {
+Route::group(['domain' => 'console.' . config('app.domain')], function() {
     Auth::routes(['verify' => true]);
 
     Route::group(['middleware' => ['auth', 'verified', 'checkUserStatus', 'passViewData']], function () {
@@ -36,7 +36,7 @@ Route::group(array('domain' => 'console.' . config('app.domain')), function() {
          */
         Route::get('/documents', 'DocumentController@index')->name('document.index');
         Route::get('/documents/create', 'DocumentController@create')->name('document.create');
-        Route::post('/documents/create', 'DocumentController@store')->name('document.store');
+        Route::post('/documents/store', 'DocumentController@store')->name('document.store');
         Route::get('/document/{document}/download', 'DocumentController@download')->name('document.download');
         Route::get('/document/{document}', 'DocumentController@show')->name('document.show');
         Route::get('/documents/{document}/edit', 'DocumentController@edit')->name('document.edit');
@@ -48,7 +48,7 @@ Route::group(array('domain' => 'console.' . config('app.domain')), function() {
          */
         Route::get('/exams', 'ExamController@index')->name('exam.index');
         Route::get('/exams/create', 'ExamController@create')->name('exam.create');
-        Route::post('/exams/create', 'ExamController@store')->name('exam.store');
+        Route::post('/exams/store', 'ExamController@store')->name('exam.store');
         Route::get('/exams/{exam}', 'ExamController@show')->name('exam.show');
         Route::get('/exams/{exam}/edit', 'ExamController@edit')->name('exam.edit');
         Route::put('/exams/{exam}', 'ExamController@update')->name('exam.update');
@@ -57,7 +57,13 @@ Route::group(array('domain' => 'console.' . config('app.domain')), function() {
         /**
          * Section routes
          */
-        Route::get('/sections/create', 'SectionController@create')->name('section.create');
+        Route::get('/{parent_type}/{parent_id}/sections/create', 'SectionController@create')
+            ->where('parent_type', 'exams|lessons')->name('section.create');
+        Route::post('/{parent_type}/{parent_id}/sections/sections/store', 'SectionController@store')
+            ->where('parent_type', 'exams|lessons')->name('section.store');
+        Route::get('{parent_type}/{parent_id}/sections/{section}/edit', 'SectionController@edit')->name('section.edit');
+        Route::put('{parent_type}/{parent_id}/sections/{section}/update', 'SectionController@update')->name('section.update');
+        Route::delete('/sections/{section}', 'SectionController@destroy')->name('section.destroy');
 
         /**
          * Notification routes

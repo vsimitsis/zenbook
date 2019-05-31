@@ -2,10 +2,14 @@
 
 namespace App;
 
+use App\contracts\SectionParent;
+use App\Traits\StatusRenderer;
 use Illuminate\Database\Eloquent\Model;
 
-class Exam extends Model
+class Exam extends Model implements SectionParent
 {
+    use StatusRenderer;
+
     /**
      * The constant for exam open status
      */
@@ -15,6 +19,16 @@ class Exam extends Model
      * The constant for exam closed status
      */
     const STATUS_CLOSED = 2;
+
+    /**
+     * Constant for visible exam status
+     */
+    const HIDDEN  = 0;
+
+     /**
+     * Constant for visible exam status
+     */
+    const VISIBLE = 1;
 
     /**
      * The attributes that are not mass assignable
@@ -34,21 +48,22 @@ class Exam extends Model
     }
 
     /**
-     * Return the exam's status to html
+     * Return the model name in lowercase
      *
      * @return string
      */
-    public function statusToHtml() :string
+    public function getModelName() :string
     {
-        switch ($this->status) {
-            case self::STATUS_OPEN:
-                return '<span class="text-success">' . __('general.open') . '</span>';
-                break;
-            case self::STATUS_CLOSED:
-                return '<span class="text-danger">' . __('general.closed') . '</span>';
-                break;
-            default:
-                return '-';
-        }
+        return 'exam';
+    }
+
+    /**
+     * Return the model name in plural for routes
+     *
+     * @return string
+     */
+    public function getModelUrlName() :string
+    {
+        return $this->getModelName() . 's';
     }
 }

@@ -23,7 +23,7 @@
                     <div class="btn-group">
                         <a href="{{ route('user.create') }}" class="btn btn-sm-no-icon btn-outline-brand">
                             <i class="la la-plus"></i>
-                            <span class="k-hidden-mobile">{{ __('actions.add') }}</span>
+                            <span class="k-hidden-mobile">{{ __('actions.create_user') }}</span>
                         </a>
                     </div>
                 @endcan

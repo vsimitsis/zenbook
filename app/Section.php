@@ -2,20 +2,22 @@
 
 namespace App;
 
+use App\Traits\StatusRenderer;
 use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
-    /**
-     * The constant for the open section status
-     */
-    const STATUS_OPEN = 1;
+    use StatusRenderer;
 
     /**
-     * The constant for the closed section status
-     *
+     * Constant for visible section status
      */
-    const STATUS_CLOSED = 2;
+    const HIDDEN  = 0;
+
+    /**
+     * Constant for visible section status
+     */
+    const VISIBLE = 1;
 
     /**
      * The attributes that are not mass assignable
