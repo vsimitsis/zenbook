@@ -162,7 +162,7 @@ class ExamController extends Controller
                 break;
         }
 
-        return $examQuery->paginate(10);
+        return $examQuery->orderBy('name')->paginate(10);
     }
 
     /**

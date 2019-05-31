@@ -17,6 +17,8 @@ return [
     'add_document'         => 'Add Document',
     'create_section'       => 'Create Section',
     'edit_section'         => 'Edit Section',
+    'create_module'        => 'Create Module',
+    'edit_module'          => 'Edit Module',
     'create_exam'          => 'Create Exam',
     'edit_exam'            => 'Edit Exam',
     'edit_document'        => 'Edit Document',

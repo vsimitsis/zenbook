@@ -35,4 +35,14 @@ class Section extends Model
     {
        return $this->morphTo('parent');
     }
+
+    /**
+     * Return all section's modules
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function modules()
+    {
+        return $this->hasMany(Module::class);
+    }
 }

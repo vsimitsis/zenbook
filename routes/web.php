@@ -57,13 +57,21 @@ Route::group(['domain' => 'console.' . config('app.domain')], function() {
         /**
          * Section routes
          */
+        Route::get('/{parent_type}/{parent_id}/sections/{section}', 'SectionController@show')
+            ->where('parent_type', 'exams|lessons')->name('section.show');
         Route::get('/{parent_type}/{parent_id}/sections/create', 'SectionController@create')
             ->where('parent_type', 'exams|lessons')->name('section.create');
         Route::post('/{parent_type}/{parent_id}/sections/sections/store', 'SectionController@store')
             ->where('parent_type', 'exams|lessons')->name('section.store');
-        Route::get('{parent_type}/{parent_id}/sections/{section}/edit', 'SectionController@edit')->name('section.edit');
-        Route::put('{parent_type}/{parent_id}/sections/{section}/update', 'SectionController@update')->name('section.update');
+        Route::get('{parent_type}/{parent_id}/sections/{section}/edit', 'SectionController@edit')
+            ->where('parent_type', 'exams|lessons')->name('section.edit');
+        Route::put('{parent_type}/{parent_id}/sections/{section}/update', 'SectionController@update')
+            ->where('parent_type', 'exams|lessons')->name('section.update');
         Route::delete('/sections/{section}', 'SectionController@destroy')->name('section.destroy');
+
+        /**
+         * Module routes
+         */
 
         /**
          * Notification routes

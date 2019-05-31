@@ -16,6 +16,8 @@ return [
     'exams'            => 'Διαγωνίσματα',
     'section'          => 'Ενότητα',
     'sections'         => 'Ενότητες',
+    'module'           => 'Μέρος',
+    'modules'          => 'Μέρη',
     'document'         => 'Αρχείο',
     'documents'        => 'Αρχεία',
     'report'           => 'Αναφορά',

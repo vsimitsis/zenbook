@@ -131,7 +131,7 @@
                 </div>
             </div>
 
-            <div class="dataTables_paginate paging_simple_numbers" id="k_table_1_paginate">
+            <div class="dataTables_paginate paging_simple_numbers mx-auto mt-5">
                 {{ $users->appends(['search' => $search, 'role' => $role, 'status' => $status])->links() }}
             </div>
         </div>

@@ -51,12 +51,21 @@ class SectionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Section  $section
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param string $parent_type
+     * @param int $parent_id
+     * @param Section $section
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Section $section)
+    public function show(Request $request, string $parent_type, int $parent_id, Section $section)
     {
-        //
+        return view('sections.show', [
+            'section'     => $section,
+            'modules'     => $section->modules,
+            'parentModel' => $this->getParentClass($parent_type, $parent_id),
+            'search'      => $request->search,
+            'visibility'  => $request->visibility,
+        ]);
     }
 
     /**

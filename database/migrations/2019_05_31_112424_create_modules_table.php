@@ -15,7 +15,13 @@ class CreateModulesTable extends Migration
     {
         Schema::create('modules', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('module_type_id');
+            $table->unsignedBigInteger('section_id');
+            $table->foreign('section_id')
+                ->references('id')
+                ->on('sections')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->morphs('examinable');
             $table->integer('grade');
             $table->timestamps();
         });

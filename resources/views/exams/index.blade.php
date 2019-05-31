@@ -70,6 +70,7 @@
                         <thead>
                         <tr>
                             <th class="sorting_desc">{{ __('general.name') }}</th>
+                            <th class="sorting">{{ __('models.sections') }}</th>
                             <th class="sorting">{{ __('general.status') }}</th>
                             <th class="sorting">{{ __('general.visibility') }}</th>
                             <th>{{ __('actions.actions') }}</th>
@@ -80,6 +81,7 @@
                             @can('view', $exam)
                                 <tr>
                                     <td><a href="{{ route('exam.show', $exam) }}">{{ $exam->name }}</a></td>
+                                    <td>{{ $exam->sections()->count() }}</td>
                                     <td>{!! $exam->statusToHtml() !!}</td>
                                     <td>{!! $exam->visibilityToHtml() !!}</td>
                                     <td>
@@ -115,7 +117,7 @@
                 </div>
             </div>
 
-            <div class="dataTables_paginate paging_simple_numbers" id="k_table_1_paginate">
+            <div class="dataTables_paginate paging_simple_numbers mx-auto mt-5">
                 {{ $exams->appends(['search' => $search, 'status' => $status, 'visibility' => $visibility])->links() }}
             </div>
         </div>

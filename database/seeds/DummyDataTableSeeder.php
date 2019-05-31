@@ -11,6 +11,12 @@ class DummyDataTableSeeder extends Seeder
      */
     public function run()
     {
+        /**
+         * ---------------------------------------------------
+         * General model seeders
+         * ---------------------------------------------------
+         */
+
         \App\Company::create([
             'unique_ref'  => \App\Company::generateUniqueID(),
             'name' => 'VS Solutions',
@@ -70,6 +76,170 @@ class DummyDataTableSeeder extends Seeder
         \App\UserSetting::create([
             'user_id'     => 3,
             'language_id' => 1
+        ]);
+
+        /**
+         * ---------------------------------------------------
+         * Educational model seeders
+         * ---------------------------------------------------
+         */
+
+        \App\Exam::create([
+            'company_id' => 1,
+            'user_id'    => 1,
+            'name'       => 'Διαγώνισμα Ιστορίας',
+            'status'     => 1,
+            'visibility' => 0,
+        ]);
+
+        \App\Exam::create([
+            'company_id' => 1,
+            'user_id'    => 1,
+            'name'       => 'Διαγώνισμα Μαθηματικών',
+            'status'     => 2,
+            'visibility' => 1,
+        ]);
+
+        \App\Exam::create([
+            'company_id' => 1,
+            'user_id'    => 1,
+            'name'       => 'Διαγώνισμα Φυσικής',
+            'status'     => 2,
+            'visibility' => 1,
+        ]);
+
+        \App\Exam::create([
+            'company_id' => 1,
+            'user_id'    => 1,
+            'name'       => 'Ετήσιο Γενικό',
+            'status'     => 2,
+            'visibility' => 0,
+        ]);
+
+        \App\Exam::create([
+            'company_id' => 1,
+            'user_id'    => 1,
+            'name'       => 'Μηνιαίο Γενικό',
+            'status'     => 2,
+            'visibility' => 0,
+        ]);
+
+        \App\Exam::create([
+            'company_id' => 1,
+            'user_id'    => 1,
+            'name'       => 'Τεστ απόδοσης Αγγλικών',
+            'status'     => 2,
+            'visibility' => 0,
+        ]);
+
+        \App\Exam::create([
+            'company_id' => 1,
+            'user_id'    => 1,
+            'name'       => 'Τεστ Γεωγραφίας',
+            'status'     => 2,
+            'visibility' => 0,
+        ]);
+
+        \App\Exam::create([
+            'company_id' => 1,
+            'user_id'    => 1,
+            'name'       => 'Διαγώνισμα Αγγλικών',
+            'status'     => 1,
+            'visibility' => 1,
+        ]);
+
+        \App\Exam::create([
+            'company_id' => 1,
+            'user_id'    => 1,
+            'name'       => 'Διαγώνισμα Γεωγραφίας',
+            'status'     => 2,
+            'visibility' => 0,
+        ]);
+
+        \App\Exam::create([
+            'company_id' => 1,
+            'user_id'    => 1,
+            'name'       => 'Διαγώνισμα Γαλλικών',
+            'status'     => 2,
+            'visibility' => 0,
+        ]);
+
+        \App\Exam::create([
+            'company_id' => 1,
+            'user_id'    => 1,
+            'name'       => 'Διαγώνισμα Γερμανικών',
+            'status'     => 2,
+            'visibility' => 0,
+        ]);
+
+        \App\Section::create([
+            'parent_type' => 'App\Exam',
+            'parent_id'   => 8,
+            'name'        => 'Ενότητα 1',
+            'visibility'  => 1
+        ]);
+
+        \App\Section::create([
+            'parent_type' => 'App\Exam',
+            'parent_id'   => 8,
+            'name'        => 'Ενότητα 2',
+            'visibility'  => 1
+        ]);
+
+        \App\Section::create([
+            'parent_type' => 'App\Exam',
+            'parent_id'   => 8,
+            'name'        => 'Ενότητα 3',
+            'visibility'  => 1
+        ]);
+
+        \App\Section::create([
+            'parent_type' => 'App\Exam',
+            'parent_id'   => 8,
+            'name'        => 'Ενότητα 4',
+            'visibility'  => 0
+        ]);
+
+        \App\Section::create([
+            'parent_type' => 'App\Exam',
+            'parent_id'   => 2,
+            'name'        => 'Ενότητα 1',
+            'visibility'  => 1
+        ]);
+
+        \App\Section::create([
+            'parent_type' => 'App\Exam',
+            'parent_id'   => 2,
+            'name'        => 'Ενότητα 2',
+            'visibility'  => 1
+        ]);
+
+        \App\Section::create([
+            'parent_type' => 'App\Exam',
+            'parent_id'   => 2,
+            'name'        => 'Ενότητα 3',
+            'visibility'  => 0
+        ]);
+
+        \App\Section::create([
+            'parent_type' => 'App\Exam',
+            'parent_id'   => 3,
+            'name'        => 'Ενότητα 1',
+            'visibility'  => 1
+        ]);
+
+        \App\Section::create([
+            'parent_type' => 'App\Exam',
+            'parent_id'   => 3,
+            'name'        => 'Ενότητα 2',
+            'visibility'  => 1
+        ]);
+
+        \App\Section::create([
+            'parent_type' => 'App\Exam',
+            'parent_id'   => 3,
+            'name'        => 'Ενότητα 3',
+            'visibility'  => 0
         ]);
     }
 }

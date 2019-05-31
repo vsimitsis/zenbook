@@ -19,6 +19,8 @@ return [
     'add_document'         => 'Προσθήκη αρχείου',
     'create_section'       => 'Δημιουργία ενότητας',
     'edit_section'         => 'Επεξεργασία ενότητας',
+    'create_module'        => 'Δημιουργία Μέρους',
+    'edit_module'          => 'Επεξεργασία Μέρους',
     'edit_document'        => 'Επεξεργασία αρχείου',
     'delete_document'      => 'Διαγραφή αρχείου',
     'choose_file'          => 'Επιλέξτε αρχείο',

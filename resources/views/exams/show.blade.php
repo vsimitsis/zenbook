@@ -73,7 +73,11 @@
                         <tbody>
                         @foreach($sections as $section)
                             <tr>
-                                <td><a href="#">{{ $section->name }}</a></td>
+                                <td>
+                                    <a href="{{ route('section.show', ['parent_type' => $exam->getModelUrlName(), 'parent_id' => $exam->id, 'section' => $section]) }}">
+                                        {{ $section->name }}
+                                    </a>
+                                </td>
                                 <td>
                                     @if($section->description)
                                         {{ $section->description }}
@@ -116,7 +120,7 @@
                 </div>
             </div>
 
-            <div class="dataTables_paginate paging_simple_numbers" id="k_table_1_paginate">
+            <div class="dataTables_paginate paging_simple_numbers mx-auto mt-5">
                 {{ $sections->appends(['search' => $search, 'visibility' => $visibility])->links() }}
             </div>
         </div>
