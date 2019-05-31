@@ -1,9 +1,9 @@
 <div class="k-portlet__body">
     {{ csrf_field() }}
 
-    <h3 class="k-heading k-heading--md k-heading--no-top-margin">1. Details:</h3>
+    <h3 class="k-heading k-heading--md k-heading--no-top-margin">1. {{ __('general.information') }}:</h3>
     <div class="form-group row">
-        <label for="first_name" class="col-sm-3 col-md-2 col-form-label">First Name:</label>
+        <label for="first_name" class="col-sm-3 col-md-2 col-form-label">{{ __('general.first_name') }}:</label>
         <div class="col-sm-6">
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-group row">
-        <label for="last_name" class="col-sm-3 col-md-2 col-form-label">Last Name:</label>
+        <label for="last_name" class="col-sm-3 col-md-2 col-form-label">{{ __('general.last_name') }}:</label>
         <div class="col-sm-6">
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-user"></i></span></div>
@@ -29,7 +29,7 @@
     </div>
 
     <div class="form-group row">
-        <label class="col-sm-3 col-md-2 col-form-label">Email Address:</label>
+        <label class="col-sm-3 col-md-2 col-form-label">{{ __('general.email_address') }}:</label>
         <div class="col-sm-6">
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-link"></i></span></div>

@@ -3,28 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Module;
+use App\Section;
+use App\Traits\ParentClass;
 use Illuminate\Http\Request;
 
 class ModuleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    use ParentClass;
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new module.
      *
-     * @return \Illuminate\Http\Response
+     * @param string $parent_type
+     * @param int $parent_id
+     * @param Section $section
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(string $parent_type, int $parent_id, Section $section)
     {
-        //
+        $parentModel = $this->getParentClass($parent_type, $parent_id);
+
+        return view('modules.create', [
+            'module'      => new Module(),
+            'section'     => $section,
+            'parentModel' => $parentModel
+        ]);
     }
 
     /**

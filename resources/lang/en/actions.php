@@ -3,6 +3,7 @@
 return [
     'action'               => 'Action',
     'actions'              => 'Actions',
+    'view'                 => 'View',
     'add'                  => 'Add',
     'create'               => 'Create',
     'save'                 => 'Save',

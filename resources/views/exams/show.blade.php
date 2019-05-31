@@ -6,7 +6,7 @@
         <span class="k-content__head-breadcrumb-separator"></span>
         <a href="{{ route('exam.index') }}" class="k-content__head-breadcrumb-link">{{ __('models.exams') }}</a>
         <span class="k-content__head-breadcrumb-separator"></span>
-        <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active"> {{  $exam->name . ' - ' . __('models.sections') }}</span>
+        <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active"> {{  $exam->name }}</span>
     </div>
 @endsection
 
@@ -14,7 +14,7 @@
     <div class="k-portlet k-portlet--mobile">
         <div class="k-portlet__head k-portlet__head--lg">
             <div class="k-portlet__head-label">
-                <h3 class="k-portlet__head-title">{{  $exam->name . ' - ' . __('models.sections') }}</h3>
+                <h3 class="k-portlet__head-title">{{ __('models.sections') }}</h3>
             </div>
             <div class="k-portlet__head-toolbar">
                 <a href="{{ route('exam.index') }}" class="btn btn-sm-no-icon btn-outline-secondary k-margin-r-10">
@@ -23,7 +23,7 @@
                 </a>
                 @can('edit', $exam)
                     <div class="btn-group">
-                        <a href="{{ route('section.create', ['parent' => 'exams', 'parent_id' => $exam->id]) }}"
+                        <a href="{{ route('section.create', ['parent_type' => $exam->getModelUrlName(), 'parent_id' => $exam->id]) }}"
                            class="btn btn-sm-no-icon btn-outline-brand">
                             <i class="la la-plus"></i>
                             <span class="k-hidden-mobile">{{ __('actions.create_section') }}</span>

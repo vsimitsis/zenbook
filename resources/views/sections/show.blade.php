@@ -1,14 +1,14 @@
 @extends('layouts.console')
-@section('title', __('models.sections'))
+@section('title', __('models.modules'))
 @section('breadcrumbs')
     <div class="k-content__head-breadcrumbs">
         <a href="{{ route('dashboard.index') }}" class="k-content__head-breadcrumb-home"><i class="flaticon2-shelter"></i></a>
         <span class="k-content__head-breadcrumb-separator"></span>
         <a href="{{ route('exam.index') }}" class="k-content__head-breadcrumb-link">{{ __('models.exams') }}</a>
         <span class="k-content__head-breadcrumb-separator"></span>
-        <a href="{{ route($parentModel->getModelName() . '.show', $parentModel) }}" class="k-content__head-breadcrumb-link">{{  $parentModel->name . ' - ' . __('models.sections') }}</a>
+        <a href="{{ route($parentModel->getModelName() . '.show', $parentModel) }}" class="k-content__head-breadcrumb-link">{{  $parentModel->name }}</a>
         <span class="k-content__head-breadcrumb-separator"></span>
-        <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active">{{ $section->name . ' - ' . __('models.modules') }}</span>
+        <span class="k-content__head-breadcrumb-link k-content__head-breadcrumb-link--active">{{ $section->name }}</span>
     </div>
 @endsection
 
@@ -16,7 +16,7 @@
         <div class="k-portlet k-portlet--mobile">
             <div class="k-portlet__head k-portlet__head--lg">
                 <div class="k-portlet__head-label">
-                    <h3 class="k-portlet__head-title">{{ $section->name . ' - ' . __('models.modules') }}</h3>
+                    <h3 class="k-portlet__head-title">{{ __('models.modules') }}</h3>
                 </div>
                 <div class="k-portlet__head-toolbar">
                     <a href="{{ route($parentModel->getModelName() . '.show', $parentModel) }}" class="btn btn-sm-no-icon btn-outline-secondary k-margin-r-10">
@@ -25,7 +25,7 @@
                     </a>
                     @can('edit', $parentModel)
                         <div class="btn-group">
-                            <a href="{{ route('section.create', ['parent' => 'exams', 'parent_id' => $parentModel->id]) }}"
+                            <a href="{{ route('module.create', ['parent' => $parentModel->getModelUrlName(), 'parent_id' => $parentModel->id, 'section' => $section]) }}"
                                class="btn btn-sm-no-icon btn-outline-brand">
                                 <i class="la la-plus"></i>
                                 <span class="k-hidden-mobile">{{ __('actions.create_module') }}</span>

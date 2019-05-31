@@ -57,10 +57,10 @@ Route::group(['domain' => 'console.' . config('app.domain')], function() {
         /**
          * Section routes
          */
-        Route::get('/{parent_type}/{parent_id}/sections/{section}', 'SectionController@show')
-            ->where('parent_type', 'exams|lessons')->name('section.show');
         Route::get('/{parent_type}/{parent_id}/sections/create', 'SectionController@create')
             ->where('parent_type', 'exams|lessons')->name('section.create');
+        Route::get('/{parent_type}/{parent_id}/sections/{section}', 'SectionController@show')
+            ->where('parent_type', 'exams|lessons')->name('section.show');
         Route::post('/{parent_type}/{parent_id}/sections/sections/store', 'SectionController@store')
             ->where('parent_type', 'exams|lessons')->name('section.store');
         Route::get('{parent_type}/{parent_id}/sections/{section}/edit', 'SectionController@edit')
@@ -72,6 +72,9 @@ Route::group(['domain' => 'console.' . config('app.domain')], function() {
         /**
          * Module routes
          */
+        Route::get('{parent_type}/{parent_id}/sections/{section}/modules/create', 'ModuleController@create')
+            ->where('parent_type', 'exams|lessons')->name('module.create');
+        Route::post('/sections/{section}/modules/store', 'ModuleController@store')->name('module.store');
 
         /**
          * Notification routes

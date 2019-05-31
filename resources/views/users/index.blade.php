@@ -116,7 +116,7 @@
                                         @endcan
                                     </span>
                                 </span>
-                                    <a href="{{ route('user.show', $user) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="View">
+                                    <a href="{{ route('user.show', $user) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('actions.view') }}">
                                         <i class="la la-eye"></i>
                                     </a>
                                 </td>
