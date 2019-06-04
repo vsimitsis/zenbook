@@ -29,6 +29,7 @@ return [
     'name.max'             => 'The name must be 255 characters maximum.',
     'description.max'      => 'The description must be 600 characters maximum.',
     'name_required'        => 'Name field is required.',
+    'name.unique'          => 'Name is already taken',
     'question_required'    => 'Question field is required.',
     'grade_required'       => 'Grade field is required',
     'grade_min'            => 'Grade can be -100 minimum.',

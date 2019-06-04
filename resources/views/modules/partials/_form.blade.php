@@ -30,7 +30,7 @@
     </div>
 
     <div class="form-group row">
-        <label for="grade" class="col-sm-3 col-md-2 col-form-label">{{ __('general.grade') }}:</label>
+        <label for="grade" class="col-sm-3 col-md-2 col-form-label">{{ __('general.module_grade') }}:</label>
         <div class="col-sm-6">
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-file"></i></span></div>

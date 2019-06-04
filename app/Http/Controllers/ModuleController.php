@@ -20,6 +20,7 @@ class ModuleController extends Controller
      * @param int $parent_id
      * @param Section $section
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create(string $parent_type, int $parent_id, Section $section)
     {
@@ -35,14 +36,27 @@ class ModuleController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created module in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param ModuleRequest $request
+     * @param Section $section
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function store(ModuleRequest $request)
+    public function store(ModuleRequest $request, Section $section)
     {
         dd($request);
+
+        //Create first the examinable model
+
+        $module = Module::create([
+            'name'            => $request->name,
+            'section_id'      => $section->id,
+            'examinable_type' => $request->module_type,
+            'examinable_id'   => '',
+            'visibility'      => $request->visibility,
+        ]);
+
+
     }
 
     /**

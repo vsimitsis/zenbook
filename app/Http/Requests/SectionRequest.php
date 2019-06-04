@@ -25,15 +25,17 @@ class SectionRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'name'        => 'required|string|max:255',
             'description' => 'nullable|string|max:600',
             'visibility'  => [
                 'required',
                 'integer',
-                Rule::in(Section::VISIBLE, Section::HIDDEN)
+                Rule::in([Section::VISIBLE, Section::HIDDEN])
             ]
         ];
+
+        return $rules;
     }
 
     /**
@@ -45,6 +47,7 @@ class SectionRequest extends FormRequest
     {
         return [
             'name.required'        => __('rules.name_required'),
+            'name.unique'          => __('rules.name_unique'),
             'name.max'             => __('rules.name_max'),
             'description.required' => __('rules.description_required'),
             'description.max'      => __('rules.description_max'),

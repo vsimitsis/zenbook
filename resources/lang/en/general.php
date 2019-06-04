@@ -10,6 +10,7 @@ return [
     'phone'            => 'Phone',
     'name'             => 'Name',
     'grade'            => 'Grade',
+    'module_grade'     => 'Module Grade',
     'choice_grade'     => 'Choice Grade',
     'description'      => 'Description',
     'information'      => 'Information',

@@ -34,12 +34,12 @@ class ModuleRequest extends FormRequest
             ],
             'grade'       => 'required|integer|min:-100|max:100',
             'visibility'  => 'required|boolean',
-            'question'    => 'required|string|max:1500',
             'max_answer_length' => 'nullable|integer|min:1',
         ];
 
         if ($this->request->get('module_type') == 'App\\MultipleChoice') {
-            $rules['choices'] = 'required|array';
+            $rules['mc_question'] = 'required|string|max:1500';
+            $rules['choices']     = 'required|array';
 
             if ($this->request->get('choices')) {
                 foreach ($this->request->get('choices') as $key => $choice) {
@@ -47,6 +47,8 @@ class ModuleRequest extends FormRequest
                     $rules['choices.'.$key.'.grade'] = 'nullable|integer|min:-100|max:100';
                 }
             }
+        } else if ($this->request->get('module_type') == 'App\\QuestionAnswer') {
+            $rules['qa_question'] = 'required|string|max:1500';
         }
 
         return $rules;
@@ -61,6 +63,7 @@ class ModuleRequest extends FormRequest
     {
         return [
             'name.required'       => __('rules.name_required'),
+            'name.unique'         => __('rules.name_unique'),
             'name.max'            => __('rules.name_max'),
             'grade.required'      => __('rules.grade_required'),
             'grade.min'           => __('rules.grade_min'),

@@ -13,6 +13,7 @@ return [
     'type'             => 'Τύπος',
     'name'             => 'Όνομα',
     'grade'            => 'Βαθμός',
+    'module_grade'     => 'Βαθμός μέρους',
     'choice_grade'     => 'Βαθμός επιλογής',
     'description'      => 'Περιγραφή',
     'information'      => 'Πληροφορίες',

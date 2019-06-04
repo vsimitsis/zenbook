@@ -38,7 +38,12 @@ class UserRequest extends FormRequest
         ];
 
         if ($this->method() == 'PUT') {
-            $rules['email'] = 'required|email|max:255|unique:users,email,' . $this->user->id;
+            $rules['email'] = [
+                'required',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore($this->user-id)
+            ];
         } else {
             $rules['email'] = 'required|email|max:255|unique:users,email';
         }

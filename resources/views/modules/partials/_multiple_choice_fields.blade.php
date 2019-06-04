@@ -2,13 +2,13 @@
     <div class="k-separator k-separator--height-sm"></div>
 
     <div class="form-group row">
-        <label for="question" class="col-sm-3 col-md-2 col-form-label">{{ __('models.question') }}:</label>
+        <label for="mc_question" class="col-sm-3 col-md-2 col-form-label">{{ __('models.question') }}:</label>
         <div class="col-sm-6">
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-file"></i></span></div>
-                <textarea type="text" id="question" name="question"
-                          class="form-control {{ $errors->has('question') ? 'is-invalid' : '' }}" placeholder="{{ __('rules.question') }}">{{ old('description', $section->question) }}</textarea>
-                <div class="invalid-feedback">{{ $errors->first('question') }}</div>
+                <textarea type="text" id="mc_question" name="mc_question"
+                          class="form-control {{ $errors->has('mc_question') ? 'is-invalid' : '' }}" placeholder="{{ __('rules.question') }}">{{ old('description', $section->question) }}</textarea>
+                <div class="invalid-feedback">{{ $errors->first('mc_question') }}</div>
             </div>
         </div>
     </div>
