@@ -16,4 +16,7 @@ return [
     'section_deleted'         => 'The section has been deleted successfully.',
     'section_not_deleted'     => 'There was a problem deleting the section. Please try again later.',
     'no_description'          => 'No description',
+    'module_visibility'       => 'To hide or make visible the module at the section.',
+    'grade'                   => 'Grade can be from -100 for negative scoring to 100 for positive scoring',
+    'max_answer_length'       => 'You can set the maximum number of characters for the answer. Leave empty for no limit.',
 ];

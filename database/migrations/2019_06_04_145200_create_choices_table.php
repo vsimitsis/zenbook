@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateModuleTypesTable extends Migration
+class CreateChoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateModuleTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('module_types', function (Blueprint $table) {
+        Schema::create('choices', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('type');
+            $table->text('body');
+            $table->integer('grade')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateModuleTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('module_types');
+        Schema::dropIfExists('choices');
     }
 }

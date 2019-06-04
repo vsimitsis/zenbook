@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ModuleRequest;
 use App\Module;
+use App\ModuleType;
 use App\Section;
 use App\Traits\ParentClass;
 use Illuminate\Http\Request;
@@ -26,7 +28,9 @@ class ModuleController extends Controller
         return view('modules.create', [
             'module'      => new Module(),
             'section'     => $section,
-            'parentModel' => $parentModel
+            'parentModel' => $parentModel,
+            'moduleTypes' => ModuleType::all(),
+            'choices'     => collect(),
         ]);
     }
 
@@ -36,9 +40,9 @@ class ModuleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ModuleRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**

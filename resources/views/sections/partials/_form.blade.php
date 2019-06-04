@@ -9,7 +9,6 @@
                 <input type="text" id="name" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name', $section->name) }}" placeholder="{{ __('rules.name') }}">
                 <div class="invalid-feedback">{{ $errors->first('name') }}</div>
             </div>
-            <span class="form-text text-muted">{{ __('messages.exam_name') }}</span>
         </div>
     </div>
 
@@ -19,7 +18,7 @@
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-file"></i></span></div>
                 <textarea type="text" id="description" name="description"
-                          class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="{{ __('rules.description') }}">{{ old('description', $section->description) }}</textarea>
+                          class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" placeholder="{{ __('rules.description') }}">{{ old('description', $section->description) }}</textarea>
                 <div class="invalid-feedback">{{ $errors->first('description') }}</div>
             </div>
         </div>

@@ -22,7 +22,7 @@ class CreateModulesTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->morphs('examinable');
-            $table->integer('grade');
+            $table->boolean('visibility');
             $table->timestamps();
         });
     }

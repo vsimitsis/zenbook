@@ -11,8 +11,14 @@ class ModuleTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\ModuleType::create(['name' => 'Question/Answer']);
-        \App\ModuleType::create(['name' => 'Question/MultipleChoice']);
-        \App\ModuleType::create(['name' => 'Missing Word']);
+        \App\ModuleType::create([
+            'name' => 'question_answer',
+            'type' => \App\QuestionAnswer::class,
+        ]);
+
+        \App\ModuleType::create([
+            'name' => 'multiple_choice',
+            'type' => \App\MultipleChoice::class,
+        ]);
     }
 }

@@ -7,9 +7,10 @@ return [
     'last_name'        => 'Last name',
     'email'            => 'Email',
     'email_address'    => 'Email Address',
-    'user_role'        => 'User Role',
     'phone'            => 'Phone',
     'name'             => 'Name',
+    'grade'            => 'Grade',
+    'choice_grade'     => 'Choice Grade',
     'description'      => 'Description',
     'information'      => 'Information',
     'access'           => 'Access',
@@ -36,4 +37,5 @@ return [
     'general'          => 'General',
     'hi'               => 'Hi',
     'no_results_found' => 'No results found.',
+    'max_answer_length' => 'Max answer length',
 ];

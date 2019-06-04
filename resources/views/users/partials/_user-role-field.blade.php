@@ -15,7 +15,7 @@
         <input type="hidden" name="user_role" value="{{ $user->user_role_id }}">
     @else
         <div class="form-group row">
-            <label for="user_ " class="col-sm-3 col-md-2 col-form-label">{{ __('general.user_role') }}:</label>
+            <label for="user_role" class="col-sm-3 col-md-2 col-form-label">{{ __('general.user_role') }}:</label>
             <div class="col-sm-6">
                 <div class="input-group">
                     <div class="input-group-prepend"><span class="input-group-text"><i class="la la-key"></i></span></div>

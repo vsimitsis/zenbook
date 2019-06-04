@@ -75,7 +75,7 @@ class UserRequest extends FormRequest
             'first_name.required'         => __('rules.first_name_required'),
             'first_name.min'              => __('rules.first_name_min'),
             'first_name.max'              => __('rules.first_name_max'),
-            'last_name.required'          => __('rules.last_required'),
+            'last_name_required'          => __('rules.last_required'),
             'last_name.min'               => __('rules.last_name_min'),
             'last_name.max'               => __('rules.last_name_max'),
             'contact-list.*.email.max'    => __('rules.email_max'),

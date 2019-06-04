@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Question extends Model
+class Choice extends Model
 {
     /**
      * The attributes that are not mass assignable
@@ -12,4 +12,5 @@ class Question extends Model
      * @var array
      */
     protected $guarded = [];
+
 }
