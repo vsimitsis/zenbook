@@ -12,4 +12,14 @@ class MultipleChoice extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * Return all multiple choice module choices
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function choices()
+    {
+        return $this->hasMany(Choice::class);
+    }
 }

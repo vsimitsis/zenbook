@@ -1,5 +1,5 @@
 @if(old('choices'))
-    @foreach(array_slice(old('choices'), 0, null, true) as $key => $value)
+    @foreach(array_slice(old('choices'), 1, null, true) as $key => $value)
         <div data-repeater-item class="k-repeater__item">
             <div class="k-repeater__close k-repeater__close--align-right form-group">
                 <button data-repeater-delete="" class="btn btn-elevate-hover btn-sm  btn-font-danger">
@@ -36,7 +36,7 @@
     @endforeach
 @else
     @if($choices->isNotEmpty())
-        @foreach($choices->slice(0) as $key => $value)
+        @foreach($choices->slice(1) as $key => $value)
             <div data-repeater-item class="k-repeater__item">
                 <div class="k-repeater__close k-repeater__close--align-right form-group">
                     <button data-repeater-delete="" class="btn btn-elevate-hover btn-sm  btn-font-danger">
@@ -50,7 +50,7 @@
                         <div class="input-group">
                             <div class="input-group-prepend"><span class="input-group-text"><i class="la la-link"></i></span></div>
                             <input type="text" id="choice" name="choices[{{ $key }}][choice]" class="form-control"
-                                   value="{{ $value->choice }}" placeholder="{{ __('rules.choice') }}">
+                                   value="{{ $value->body }}" placeholder="{{ __('rules.choice') }}">
                         </div>
                     </div>
                 </div>

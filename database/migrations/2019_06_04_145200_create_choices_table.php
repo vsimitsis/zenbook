@@ -15,6 +15,12 @@ class CreateChoicesTable extends Migration
     {
         Schema::create('choices', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('multiple_choice_id');
+            $table->foreign('multiple_choice_id')
+                ->references('id')
+                ->on('multiple_choices')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->text('body');
             $table->integer('grade')->nullable();
             $table->timestamps();

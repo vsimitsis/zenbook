@@ -7,7 +7,7 @@
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-file"></i></span></div>
                 <textarea type="text" id="mc_question" name="mc_question"
-                          class="form-control {{ $errors->has('mc_question') ? 'is-invalid' : '' }}" placeholder="{{ __('rules.question') }}">{{ old('description', $section->question) }}</textarea>
+                          class="form-control {{ $errors->has('mc_question') ? 'is-invalid' : '' }}" placeholder="{{ __('rules.question') }}">{{ old('mc_question', $module->examinable->question) }}</textarea>
                 <div class="invalid-feedback">{{ $errors->first('mc_question') }}</div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                             <div class="input-group">
                                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-link"></i></span></div>
                                 <input type="text" id="choice" name="choice" class="form-control"
-                                       value="" placeholder="{{ __('rules.choice') }}">
+                                       value="{{ old('choices.0.choice', $choices->first() ? $choices->first()->body : '') }}" placeholder="{{ __('rules.choice') }}">
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                             <div class="input-group">
                                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-file"></i></span></div>
                                 <input type="number" id="grade" name="grade" min="-100" max="100"
-                                       class="form-control" value="" placeholder="{{ __('rules.grade') }}">
+                                       class="form-control" value="{{ old('choices.0.grade', $choices->first() ? $choices->first()->grade : '') }}" placeholder="{{ __('rules.grade') }}">
                             </div>
                             <span class="form-text text-muted">{{ __('messages.grade') }}</span>
                         </div>

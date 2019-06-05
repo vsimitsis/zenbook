@@ -5,7 +5,7 @@
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-file"></i></span></div>
                 <textarea type="text" id="qa_question" name="qa_question"
-                          class="form-control {{ $errors->has('qa_question') ? 'is-invalid' : '' }}" placeholder="{{ __('rules.question') }}">{{ old('description', $section->question) }}</textarea>
+                          class="form-control {{ $errors->has('qa_question') ? 'is-invalid' : '' }}" placeholder="{{ __('rules.question') }}">{{ old('qa_question', $module->examinable->question) }}</textarea>
                 <div class="invalid-feedback">{{ $errors->first('qa_question') }}</div>
             </div>
         </div>
@@ -18,7 +18,7 @@
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-file"></i></span></div>
                 <input type="number" id="max_answer_length" name="max_answer_length" min="0"
                        class="form-control {{ $errors->has('max_answer_length') ? 'is-invalid' : '' }}"
-                       value="{{ old('max_answer_length', $module->max_answer_length) }}" placeholder="{{ __('rules.max_answer_length') }}">
+                       value="{{ old('max_answer_length', $module->examinable->max_answer_length) }}" placeholder="{{ __('rules.max_answer_length') }}">
                 <div class="invalid-feedback">{{ $errors->first('max_answer_length') }}</div>
             </div>
             <span class="form-text text-muted">{{ __('messages.max_answer_length') }}</span>

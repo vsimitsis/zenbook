@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Exam;
+use App\Section;
 
 trait ParentClass
 {

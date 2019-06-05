@@ -67,47 +67,39 @@
                             <thead>
                             <tr>
                                 <th class="sorting_desc">{{ __('general.name') }}</th>
-                                <th class="sorting">{{ __('general.description') }}</th>
+                                <th class="sorting">{{ __('models.module_type') }}</th>
                                 <th class="sorting">{{ __('general.visibility') }}</th>
                                 <th>{{ __('actions.actions') }}</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($modules as $module)
-{{--                                <tr>--}}
-{{--                                    <td><a href="#">{{ $section->name }}</a></td>--}}
-{{--                                    <td>--}}
-{{--                                        @if($section->description)--}}
-{{--                                            {{ $section->description }}--}}
-{{--                                        @else--}}
-{{--                                            <span class="text-muted">{{ __('messages.no_description') }}</span>--}}
-{{--                                        @endif--}}
-{{--                                    </td>--}}
-{{--                                    <td>{!! $section->visibilityToHtml() !!}</td>--}}
-{{--                                    @can('edit', $exam)--}}
-{{--                                        <td>--}}
-{{--                                            <form action="{{ route('section.destroy', $section) }}" method="POST">--}}
-{{--                                                {{ csrf_field() }}--}}
-{{--                                                {{ method_field('DELETE') }}--}}
-{{--                                                <span class="dropdown">--}}
-{{--                                                        <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">--}}
-{{--                                                            <i class="la la-ellipsis-h"></i>--}}
-{{--                                                        </a>--}}
+                                <tr>
+                                    <td>{{ $module->name }}</td>
+                                    <td>{{ __('models.'. $module->moduleType->name) }}</td>
+                                    <td>{!! $module->visibilityToHtml() !!}</td>
+                                    <td>
+                                        <form action="{{ route('module.destroy', $module) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <span class="dropdown">
+                                                    <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
+                                                        <i class="la la-ellipsis-h"></i>
+                                                    </a>
 
-{{--                                                        <span class="dropdown-menu dropdown-menu-right">--}}
-{{--                                                            <a class="dropdown-item"--}}
-{{--                                                               href="{{ route('section.edit', ['parent_type' => $exam->getModelUrlName(), 'parent_id' => $exam->id, 'section' => $section]) }}"><i--}}
-{{--                                                                        class="la la-edit"></i> {{ __('actions.edit') }}</a>--}}
-{{--                                                            <a href="#" class="dropdown-item delete-alert" data-action="delete"><i class="la la-trash"></i> {{ __('actions.delete') }}</a>--}}
-{{--                                                        </span>--}}
-{{--                                                    </span>--}}
-{{--                                                <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('models.report') }}">--}}
-{{--                                                    <i class="fa fa-chart-bar"></i>--}}
-{{--                                                </a>--}}
-{{--                                            </form>--}}
-{{--                                        </td>--}}
-{{--                                    @endcan--}}
-{{--                                </tr>--}}
+                                                    <span class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item"
+                                                           href="{{ route('module.edit', ['parent' => $parentModel->getModelUrlName(), 'parent_id' => $parentModel->id, 'section' => $section, 'module' => $module]) }}"><i
+                                                                    class="la la-edit"></i> {{ __('actions.edit') }}</a>
+                                                        <a href="#" class="dropdown-item delete-alert" data-action="delete"><i class="la la-trash"></i> {{ __('actions.delete') }}</a>
+                                                    </span>
+                                                </span>
+                                            <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('models.report') }}">
+                                                <i class="fa fa-chart-bar"></i>
+                                            </a>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>

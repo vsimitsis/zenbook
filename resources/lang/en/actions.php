@@ -29,4 +29,5 @@ return [
     'select_access_rights' => 'Select access rights',
     'select_user_access'   => 'Select the users that will have access to that file.',
     'add_choice'           => 'Add choice',
+    'move_to'              => 'Move to',
 ];

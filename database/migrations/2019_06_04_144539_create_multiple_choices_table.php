@@ -15,14 +15,15 @@ class CreateMultipleChoicesTable extends Migration
     {
         Schema::create('multiple_choices', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('question_id');
-            $table->foreign('question_id')
+            $table->text('question');
+            $table->integer('grade');
+            $table->dateTime('graded_at')->nullable();
+            $table->unsignedBigInteger('user_graded_id')->nullable();
+            $table->foreign('user_graded_id')
                 ->references('id')
-                ->on('questions')
+                ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->integer('grade');
-            $table->dateTime('completed_at')->nullable();
             $table->timestamps();
         });
     }

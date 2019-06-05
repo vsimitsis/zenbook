@@ -75,6 +75,10 @@ Route::group(['domain' => 'console.' . config('app.domain')], function() {
         Route::get('{parent_type}/{parent_id}/sections/{section}/modules/create', 'ModuleController@create')
             ->where('parent_type', 'exams|lessons')->name('module.create');
         Route::post('/sections/{section}/modules/store', 'ModuleController@store')->name('module.store');
+        Route::get('{parent_type}/{parent_id}/sections/{section}/modules/{module}/edit', 'ModuleController@edit')
+            ->where('parent_type', 'exams|lessons')->name('module.edit');
+        Route::put('/modules/{module}/update', 'ModuleController@update')->name('module.update');
+        Route::delete('/modules/{module}', 'ModuleController@destroy')->name('module.destroy');
 
         /**
          * Notification routes

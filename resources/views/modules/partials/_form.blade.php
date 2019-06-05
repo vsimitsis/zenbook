@@ -1,6 +1,24 @@
 <div class="k-portlet__body">
     @csrf
 
+    @if($edit)
+        <div class="form-group row">
+            <label for="section_id" class="col-sm-3 col-md-2 col-form-label">{{ __('actions.move_to') }}:</label>
+            <div class="col-sm-6">
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text"><i class="la la-key"></i></span></div>
+                    <select id="section_id" name="section_id" class="form-control {{ $errors->has('section_id') ? 'is-invalid' : '' }}">
+                        @foreach($module->section->parent->sections as $sectionSelect)
+                            <option value="{{ $sectionSelect->id }}" {{ old('section_id', $module->section_id == $sectionSelect->id) ? 'selected' : '' }}>{{ $sectionSelect->name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="invalid-feedback">{{ $errors->first('section_id') }}</div>
+                </div>
+                <span class="form-text text-muted">{{ __('messages.move_module_to_section') }}</span>
+            </div>
+        </div>
+    @endif
+
     <div class="form-group row">
         <label for="name" class="col-sm-3 col-md-2 col-form-label">{{ __('general.name') }}:</label>
         <div class="col-sm-6">
@@ -15,17 +33,28 @@
     <div class="form-group row">
         <label for="module_type" class="col-sm-3 col-md-2 col-form-label">{{ __('models.module_type') }}:</label>
         <div class="col-sm-6">
-            <div class="input-group">
-                <div class="input-group-prepend"><span class="input-group-text"><i class="la la-key"></i></span></div>
-                <select id="module_type" name="module_type" class="form-control {{ $errors->has('module_type') ? 'is-invalid' : '' }}">
-                    @foreach($moduleTypes as $moduleType)
-                        <option value="{{ $moduleType->type }}" {{ old('module_type', $module->examinable_type) == $moduleType->type ? 'selected' : '' }}>
-                            {{ __('models.' . $moduleType->name) }}
-                        </option>
-                    @endforeach
-                </select>
-                <div class="invalid-feedback">{{ $errors->first('module_type') }}</div>
-            </div>
+            @if($edit)
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text"><i class="la la-key"></i></span></div>
+                    <select id="module_type" name="module_type" class="form-control {{ $errors->has('module_type') ? 'is-invalid' : '' }}" disabled>
+                        <option value="{{ $module->moduleType->type }}" name="module_type" selected>{{ __('models.' . $module->moduleType->name) }}</option>
+                    </select>
+                    <div class="invalid-feedback">{{ $errors->first('module_type') }}</div>
+                </div>
+                <span class="form-text text-muted">{{ __('messages.module_type_disabled') }}</span>
+            @else
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text"><i class="la la-key"></i></span></div>
+                    <select id="module_type" name="module_type" class="form-control {{ $errors->has('module_type') ? 'is-invalid' : '' }}">
+                        @foreach($moduleTypes as $moduleType)
+                            <option value="{{ $moduleType->type }}" {{ old('module_type', $module->examinable_type) == $moduleType->type ? 'selected' : '' }}>
+                                {{ __('models.' . $moduleType->name) }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <div class="invalid-feedback">{{ $errors->first('module_type') }}</div>
+                </div>
+            @endif
         </div>
     </div>
 
@@ -35,7 +64,7 @@
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-file"></i></span></div>
                 <input type="number" id="grade" name="grade" min="-100" max="100"
-                       class="form-control {{ $errors->has('grade') ? 'is-invalid' : '' }}" value="{{ old('grade', $module->grade) }}" placeholder="{{ __('rules.grade') }}">
+                       class="form-control {{ $errors->has('grade') ? 'is-invalid' : '' }}" value="{{ old('grade', $module->examinable->grade) }}" placeholder="{{ __('rules.grade') }}">
                 <div class="invalid-feedback">{{ $errors->first('grade') }}</div>
             </div>
             <span class="form-text text-muted">{{ __('messages.grade') }}</span>

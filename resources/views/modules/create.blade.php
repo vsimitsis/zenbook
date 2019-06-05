@@ -1,5 +1,5 @@
 @extends('layouts.console')
-@section('title', __('models.sections'))
+@section('title', __('actions.create_module'))
 @section('breadcrumbs')
     <div class="k-content__head-breadcrumbs">
         <a href="{{ route('dashboard.index') }}" class="k-content__head-breadcrumb-home"><i class="flaticon2-shelter"></i></a>
@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            @include('modules.partials._form')
+            @include('modules.partials._form', ['edit' => false])
         </div>
     </form>
 @endsection

@@ -2,6 +2,7 @@
 
 return [
     'changes_saved'           => 'Changes saved successfully.',
+    'changes_not_saved'       => 'There was a problem applying the changes. Please try again later.',
     'document_created'        => 'The document has been created successfully',
     'document_deleted'        => 'The document has been successfully deleted.',
     'document_not_deleted'    => 'There was a problem deleting the document. Please try again later.',
@@ -19,4 +20,9 @@ return [
     'module_visibility'       => 'To hide or make visible the module at the section.',
     'grade'                   => 'Grade can be from -100 for negative scoring to 100 for positive scoring',
     'max_answer_length'       => 'You can set the maximum number of characters for the answer. Leave empty for no limit.',
+    'module_created'          => 'The module has been created successfully.',
+    'module_deleted'          => 'The module has been deleted successfully.',
+    'module_not_deleted'      => 'There was a problem deleting the module. Please try again later.',
+    'module_type_disabled'    => 'You can\'t change the module type. If you need to, delete it and create a new.',
+    'move_module_to_section'  => 'The module can move to another section as it is.',
 ];

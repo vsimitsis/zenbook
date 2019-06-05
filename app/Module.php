@@ -35,4 +35,24 @@ class Module extends Model
     {
         return $this->belongsTo(Section::class);
     }
+
+    /**
+     * Return the examinable model
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function examinable()
+    {
+        return $this->morphTo();
+    }
+
+    /**
+     * Return the module type of the module
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function moduleType()
+    {
+        return $this->belongsTo(ModuleType::class);
+    }
 }

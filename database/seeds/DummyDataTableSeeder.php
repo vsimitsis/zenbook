@@ -241,5 +241,52 @@ class DummyDataTableSeeder extends Seeder
             'name'        => 'Ενότητα 3',
             'visibility'  => 0
         ]);
+
+        \App\QuestionAnswer::create([
+            'question'          => 'Τι χρώμα έχει η ντομάτα?',
+            'grade'             => 100,
+            'max_answer_length' => 255,
+        ]);
+
+        \App\Module::create([
+            'name' => 'Μέρος 1',
+            'module_type_id' => 1,
+            'section_id'     => 1,
+            'examinable_type' => 'App\QuestionAnswer',
+            'examinable_id'   => 1,
+            'visibility'      => 1
+        ]);
+
+        \App\MultipleChoice::create([
+            'question' => 'Τι χρώμα έχει η φράουλα?',
+            'grade'    => 100
+        ]);
+
+        \App\Module::create([
+            'name' => 'Μέρος 2',
+            'module_type_id' => 2,
+            'section_id'     => 1,
+            'examinable_type' => 'App\MultipleChoice',
+            'examinable_id'   => 1,
+            'visibility'      => 1
+        ]);
+
+        \App\Choice::create([
+            'multiple_choice_id' => 1,
+            'body'               => 'Μπλε',
+            'grade'              => 0,
+        ]);
+
+        \App\Choice::create([
+            'multiple_choice_id' => 1,
+            'body'               => 'Κόκκινο',
+            'grade'              => 100,
+        ]);
+
+        \App\Choice::create([
+            'multiple_choice_id' => 1,
+            'body'               => 'Πράσινο',
+            'grade'              => 0,
+        ]);
     }
 }

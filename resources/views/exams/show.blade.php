@@ -66,6 +66,7 @@
                         <tr>
                             <th class="sorting_desc">{{ __('general.name') }}</th>
                             <th class="sorting">{{ __('general.description') }}</th>
+                            <th class="sorting">{{ __('models.modules') }}</th>
                             <th class="sorting">{{ __('general.visibility') }}</th>
                             <th>{{ __('actions.actions') }}</th>
                         </tr>
@@ -85,6 +86,7 @@
                                         <span class="text-muted">{{ __('messages.no_description') }}</span>
                                     @endif
                                 </td>
+                                <td>{{ $section->modules()->count() }}</td>
                                 <td>{!! $section->visibilityToHtml() !!}</td>
                                 @can('edit', $exam)
                                     <td>

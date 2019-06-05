@@ -27,15 +27,24 @@ class ModuleRequest extends FormRequest
     {
         $rules = [
             'name'        => 'required|string|max:255',
-            'module_type' => [
-                'required',
-                'string',
-                Rule::in(ModuleType::all()->pluck('type'))
-            ],
             'grade'       => 'required|integer|min:-100|max:100',
             'visibility'  => 'required|boolean',
             'max_answer_length' => 'nullable|integer|min:1',
         ];
+
+        if ($this->method() == 'PUT') {
+            $rules['section_id'] = [
+                'required',
+                'integer',
+                Rule::in($this->module->section->parent->sections()->pluck('id'))
+            ];
+        } else {
+            $rules['module_type'] = [
+                'required',
+                'string',
+                Rule::in(ModuleType::all()->pluck('type'))
+            ];
+        }
 
         if ($this->request->get('module_type') == 'App\\MultipleChoice') {
             $rules['mc_question'] = 'required|string|max:1500';
