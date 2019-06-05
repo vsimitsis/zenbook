@@ -27,9 +27,9 @@ Route::group(['domain' => 'console.' . config('app.domain')], function() {
         Route::post('/settings/language', 'UserSettingController@updateLanguage')->name('user.settings.language.update');
 
         /**
-         * Lesson routes
+         * Student Group routes
          */
-        Route::get('/lessons', 'LessonController@index')->name('lesson.index');
+        Route::get('/classrooms', 'ClassroomController@index')->name('classroom.index');
 
         /**
          * Document routes

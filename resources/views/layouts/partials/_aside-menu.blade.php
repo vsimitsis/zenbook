@@ -27,10 +27,10 @@
                 </a>
             </li>
 
-            <li class="k-menu__item {{ Request::is('lessons*') ? 'k-menu__item--active' : '' }}">
-                <a href="{{ route('lesson.index') }}" class="k-menu__link">
+            <li class="k-menu__item {{ Request::is('classrooms*') ? 'k-menu__item--active' : '' }}">
+                <a href="{{ route('classroom.index') }}" class="k-menu__link">
                     <i class="k-menu__link-icon flaticon-presentation-1"></i>
-                    <span class="k-menu__link-text">{{ __('models.lessons') }}</span>
+                    <span class="k-menu__link-text">{{ __('models.classrooms') }}</span>
                 </a>
             </li>
 

@@ -29,4 +29,6 @@ return [
     'documents'        => 'Αρχεία',
     'report'           => 'Αναφορά',
     'reports'          => 'Αναφορές',
+    'classroom'        => 'Τμήμα',
+    'classrooms'       => 'Τμήματα',
 ];

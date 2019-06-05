@@ -30,4 +30,6 @@ return [
     'documents'        => 'Documents',
     'report'           => 'Report',
     'reports'          => 'Reports',
+    'classroom'        => 'Classroom',
+    'classrooms'       => 'Classrooms',
 ];
