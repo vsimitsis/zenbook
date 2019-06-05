@@ -29,8 +29,10 @@ class SectionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param SectionRequest $request
+     * @param string $parent_type
+     * @param int $parent_id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(SectionRequest $request, string $parent_type, int $parent_id)
     {
@@ -61,7 +63,7 @@ class SectionController extends Controller
     {
         return view('sections.show', [
             'section'     => $section,
-            'modules'     => $section->modules,
+            'modules'     => $this->fetchModules($request, $section),
             'parentModel' => $this->getParentClass($parent_type, $parent_id),
             'search'      => $request->search,
             'visibility'  => $request->visibility,
@@ -124,5 +126,34 @@ class SectionController extends Controller
 
         return redirect(route($parent->getModelName() . '.show', $section->parent))
             ->with('error', __('messages.section_not_deleted'));
+    }
+
+    /**
+     * Fetch the exam's sections
+     *
+     * @param Request $request
+     * @param Section $section
+     * @return mixed
+     */
+    protected function fetchModules(Request $request, Section $section)
+    {
+        $moduleQuery = $section->modules();
+
+        if ($request->search) {
+            $moduleQuery = $moduleQuery->where('name', 'LIKE', '%' . $request->search . '%');
+        }
+
+        switch ($request->visibility) {
+            case 'visible':
+                $moduleQuery = $moduleQuery->where('visibility', Section::VISIBLE);
+                break;
+            case 'hidden':
+                $moduleQuery = $moduleQuery->where('visibility', Section::HIDDEN);
+                break;
+            default:
+                break;
+        }
+
+        return $moduleQuery->paginate(10);
     }
 }

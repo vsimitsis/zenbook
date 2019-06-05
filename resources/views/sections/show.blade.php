@@ -37,30 +37,30 @@
 
             <div class="k-portlet__body">
                 <div id="k_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-{{--                    <div class="row align-items-center">--}}
-{{--                        <div class="col-xl-8 order-2 order-xl-1">--}}
-{{--                            <form action="{{ route('exam.show', $exam) }}" method="GET">--}}
-{{--                                <div class="row align-items-center">--}}
-{{--                                    <div class="col-md-3 k-margin-b-20-tablet-and-mobile">--}}
-{{--                                        <div class="k-input-icon k-input-icon--left">--}}
-{{--                                            <input type="text" name="search" class="form-control" value="{{ $search }}" placeholder="{{ __('general.search_by_name') }}">--}}
-{{--                                            <span class="k-input-icon__icon k-input-icon__icon--left">--}}
-{{--                                            <span><i class="la la-search"></i></span>--}}
-{{--                                        </span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                    <div class="row align-items-center">
+                        <div class="col-xl-8 order-2 order-xl-1">
+                            <form action="{{ route('section.show', ['parent_type' => $parentModel->getModelUrlName(), 'parent_id' => $parentModel->id, 'section' => $section]) }}" method="GET">
+                                <div class="row align-items-center">
+                                    <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
+                                        <div class="k-input-icon k-input-icon--left">
+                                            <input type="text" name="search" class="form-control" value="{{ $search }}" placeholder="{{ __('general.search_by_name') }}">
+                                            <span class="k-input-icon__icon k-input-icon__icon--left">
+                                            <span><i class="la la-search"></i></span>
+                                        </span>
+                                        </div>
+                                    </div>
 
-{{--                                    <div class="col-md-3 k-margin-b-20-tablet-and-mobile">--}}
-{{--                                        <select name="visibility" class="form-control filter-select">--}}
-{{--                                            <option value="all" {{ ($visibility == 'all' || $visibility == null) ? 'selected' : ''}}>{{ __('general.all') }}</option>--}}
-{{--                                            <option value="visible" {{ $visibility == 'visible' ? 'selected' : ''}}>{{ __('general.visible') }}</option>--}}
-{{--                                            <option value="hidden" {{ $visibility == 'hidden' ? 'selected' : ''}}>{{ __('general.hidden') }}</option>--}}
-{{--                                        </select>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </form>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                                    <div class="col-md-3 k-margin-b-20-tablet-and-mobile">
+                                        <select name="visibility" class="form-control filter-select">
+                                            <option value="all" {{ ($visibility == 'all' || $visibility == null) ? 'selected' : ''}}>{{ __('general.all') }}</option>
+                                            <option value="visible" {{ $visibility == 'visible' ? 'selected' : ''}}>{{ __('general.visible') }}</option>
+                                            <option value="hidden" {{ $visibility == 'hidden' ? 'selected' : ''}}>{{ __('general.hidden') }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
 
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered table-striped dataTable">
@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="dataTables_paginate paging_simple_numbers mx-auto mt-5">
-{{--                    {{ $modules->appends(['search' => $search, 'visibility' => $visibility])->links() }}--}}
+                    {{ $modules->appends(['search' => $search, 'visibility' => $visibility])->links() }}
                 </div>
             </div>
         </div>
