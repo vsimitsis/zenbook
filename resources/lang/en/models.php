@@ -10,6 +10,8 @@ return [
     'company'          => 'Company',
     'teacher'          => 'Teacher',
     'teachers'         => 'Teachers',
+    'parent'           => 'Parent',
+    'parents'          => 'Parents',
     'student'          => 'Student',
     'students'         => 'Students',
     'lesson'           => 'Lesson',

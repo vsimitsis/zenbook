@@ -1,7 +1,7 @@
 @can('administrate', $company)
     @if($currentUser->is($user))
         <div class="form-group row">
-            <label class="col-sm-3 col-md-2 col-form-label">User Role:</label>
+            <label class="col-sm-3 col-md-2 col-form-label">{{ __('models.user_role') }}:</label>
             <div class="col-sm-6">
                 <div class="input-group">
                     <div class="input-group-prepend"><span class="input-group-text"><i class="la la-key"></i></span></div>
@@ -15,7 +15,7 @@
         <input type="hidden" name="user_role" value="{{ $user->user_role_id }}">
     @else
         <div class="form-group row">
-            <label for="user_role" class="col-sm-3 col-md-2 col-form-label">{{ __('general.user_role') }}:</label>
+            <label for="user_role" class="col-sm-3 col-md-2 col-form-label">{{ __('models.user_role') }}:</label>
             <div class="col-sm-6">
                 <div class="input-group">
                     <div class="input-group-prepend"><span class="input-group-text"><i class="la la-key"></i></span></div>
@@ -23,7 +23,7 @@
                         <option value="0" selected>Select Role</option>
                         @foreach($userRoles as $role)
                             <option value="{{ $role->id }}" {{ old('user_role', $user->user_role_id) == $role->id ? 'selected' : '' }}>
-                                {{ $role->name }}
+                                {{ __('models.' . lcfirst($role->name)) }}
                             </option>
                         @endforeach
                     </select>

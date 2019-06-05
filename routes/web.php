@@ -27,9 +27,14 @@ Route::group(['domain' => 'console.' . config('app.domain')], function() {
         Route::post('/settings/language', 'UserSettingController@updateLanguage')->name('user.settings.language.update');
 
         /**
-         * Student Group routes
+         * Classroom routes
          */
         Route::get('/classrooms', 'ClassroomController@index')->name('classroom.index');
+        Route::get('/classrooms/create', 'ClassroomController@create')->name('classroom.create');
+        Route::post('/classrooms/store', 'ClassroomController@store')->name('classroom.store');
+        Route::get('/classrooms/{classroom}/edit', 'ClassroomController@edit')->name('classroom.edit');
+        Route::put('/classrooms/{classroom}/update', 'ClassroomController@update')->name('classroom.update');
+        Route::delete('/classrooms/{classroom}', 'ClassroomController@destroy')->name('classroom.destroy');
 
         /**
          * Document routes

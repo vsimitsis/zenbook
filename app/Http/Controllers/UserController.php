@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classroom;
 use App\Traits\AddressTrait;
 use App\Traits\ContactTrait;
 use App\userRole;
@@ -60,12 +61,13 @@ class UserController extends Controller
         $user = new User();
 
         return view('users.create', [
-            'user'      => $user,
-            'contacts'  => $user->contacts,
-            'addresses' => $user->addresses,
-            'company'   => Auth::user()->company,
-            'userRoles' => UserRole::all(),
-            'countries' => Country::all(),
+            'user'       => $user,
+            'contacts'   => $user->contacts,
+            'addresses'  => $user->addresses,
+            'company'    => Auth::user()->company,
+            'userRoles'  => UserRole::all(),
+            'classrooms' => Auth::user()->company->classrooms,
+            'countries'  => Country::all(),
         ]);
     }
 
@@ -95,6 +97,10 @@ class UserController extends Controller
         ]);
 
         if ($user->save()) {
+            $this->storeAddresses($request, $user);
+            $this->storeContacts($request, $user);
+            $this->attachClassrooms($request, $user);
+
             $token = app('auth.password.broker')->createToken($user);
 
             Mail::to($user->email)->send(new UserInvitation($currentUser, $user, $token));
@@ -119,12 +125,13 @@ class UserController extends Controller
         $this->authorize('edit', $user);
 
         return view('users.edit', [
-            'user'      => $user,
-            'company'   => $user->company,
-            'contacts'  => $user->contacts,
-            'addresses' => $user->addresses,
-            'userRoles' => UserRole::all(),
-            'countries' => Country::all(),
+            'user'       => $user,
+            'company'    => $user->company,
+            'contacts'   => $user->contacts,
+            'addresses'  => $user->addresses,
+            'userRoles'  => UserRole::all(),
+            'classrooms' => Auth::user()->company->classrooms,
+            'countries'  => Country::all(),
         ]);
     }
 
@@ -143,6 +150,7 @@ class UserController extends Controller
         if ($this->updateDetails($request, $user)) {
             $this->storeContacts($request, $user, true);
             $this->storeAddresses($request, $user, true);
+            $this->attachClassrooms($request, $user);
 
             return redirect(route('user.index'))
                 ->with('success', 'User\'s account has been updated successfully.');
@@ -168,6 +176,21 @@ class UserController extends Controller
 
         return redirect(route('user.edit', $user))
             ->with('error', 'There was a problem deleting this user. Please try again later.');
+    }
+
+    /**
+     * Attach classrooms at users
+     *
+     * @param UserRequest $request
+     * @param User $user
+     */
+    protected function attachClassrooms(UserRequest $request, User $user)
+    {
+        $user->classrooms()->detach();
+
+        if (!empty($request->classrooms)) {
+            $user->classrooms()->attach($request->classrooms);
+        }
     }
 
     /**
@@ -207,10 +230,11 @@ class UserController extends Controller
      * @param User $user
      * @return bool
      */
-    private function updateDetails(UserRequest $request, User $user)
+    protected function updateDetails(UserRequest $request, User $user)
     {
-        $user->name  = $request->name;
-        $user->email = $request->email;
+        $user->first_name   = $request->first_name;
+        $user->last_name    = $request->last_name;
+        $user->email        = $request->email;
         $user->user_role_id = $request->user_role;
 
         return $user->save();

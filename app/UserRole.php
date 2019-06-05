@@ -13,9 +13,25 @@ class UserRole extends Model
      */
     protected $guarded = [];
 
+    /**
+     * Constant for administrator UserRole
+     */
     const ADMINISTRATOR = 1;
-    const TEACHER       = 2;
-    const STUDENT       = 3;
+
+    /**
+     * Constant for Teacher UserRole
+     */
+    const TEACHER = 2;
+
+    /**
+     * Constant for Student UserRole
+     */
+    const PARENT = 3;
+
+    /**
+     * Constant for parent UserRole
+     */
+    const STUDENT = 4;
 
     /**
      * Return the users with this role

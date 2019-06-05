@@ -27,12 +27,6 @@ class CreateClassroomUserTable extends Migration
                 ->on('classrooms')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->unsignedBigInteger('user_role_id');
-            $table->foreign('user_role_id')
-                ->references('id')
-                ->on('user_roles')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
         });
     }
 

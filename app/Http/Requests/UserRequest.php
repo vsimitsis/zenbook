@@ -35,6 +35,7 @@ class UserRequest extends FormRequest
             ],
             'contact-list' => 'nullable|array',
             'address-list' => 'nullable|array',
+            'classrooms'   => 'nullable|array',
         ];
 
         if ($this->method() == 'PUT') {
@@ -42,7 +43,7 @@ class UserRequest extends FormRequest
                 'required',
                 'email',
                 'max:255',
-                Rule::unique('users')->ignore($this->user-id)
+                Rule::unique('users')->ignore($this->user->id)
             ];
         } else {
             $rules['email'] = 'required|email|max:255|unique:users,email';

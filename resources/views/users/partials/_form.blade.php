@@ -1,7 +1,7 @@
 <div class="k-portlet__body">
     {{ csrf_field() }}
 
-    <h3 class="k-heading k-heading--md k-heading--no-top-margin">1. {{ __('general.information') }}:</h3>
+    <h3 class="k-heading k-heading--md k-heading--no-top-margin">1. {{ __('general.general') }}:</h3>
     <div class="form-group row">
         <label for="first_name" class="col-sm-3 col-md-2 col-form-label">{{ __('general.first_name') }}:</label>
         <div class="col-sm-6">
@@ -41,6 +41,27 @@
     </div>
 
     @include('users.partials._user-role-field')
+
+    <div id="classrooms" class="form-group row {{ old('user_role') === \App\UserRole::PARENT || ($user->userRole && $user->userRole->id == \App\UserRole::PARENT) ? 'd-none' : '' }}">
+        <label class="col-sm-3 col-md-2 col-form-label">{{ __('models.classrooms') }}:</label>
+        <div class="col-sm-6">
+            <div class="kt-checkbox-inline">
+                @foreach($classrooms as $classroom)
+                    <label class="kt-checkbox mr-1">
+                        <input type="checkbox" name="classrooms[]" value="{{ $classroom->id }}"
+                               class="mr-1" {{ old('classrooms') && in_array($classroom->id, old('classrooms')) || ($user->classrooms && $user->classrooms->contains($classroom)) ? 'checked' : '' }}>
+                        {{ $classroom->name }}
+                        <span></span>
+                    </label>
+                @endforeach
+
+                @if($errors->has('classrooms'))
+                    <div class="text-danger">{{ $errors->first('classrooms') }}</div>
+                @endif
+            </div>
+            <span class="form-text text-muted">{{ __('actions.select_user_access') }}</span>
+        </div>
+    </div>
 
     <div class="k-separator k-separator--space-sm k-separator--border-dashed"></div>
     <h3 class="k-heading k-heading--md">2. Contacts:</h3>
@@ -200,6 +221,23 @@
 @push('scripts')
     <script>
         $(document).ready(function () {
+            let userRoleSelect     = $('#user_role');
+            let classrooms         = $('#classrooms');
+
+            function toggleClassroomCheckBoxes() {
+                if (userRoleSelect.val() == 3) {
+                    classrooms.addClass('d-none');
+                } else {
+                    classrooms.removeClass('d-none');
+                }
+            }
+
+            toggleClassroomCheckBoxes();
+
+            userRoleSelect.on('change', function() {
+                toggleClassroomCheckBoxes();
+            });
+
             $('.k-repeater').each(function(){
                 $(this).repeater({
                     show: function () {

@@ -20,6 +20,10 @@ class UserRoleTableSeeder extends Seeder
         ]);
 
         \App\UserRole::create([
+            'name' => 'Parent'
+        ]);
+
+        \App\UserRole::create([
             'name' => 'Student'
         ]);
     }

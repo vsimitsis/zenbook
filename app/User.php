@@ -107,6 +107,16 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Return true if the user is a parent
+     *
+     * @return bool
+     */
+    public function isParent()
+    {
+        return $this->userRole === UserRole::PARENT;
+    }
+
+    /**
      * Return true if the user is a student
      *
      * @return bool
@@ -114,6 +124,16 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isStudent()
     {
         return $this->userRole === UserRole::STUDENT;
+    }
+
+    /**
+     * Return all the user's classrooms
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function classrooms()
+    {
+        return $this->belongsToMany(Classroom::class);
     }
 
     /**

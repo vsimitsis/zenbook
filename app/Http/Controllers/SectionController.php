@@ -129,7 +129,7 @@ class SectionController extends Controller
     }
 
     /**
-     * Fetch the exam's sections
+     * Fetch the section's modules
      *
      * @param Request $request
      * @param Section $section

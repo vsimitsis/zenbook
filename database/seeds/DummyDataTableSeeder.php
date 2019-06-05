@@ -27,6 +27,26 @@ class DummyDataTableSeeder extends Seeder
             'name' => 'Hexabit',
         ]);
 
+        \App\Classroom::create([
+            'company_id' => 1,
+            'name'       => 'Τμήμα 1'
+        ]);
+
+        \App\Classroom::create([
+            'company_id' => 1,
+            'name'       => 'Τμήμα 2'
+        ]);
+
+        \App\Classroom::create([
+            'company_id' => 1,
+            'name'       => 'Τμήμα 3'
+        ]);
+
+        \App\Classroom::create([
+            'company_id' => 1,
+            'name'       => 'Τμήμα 4'
+        ]);
+
         \App\User::create([
             'unique_ref'  => \App\User::generateUniqueID(),
             'first_name' => 'Vagelis',

@@ -30,4 +30,6 @@ return [
     'select_user_access'   => 'Select the users that will have access to that file.',
     'add_choice'           => 'Add choice',
     'move_to'              => 'Move to',
+    'create_classroom'     => 'Create Classroom',
+    'edit_classroom'       => 'Edit Classroom',
 ];

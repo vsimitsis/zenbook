@@ -30,7 +30,7 @@ class Classroom extends Model
      */
     public function teachers()
     {
-        return $this->users()->wherePivot('user_role_id', UserRole::TEACHER);
+        return $this->users()->whereIn('user_role_id', [UserRole::ADMINISTRATOR, UserRole::TEACHER]);
     }
 
     /**
@@ -40,6 +40,6 @@ class Classroom extends Model
      */
     public function students()
     {
-        return $this->users()->wherePivot('user_role_id', UserRole::STUDENT);
+        return $this->users()->where('user_role_id', UserRole::STUDENT);
     }
 }

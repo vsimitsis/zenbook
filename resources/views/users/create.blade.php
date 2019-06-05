@@ -1,5 +1,5 @@
 @extends('layouts.console')
-@section('title', __('actions.add_user'))
+@section('title', __('actions.create_user'))
 @section('breadcrumbs')
     <div class="k-content__head-breadcrumbs">
         <a href="{{ route('dashboard.index') }}" class="k-content__head-breadcrumb-home"><i class="flaticon2-shelter"></i></a>

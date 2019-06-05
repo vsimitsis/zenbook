@@ -25,4 +25,7 @@ return [
     'module_not_deleted'      => 'There was a problem deleting the module. Please try again later.',
     'module_type_disabled'    => 'You can\'t change the module type. If you need to, delete it and create a new.',
     'move_module_to_section'  => 'The module can move to another section as it is.',
+    'classroom_created'       => 'The classroom has been created successfully.',
+    'classroom_deleted'       => 'The classroom has been deleted successfully.',
+    'classroom_not_deleted'   => 'There was a problem deleting the classroom. Please try again later.',
 ];
