@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Document;
 use App\Http\Requests\DocumentRequest;
+use App\Traits\UniqueNames;
 use Aws\S3\Exception\S3Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
+    use UniqueNames;
     /**
      * Display a listing of the resource.
      *
@@ -193,7 +195,7 @@ class DocumentController extends Controller
     protected function createDocument(DocumentRequest $request, string $path) :Document
     {
         $file     = $request->file('document');
-        $fileName = $this->renameIfExists($request);
+        $fileName = $this->renameIfExists($request, new Document());
 
         return Document::create([
             'company_id'        => Auth::user()->company_id,
@@ -230,30 +232,5 @@ class DocumentController extends Controller
         }
 
         return true;
-    }
-
-    /**
-     * Check if a document with this filename exists and rename it
-     *
-     * @param DocumentRequest $request
-     * @param Document $document
-     * @return string
-     */
-    protected function renameIfExists(DocumentRequest $request, Document $document = null) :string
-    {
-        $fileName   = $request->name ?: $request->file('document')->getClientOriginalName();
-        $countQuery = Auth::user()->company->documents()->where('original_filename', $fileName);
-
-        if ($document) {
-            $countQuery = $countQuery->where('id', '!=', $document->id);
-        }
-
-        $count = $countQuery->count();
-
-        if ($count) {
-            $fileName .= "-$count";
-        }
-
-        return $fileName;
     }
 }

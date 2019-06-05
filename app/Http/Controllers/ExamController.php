@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Exam;
 use App\Http\Requests\ExamRequest;
 use App\Section;
+use App\Traits\UniqueNames;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ExamController extends Controller
 {
+    use UniqueNames;
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +51,7 @@ class ExamController extends Controller
         Exam::create([
             'company_id' => Auth::user()->company_id,
             'user_id'    => Auth::user()->id,
-            'name'       => $this->renameIfExists($request),
+            'name'       => $this->renameIfExists($request, new Exam()),
             'status'     => $request->status,
             'visibility' => $request->visibility,
         ]);
@@ -192,30 +194,5 @@ class ExamController extends Controller
         }
 
         return $sectionQuery->paginate(10);
-    }
-
-    /**
-     * Check if an exam with this name exists and rename it
-     *
-     * @param ExamRequest $request
-     * @param Exam|null $exam
-     * @return string
-     */
-    protected function renameIfExists(ExamRequest $request, Exam $exam = null) :string
-    {
-        $name       = $request->name;
-        $countQuery = Auth::user()->company->exams()->where('name', $name);
-
-        if ($exam) {
-            $countQuery = $countQuery->where('id', '!=', $exam->id);
-        }
-
-        $count = $countQuery->count();
-
-        if ($count) {
-            $name .= "-$count";
-        }
-
-        return $name;
     }
 }
