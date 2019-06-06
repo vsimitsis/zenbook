@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Classroom;
 use App\Document;
 use App\Exam;
 use Illuminate\Support\Facades\Auth;
@@ -24,12 +25,15 @@ trait UniqueNames
             case 'App\\Exam':
                 return $this->renameExam($request, $model);
                 break;
+            case 'App\\Classroom':
+                return $this->renameClassroom($request, $model);
+                break;
 
         }
     }
 
     /**
-     * Check if a document with this filename exists and rename it
+     * Check if a document with this filename exists in that company and rename it
      *
      * @param $request
      * @param Document|null $document
@@ -54,7 +58,7 @@ trait UniqueNames
     }
 
     /**
-     * Check if an exam with this name exists and rename it
+     * Check if an exam with this name exists in that company and rename it
      *
      * @param $request
      * @param Exam|null $exam
@@ -67,6 +71,31 @@ trait UniqueNames
 
         if ($exam->id) {
             $countQuery = $countQuery->where('id', '!=', $exam->id);
+        }
+
+        $count = $countQuery->count();
+
+        if ($count) {
+            $name .= "-$count";
+        }
+
+        return $name;
+    }
+
+    /**
+     * Check if a classroom with this name exists in that company and rename it
+     *
+     * @param $request
+     * @param Classroom $classroom
+     * @return string
+     */
+    protected function renameClassroom($request, Classroom $classroom) :string
+    {
+        $name       = $request->name;
+        $countQuery = Auth::user()->company->classrooms()->where('name', 'LIKE', $name . '%');
+
+        if ($classroom->id) {
+            $countQuery = $countQuery->where('id', '!=', $classroom->id);
         }
 
         $count = $countQuery->count();

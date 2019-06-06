@@ -46,20 +46,24 @@
         <label class="col-sm-3 col-md-2 col-form-label">{{ __('models.classrooms') }}:</label>
         <div class="col-sm-6">
             <div class="kt-checkbox-inline">
-                @foreach($classrooms as $classroom)
-                    <label class="kt-checkbox mr-1">
-                        <input type="checkbox" name="classrooms[]" value="{{ $classroom->id }}"
-                               class="mr-1" {{ old('classrooms') && in_array($classroom->id, old('classrooms')) || ($user->classrooms && $user->classrooms->contains($classroom)) ? 'checked' : '' }}>
-                        {{ $classroom->name }}
-                        <span></span>
-                    </label>
-                @endforeach
+                @if($classrooms->isNotEmpty())
+                    @foreach($classrooms as $classroom)
+                        <label class="kt-checkbox mr-1">
+                            <input type="checkbox" name="classrooms[]" value="{{ $classroom->id }}"
+                                   class="mr-1" {{ old('classrooms') && in_array($classroom->id, old('classrooms')) || ($user->classrooms && $user->classrooms->contains($classroom)) ? 'checked' : '' }}>
+                            {{ $classroom->name }}
+                            <span></span>
+                        </label>
+                    @endforeach
+                @else
+                    <span>{{ __('messages.there_are_no_classrooms') }}</span>
+                @endif
 
                 @if($errors->has('classrooms'))
                     <div class="text-danger">{{ $errors->first('classrooms') }}</div>
                 @endif
             </div>
-            <span class="form-text text-muted">{{ __('actions.select_user_access') }}</span>
+            <span class="form-text text-muted">{{ __('actions.select_user_classrooms') }}</span>
         </div>
     </div>
 

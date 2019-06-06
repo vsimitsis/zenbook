@@ -28,4 +28,5 @@ return [
     'classroom_created'       => 'The classroom has been created successfully.',
     'classroom_deleted'       => 'The classroom has been deleted successfully.',
     'classroom_not_deleted'   => 'There was a problem deleting the classroom. Please try again later.',
+    'there_are_no_classrooms' => 'You haven\'t created classrooms yet.',
 ];

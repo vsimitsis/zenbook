@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Classroom;
 use App\Http\Requests\ClassroomRequest;
+use App\Traits\UniqueNames;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ClassroomController extends Controller
 {
+    use UniqueNames;
+
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +51,7 @@ class ClassroomController extends Controller
 
         Classroom::create([
             'company_id' => Auth::user()->company->id,
-            'name'       => $request->name,
+            'name'       => $this->renameIfExists($request, new Classroom()),
         ]);
 
         return redirect(route('classroom.index'))
@@ -77,7 +80,7 @@ class ClassroomController extends Controller
      */
     public function update(ClassroomRequest $request, Classroom $classroom)
     {
-        $classroom->name = $request->name;
+        $classroom->name = $this->renameIfExists($request, $classroom);
         $classroom->save();
 
         return redirect(route('classroom.index', $classroom))
