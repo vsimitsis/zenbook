@@ -78,6 +78,20 @@ class ExamController extends Controller
     }
 
     /**
+     * View the specified resource.
+     *
+     * @param Request $request
+     * @param Exam $exam
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function view(Exam $exam)
+    {
+        return view('exams.view', [
+            'exam'       => $exam,
+        ]);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Exam  $exam

@@ -30,6 +30,7 @@ Route::group(['domain' => 'console.' . config('app.domain')], function() {
          * Classroom routes
          */
         Route::get('/classrooms', 'ClassroomController@index')->name('classroom.index');
+        Route::get('/classroom/{classroom}', 'ClassroomController@show')->name('classroom.show');
         Route::get('/classrooms/create', 'ClassroomController@create')->name('classroom.create');
         Route::post('/classrooms/store', 'ClassroomController@store')->name('classroom.store');
         Route::get('/classrooms/{classroom}/edit', 'ClassroomController@edit')->name('classroom.edit');
@@ -55,6 +56,7 @@ Route::group(['domain' => 'console.' . config('app.domain')], function() {
         Route::get('/exams/create', 'ExamController@create')->name('exam.create');
         Route::post('/exams/store', 'ExamController@store')->name('exam.store');
         Route::get('/exams/{exam}', 'ExamController@show')->name('exam.show');
+        Route::get('/exams/{exam}/view', 'ExamController@view')->name('exam.view');
         Route::get('/exams/{exam}/edit', 'ExamController@edit')->name('exam.edit');
         Route::put('/exams/{exam}', 'ExamController@update')->name('exam.update');
         Route::delete('exams/{exam}', 'ExamController@destroy')->name('exam.destroy');
@@ -92,6 +94,7 @@ Route::group(['domain' => 'console.' . config('app.domain')], function() {
     });
 });
 
+Auth::routes();
 /**
  * Land page routes
  */

@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    This is the homepage!
+                    This is the homepage! You are {{ Auth::user() ? Auth::user()->first_name : 'Guest' }}
                 </div>
             </div>
         </div>

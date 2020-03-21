@@ -7,7 +7,7 @@
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-file"></i></span></div>
                 <textarea type="text" id="mc_question" name="mc_question"
-                          class="form-control {{ $errors->has('mc_question') ? 'is-invalid' : '' }}" placeholder="{{ __('rules.question') }}">{{ old('mc_question', $module->examinable->question) }}</textarea>
+                          class="form-control {{ $errors->has('mc_question') ? 'is-invalid' : '' }}" placeholder="{{ __('rules.question') }}">{{ old('mc_question', $module->examinable ? $module->examinable->question : '') }}</textarea>
                 <div class="invalid-feedback">{{ $errors->first('mc_question') }}</div>
             </div>
         </div>

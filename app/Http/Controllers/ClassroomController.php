@@ -27,6 +27,19 @@ class ClassroomController extends Controller
     }
 
     /**
+     * Display the classroom page
+     *
+     * @param Classroom $classroom
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(Classroom $classroom)
+    {
+        return view('classrooms.show', [
+            'classroom' => $classroom
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

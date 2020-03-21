@@ -78,6 +78,10 @@
                                         <form action="{{ route('document.destroy', $document) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
+                                            <a href="{{ route('document.download', $document) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('actions.download') }}">
+                                                <i class="la la-download"></i>
+                                            </a>
+
                                             <span class="dropdown">
                                                 <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
                                                     <i class="la la-ellipsis-h"></i>
@@ -88,9 +92,6 @@
                                                     <a href="#" class="dropdown-item delete-alert" data-action="delete"><i class="la la-trash"></i> {{ __('actions.delete') }}</a>
                                                 </span>
                                             </span>
-                                            <a href="{{ route('document.download', $document) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('actions.download') }}">
-                                                <i class="la la-download"></i>
-                                            </a>
                                         </form>
                                     @else
                                         <a href="{{ route('document.download', $document) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('actions.download') }}">

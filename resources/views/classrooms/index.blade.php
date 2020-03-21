@@ -70,20 +70,22 @@
                                     <form action="{{ route('classroom.destroy', $classroom) }}" method="POST">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
-                                        <span class="dropdown">
-                                                    <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
-                                                        <i class="la la-ellipsis-h"></i>
-                                                    </a>
-
-                                                    <span class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item"
-                                                           href="{{ route('classroom.edit', $classroom) }}"><i class="la la-edit"></i> {{ __('actions.edit') }}</a>
-                                                        <a href="#" class="dropdown-item delete-alert" data-action="delete"><i class="la la-trash"></i> {{ __('actions.delete') }}</a>
-                                                    </span>
-                                                </span>
-                                        <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('models.report') }}">
-                                            <i class="fa fa-chart-bar"></i>
+                                        <a href="{{ route('classroom.show', $classroom) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('actions.view') }}">
+                                            <i class="la la-eye"></i>
                                         </a>
+
+                                        <span class="dropdown">
+                                            <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
+                                                <i class="la la-ellipsis-h"></i>
+                                            </a>
+
+                                            <span class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item"
+                                                   href="{{ route('classroom.edit', $classroom) }}"><i class="la la-edit"></i> {{ __('actions.edit') }}</a>
+                                                <a href="#" class="dropdown-item"><i class="fa fa-chart-bar"></i> {{ __('models.report') }}</a>
+                                                <a href="#" class="dropdown-item delete-alert" data-action="delete"><i class="la la-trash"></i> {{ __('actions.delete') }}</a>
+                                            </span>
+                                        </span>
                                     </form>
                                 </td>
                             </tr>
@@ -97,7 +99,7 @@
                 </div>
             </div>
 
-            <div class="dataTables_paginate paging_simple_numbers mx-auto mt-5">
+            <div class="ml-auto mt-5">
                 {{ $classrooms->appends(['search' => $search])->links() }}
             </div>
         </div>

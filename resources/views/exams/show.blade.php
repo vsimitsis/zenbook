@@ -93,6 +93,10 @@
                                         <form action="{{ route('section.destroy', $section) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
+                                            <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('actions.view') }}">
+                                                <i class="la la-eye"></i>
+                                            </a>
+
                                             <span class="dropdown">
                                                     <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
                                                         <i class="la la-ellipsis-h"></i>
@@ -102,12 +106,10 @@
                                                         <a class="dropdown-item"
                                                            href="{{ route('section.edit', ['parent_type' => $exam->getModelUrlName(), 'parent_id' => $exam->id, 'section' => $section]) }}"><i
                                                                     class="la la-edit"></i> {{ __('actions.edit') }}</a>
+                                                        <a href="#" class="dropdown-item"><i class="fa fa-chart-bar"></i> {{ __('models.report') }}</a>
                                                         <a href="#" class="dropdown-item delete-alert" data-action="delete"><i class="la la-trash"></i> {{ __('actions.delete') }}</a>
                                                     </span>
                                                 </span>
-                                            <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('models.report') }}">
-                                                <i class="fa fa-chart-bar"></i>
-                                            </a>
                                         </form>
                                     </td>
                                 @endcan
@@ -122,7 +124,7 @@
                 </div>
             </div>
 
-            <div class="dataTables_paginate paging_simple_numbers mx-auto mt-5">
+            <div class="ml-auto mt-5">
                 {{ $sections->appends(['search' => $search, 'visibility' => $visibility])->links() }}
             </div>
         </div>

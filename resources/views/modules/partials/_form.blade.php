@@ -64,7 +64,7 @@
             <div class="input-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-file"></i></span></div>
                 <input type="number" id="grade" name="grade" min="-100" max="100"
-                       class="form-control {{ $errors->has('grade') ? 'is-invalid' : '' }}" value="{{ old('grade', $module->examinable->grade) }}" placeholder="{{ __('rules.grade') }}">
+                       class="form-control {{ $errors->has('grade') ? 'is-invalid' : '' }}" value="{{ old('grade', $module->examinable ? $module->examinable->grade : '') }}" placeholder="{{ __('rules.grade') }}">
                 <div class="invalid-feedback">{{ $errors->first('grade') }}</div>
             </div>
             <span class="form-text text-muted">{{ __('messages.grade') }}</span>

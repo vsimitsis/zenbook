@@ -106,19 +106,20 @@
                                     @endif
                                 </td>
                                 <td>
-                                <span class="dropdown">
-                                    <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
-                                        <i class="la la-ellipsis-h"></i>
-                                    </a>
-                                    <span class="dropdown-menu dropdown-menu-right">
-                                        @can('edit', $user)
-                                            <a class="dropdown-item" href="{{ route('user.edit', $user) }}"><i class="la la-edit"></i> {{ __('actions.edit') }}</a>
-                                        @endcan
-                                    </span>
-                                </span>
                                     <a href="{{ route('user.show', $user) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="{{ __('actions.view') }}">
                                         <i class="la la-eye"></i>
                                     </a>
+
+                                    <span class="dropdown">
+                                        <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true">
+                                            <i class="la la-ellipsis-h"></i>
+                                        </a>
+                                        <span class="dropdown-menu dropdown-menu-right">
+                                            @can('edit', $user)
+                                                <a class="dropdown-item" href="{{ route('user.edit', $user) }}"><i class="la la-edit"></i> {{ __('actions.edit') }}</a>
+                                            @endcan
+                                        </span>
+                                    </span>
                                 </td>
                             </tr>
                         @endforeach
@@ -131,7 +132,7 @@
                 </div>
             </div>
 
-            <div class="dataTables_paginate paging_simple_numbers mx-auto mt-5">
+            <div class="ml-auto mt-5">
                 {{ $users->appends(['search' => $search, 'role' => $role, 'status' => $status])->links() }}
             </div>
         </div>
